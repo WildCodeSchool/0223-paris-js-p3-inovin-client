@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Navbar() {
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <div>
       <Link to="/">

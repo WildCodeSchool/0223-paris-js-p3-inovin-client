@@ -1,0 +1,32 @@
+
+.workshopManager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  h2{
+    text-align: center;
+    width: 100%;
+    font-size: 4rem;
+  }
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    border-style: hidden;
+    th {
+      text-align: center;
+      border: 2px solid rgb(107, 107, 107);
+    }
+    td {
+      
+      text-align: center;
+      border: 2px solid rgb(107, 107, 107);
+      button {
+        border-radius: 10px;
+        background-color: transparent;
+        border: 1px solid rgb(107, 107, 107);
+        padding-inline: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

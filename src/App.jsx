@@ -7,6 +7,7 @@ import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
 import { login } from "./store/auth";
 import "./App.scss";
+import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/ateliers" element={<WorkshopManager />}></Route>
       </Routes>
     </>
   );
