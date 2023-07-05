@@ -6,7 +6,6 @@ import profileicon from "../../assets/usernav.svg";
 
 function Navbar() {
   const auth = useSelector((state) => state.auth);
-  console.log(auth.user?.role);
 
   return (
     <div className="navbar">

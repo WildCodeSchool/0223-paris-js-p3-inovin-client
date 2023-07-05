@@ -1,23 +1,23 @@
 @import "../../App.scss";
 
-.pageContainer {
+.page-container {
   display: flex;
   justify-content: space-between;
   margin-top: 60px;
 
-  .mapSection {
+  .map-section {
     display: flex;
     align-items: center;
     height: calc(100vh - 60px);
 
-    .mapContainer {
+    .map-container {
       width: 65vw;
       height: 87vh;
       margin: auto 2vw auto 2vw;
     }
   }
 
-  .textSection {
+  .text-section {
     margin-top: 2vh;
     display: flex;
     width: 40vw;
@@ -30,13 +30,18 @@
     }
 
     span {
-      text-align: center;
       font-family: $font-text;
       font-size: 1.8vw;
-      width: 60%;
-      padding: 1vh;
+    }
+
+    .text-container {
+      margin-top: 35vh;
+      padding-top: 1.5vh;
+      padding-bottom: 1vh;
       border-top: solid 1px rgb(162, 162, 162);
       border-bottom: solid 1px rgb(162, 162, 162);
+      width: 60%;
+      text-align: center;
     }
   }
 }

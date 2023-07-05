@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl";
 import "./MapReservation.scss";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map() {
+function Map({ locations }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
@@ -23,7 +23,7 @@ function Map() {
 
     map.current.on("load", () => {
       //  --------------create empty source markers --------------
-      map.current.addSource("agencies", {
+      map.current.addSource("locations", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
@@ -31,17 +31,38 @@ function Map() {
         },
       });
       map.current.addLayer({
-        id: "agencies",
+        id: "locations",
         type: "circle",
-        source: "agencies",
+        source: "locations",
         paint: {
           "circle-radius": 10,
-          "circle-color": "#FCBD42",
+          "circle-color": "#C95B5B",
           "circle-opacity": 1,
         },
       });
     });
   }, []);
+
+  useEffect(() => {
+    const geojson = [];
+    setTimeout(() => {
+      console.log("test passed 1 seconde later");
+      locations.map((element) => {
+        geojson.push({
+          type: "Feature",
+          properties: { id: element.id, place_name: element.place_name },
+          geometry: {
+            type: "Point",
+            coordinates: [element.lng, element.lat],
+          },
+        });
+      });
+      map.current.getSource("locations").setData({
+        type: "FeatureCollection",
+        features: geojson,
+      });
+    }, "500");
+  }, [locations]);
 
   // ---------------------------------------- RETURN----------------------------------------
   return <div ref={mapContainer} className="map" />;
