@@ -37,5 +37,15 @@
     background-color: transparent;
     text-align: center;
    }
+   button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid #313131;
+    padding-inline: 1rem;    
+  }
+  button:hover {
+    background-color: red;
+    transition: 300ms;
+  }
 }
 }

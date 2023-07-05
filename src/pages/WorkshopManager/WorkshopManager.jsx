@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllSessions } from "../../services/session";
 import "./WorkshopManager.scss";
+import { useNavigate } from "react-router-dom";
 
 const getSessions = async () => {
   try {
@@ -14,6 +15,7 @@ const getSessions = async () => {
 };
 const WorkshopManager = () => {
   const [sessions, setSessions] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const getSessions = async () => {
       try {
@@ -55,7 +57,7 @@ const WorkshopManager = () => {
             };
             const date = new Date(session.date);
             return (
-              <tr key={index}>
+              <tr key={index} className="ateliers">
                 <td>{date.toLocaleString("fr-FR", options)}</td>
                 <td>{session.category}</td>
                 <td>{session.location}</td>
@@ -71,7 +73,9 @@ const WorkshopManager = () => {
           })}
         </tbody>
       </table>
-      <button type="button">Ajouter un atelier</button>
+      <button type="button" onClick={() => navigate("new")}>
+        Ajouter un atelier
+      </button>
     </div>
   );
 };
