@@ -8,6 +8,7 @@ import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
 import { login } from "./store/auth";
 import "./App.scss";
+import Wines from "./pages/Wines/Wines";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/reservation" element={<Reservation />}></Route>
+        <Route path="/wines" element={<Wines />}></Route>
       </Routes>
     </>
   );
