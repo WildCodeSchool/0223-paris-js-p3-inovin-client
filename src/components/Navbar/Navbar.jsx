@@ -35,9 +35,6 @@ function Navbar() {
       <Link to={auth.isLogged ? "/profile" : "/login"}>
         <img className="profileicon" src={profileicon} alt="" />
       </Link>
-      <Link to="/reservation">
-        <p>Reservation</p>
-      </Link>
     </div>
   );
 }
