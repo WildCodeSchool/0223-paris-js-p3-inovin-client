@@ -9,6 +9,9 @@ function Navbar() {
       <Link to="/login">
         <p>Login</p>
       </Link>
+      <Link to="/reservation">
+        <p>Reservation</p>
+      </Link>
     </div>
   );
 }

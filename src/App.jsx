@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import Reservation from "./pages/Reservation/Reservation";
 import Navbar from "./components/Navbar/Navbar";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./services/users";
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/reservation" element={<Reservation />}></Route>
       </Routes>
     </>
   );
