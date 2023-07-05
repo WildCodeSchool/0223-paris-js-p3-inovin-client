@@ -2,17 +2,21 @@
 
 .navbar {
     position: fixed;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px;
-    border-bottom: 1px solid black;
     background-color: white;
+    border-bottom: 1px solid black;
     padding: 0 24px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    .menu-bg {
+        display: none;
+    }
     a {
         text-decoration: none;
         .logo {
@@ -22,19 +26,103 @@
             height: 24px;
         }
     }
-    ul {
+    .navlist {
         display: flex;
         flex-direction: row;
-        gap : 32px;
+        gap : 40px;
         li {
             list-style: none;
             font-family: $font-text;
-            color: #313131;
-            font-size: 18px;
+            color: black;
+            font-size: 22px;
             letter-spacing: 0.8px;
             text-transform: capitalize;
+            font-variant: small-caps;
+
             }
     }
 
 
+}
+
+.navbar-home {
+    background-color: transparent;
+    border-bottom: none;
+    filter: invert(1);
+}
+
+@media screen and (max-width : 1000px)  {
+    .navbar {
+        .menu-bg {
+            display: flex;
+            flex-direction: column;
+            height: 24px;
+            width: 30px;
+            &__lines {
+                background-color: black;
+                height: 4px;
+                width: 100%;
+                margin: 3px;
+                transition: transform 0.3s ease-in-out;
+              }
+          }
+
+          .opened {
+
+              .menu-bg__lines:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+              }
+              .menu-bg__lines:nth-child(2) {
+                opacity: 0;
+              }
+              .menu-bg__lines:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+              } 
+          }
+      
+
+
+        a {
+            .logo {
+                display: none;
+            }
+        }
+        .navlist {
+            display: none;
+        }
+    }
+
+    .menu-list {
+        position: fixed;
+        z-index: 30;
+        background-color: rgba(255, 255, 255, 0.75);
+        top : 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .navlist {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap : 40px;
+            a {
+                text-decoration: none;
+            }
+            li {
+                list-style: none;
+                font-family: $font-text;
+                color: black;
+                font-size: 40px;
+                letter-spacing: 0.8px;
+                text-transform: capitalize;
+                font-variant: small-caps;
+    
+                }
+        }
+    }
 }

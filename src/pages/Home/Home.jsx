@@ -1,11 +1,123 @@
 import React from "react";
 import "./Home.scss";
+import BtnInscription from "../../components/BtnInscription/BtnInscription";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { Link } from "react-router-dom";
+import homevideo from "../../assets/homevideo.mp4";
+import logo from "../../assets/logo.svg";
+import concept from "../../assets/concept.svg";
+import img1 from "../../assets/image1.png";
+import img2 from "../../assets/image2.png";
+import img3 from "../../assets/image3.png";
+import redwine from "../../assets/redwine.png";
+import whitewine from "../../assets/whitewine.png";
+import allwines from "../../assets/allwines.png";
+import atelierdegust from "../../assets/atelierdegust.png";
+import ateliercrea from "../../assets/ateliercrea.png";
 
 function Home() {
   const auth = useSelector((state) => state.auth);
 
-  return <div>Home {auth.user?.email}</div>;
+  return (
+    <div className="homepage">
+      <div className="video-container">
+        <div>
+          <img className="logo-video" src={logo} alt="" />
+          <h1>Prêt à vivre un voyage gustatif plein de saveurs</h1>
+        </div>
+        <video autoPlay muted playsinline loop>
+          <source src={homevideo} type="video/mp4" />
+        </video>
+      </div>
+      <div className="concept">
+        <h2>Notre concept</h2>
+        <img className="logo-concept" src={concept} alt="" />
+        <p className="concept-desc">
+          L'atelier Inovin est une expérience unique vous permettant de créer
+          votre propre vin au travers d’une dégustation de cépages vers votre
+          assemblage...
+        </p>
+        <div className="img-container">
+          <img src={img1} alt="" />
+          <img src={img2} alt="" />
+          <img src={img3} alt="" />
+        </div>
+      </div>
+      <div className="wines">
+        <h2>Découvrir nos vins</h2>
+        <p>
+          Dans les vignobles où le soleil danse, <br />
+          Les ceps s'étirent, tels des bras en transe.
+          <br />
+          Le vin, tel un poème, coule dans les veines,
+          <br />
+          Des trésors en flacons, des élixirs sans peine.
+          <br />
+          Le Chardonnay, noble et audacieux,
+          <br />
+          Le Merlot, épicé et envoûtant, <br />
+          Le Pinot Noir, subtil et délicat,
+          <br />
+          Le Sauvignon Blanc, frais et vif à souhait.
+        </p>
+        <div className="img-container">
+          <Link>
+            <div>
+              <img src={redwine} alt="" />
+              <span>Nos vins rouges</span>
+            </div>
+          </Link>
+          <Link>
+            <div>
+              <img src={whitewine} alt="" />
+              <span>Nos vins blancs</span>
+            </div>
+          </Link>
+          <Link>
+            <div>
+              <img src={allwines} alt="" />
+              <span>Tous nos vins</span>
+            </div>
+          </Link>
+        </div>
+      </div>
+      <div className="ateliers">
+        <h2>Découvrir nos ateliers</h2>
+        <div className="atelier">
+          <div className="atelier-desc">
+            <h3>Atelier dégustation</h3>
+            <p>
+              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels
+              des bras en transe. Le vin, tel un poème, coule dans les veines,
+              Des trésors en flacons, des élixirs sans peine. Le Chardonnay,
+              noble et audacieux, Le Merlot, épicé et envoûtant, Le Pinot Noir,
+              subtil et délicat, Le Sauvignon Blanc, frais et vif à souhait.
+            </p>
+            <Link to="/reservation">
+              <BtnInscription type="dégustation" />
+            </Link>
+          </div>
+          <img src={atelierdegust} alt="" />
+        </div>
+        <div className="atelier">
+          <img src={ateliercrea} alt="" />
+          <div className="atelier-desc">
+            <h3>Atelier création</h3>
+            <p>
+              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels
+              des bras en transe. Le vin, tel un poème, coule dans les veines,
+              Des trésors en flacons, des élixirs sans peine. Le Chardonnay,
+              noble et audacieux, Le Merlot, épicé et envoûtant, Le Pinot Noir,
+              subtil et délicat, Le Sauvignon Blanc, frais et vif à souhait.
+            </p>
+            <Link to="/reservation">
+              <BtnInscription type="création" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
