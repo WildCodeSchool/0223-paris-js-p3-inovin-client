@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import Atelier from "./components/Atelier/Atelier";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>
+      <Atelier />
     </>
   );
 }

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
+
+$font-text : Benne;
+$font-title : Federo;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-container {
+
+    background-color: white;
+  
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      border-bottom: 1px solid black;
+      padding-bottom: 15px;
+      padding-top: 30px;
+   
+    .logo {
+        width: 200px;
+        height: auto;
+      }
+    }
+  
+   .title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Federo';
+    font-size: 50px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+  }
+
+   .subtitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Benne';
+    font-size: 24px;
+    
+}
+
+.body-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Oeil,
+.Nez,
+.Bouche {
+  position: relative;
+  text-align: center;
+}
+
+
+
+ }
+  
+  
