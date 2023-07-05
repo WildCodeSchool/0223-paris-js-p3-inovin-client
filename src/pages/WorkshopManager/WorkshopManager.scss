@@ -6,11 +6,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   h2{
     text-align: center;
     width: 100%;
     font-size: 4rem;
+    font-weight: 300;
   }
   table {
     width: 80%;
@@ -18,20 +19,30 @@
     border-style: hidden;
     th {
       text-align: center;
-      border: 2px solid rgb(107, 107, 107);
+      border: 1.5px solid #313131;
+      font-weight: 300;
       
-    }
+    }   
     td {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       
       text-align: center;
-      border: 2px solid rgb(107, 107, 107);
-      button {
-        border-radius: 10px;
-        background-color: transparent;
-        border: 1px solid rgb(107, 107, 107);
-        padding-inline: 1rem;
-        margin-right: 1rem;
-      }
-    }
+      border: 1.5px solid #313131;
+      border-bottom: none;
+      border-top: none;
+   }
+    .buttonCell {
+      display: flex;
+      justify-content: space-around;
+      border: none;      
+    }    
+  }
+  button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid #313131;
+    padding-inline: 1rem;
+    
   }
 }

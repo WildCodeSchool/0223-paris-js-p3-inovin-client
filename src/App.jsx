@@ -32,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
+        <Route path="/ateliers/new" element={<NewWorkshop />}></Route>
       </Routes>
     </>
   );

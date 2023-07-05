@@ -44,16 +44,25 @@ const WorkshopManager = () => {
           </tr>
         </thead>
         <tbody>
-          {sessions.map((session) => {
+          {sessions.map((session, index) => {
+            const options = {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            };
+            const date = new Date(session.date);
             return (
-              <tr>
-                <td>{session.date}</td>
+              <tr key={index}>
+                <td>{date.toLocaleString("fr-FR", options)}</td>
                 <td>{session.category}</td>
                 <td>{session.location}</td>
-                <td>{session.max_participants}</td>
-                <td>{session.location}</td>
+                <td>{session.participants}</td>
+                <td>{session.max_participants - session.participants}</td>
 
-                <td>
+                <td className="buttonCell">
                   <button>Détails</button>
                   <button>Supprimer</button>
                 </td>
