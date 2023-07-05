@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { login } from "./store/auth";
 import "./App.scss";
 import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
+import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 
 function App() {
   const dispatch = useDispatch();
