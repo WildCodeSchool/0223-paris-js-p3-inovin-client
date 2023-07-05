@@ -1,1 +1,40 @@
-@import "../../App.scss"
+@import "../../App.scss";
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid black;
+    background-color: white;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    a {
+        text-decoration: none;
+        .logo {
+            height: 32px;
+        }
+        .profileicon {
+            height: 24px;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap : 32px;
+        li {
+            list-style: none;
+            font-family: $font-text;
+            color: #313131;
+            font-size: 18px;
+            letter-spacing: 0.8px;
+            text-transform: capitalize;
+            }
+    }
+
+
+}
