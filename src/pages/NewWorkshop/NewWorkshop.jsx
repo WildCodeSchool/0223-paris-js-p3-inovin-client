@@ -19,8 +19,15 @@ const NewWorkshop = () => {
     navigate("/ateliers");
   };
 
+  const handleBackClick = () => {
+    navigate("/ateliers");
+  };
+
   return (
     <div className="newWorkshop">
+      <button type="button" onClick={handleBackClick}>
+        Retour
+      </button>
       <h2>Ajouter un nouvel Atelier</h2>
       <table>
         <thead>
@@ -93,5 +100,3 @@ const NewWorkshop = () => {
 };
 
 export default NewWorkshop;
-
-ref;
