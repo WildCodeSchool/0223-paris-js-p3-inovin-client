@@ -18,7 +18,6 @@ import ateliercrea from "../../assets/ateliercrea.png";
 function Home() {
   const auth = useSelector((state) => state.auth);
   const [visibleIndex, setVisibleIndex] = useState(0);
-
   const winesContainerRef = useRef(null);
 
   const getVisibleCardIndex = () => {

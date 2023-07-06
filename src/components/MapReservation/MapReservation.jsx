@@ -7,6 +7,7 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 function Map({ sessions }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const popupRef = useRef(new mapboxgl.Popup());
 
   // ---------------------------------------- Add map----------------------------------------
   useEffect(() => {
@@ -44,16 +45,15 @@ function Map({ sessions }) {
 
     // ---------------------------------------- popups----------------------------------------
 
-    const popup = new mapboxgl.Popup({
-      closeButton: false,
-      closeOnClick: false,
-    });
+    // const popup = new mapboxgl.Popup({
+    //   closeButton: false,
+    //   closeOnClick: false,
+    // });
 
     map.current.on("mouseenter", "locations", (e) => {
       map.current.getCanvas().style.cursor = "pointer";
-      // Copy coordinates array.
       const coordinates = e.features[0].geometry.coordinates.slice();
-      const description = e.features[0].properties.description;
+      const description = e.features[0].properties.place_name;
       console.log("description", description);
 
       // Ensure that if the map is zoomed out such that multiple
@@ -63,15 +63,18 @@ function Map({ sessions }) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
       }
 
+      const popupContent = document.createElement("div");
+      popupContent.innerHTML = description;
+
       // Populate the popup and set its coordinates
       // based on the feature found.
-      popup.setLngLat(coordinates).setHTML(description).addTo(map);
+      popupRef.current.setLngLat(coordinates).setDOMContent(popupContent).addTo(map.current);
     });
 
-    map.current.on("mouseleave", "", () => {
-      map.current.getCanvas().style.cursor = "default";
-      popup.remove();
-    });
+    // map.current.on("mouseleave", "locations", () => {
+    //   map.current.getCanvas().style.cursor = "default";
+    //   popupRef.current.remove();
+    // });
   }, []);
 
   // -------------------------------- Add locations markers----------------------------------------
