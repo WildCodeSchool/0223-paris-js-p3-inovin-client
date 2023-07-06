@@ -1,18 +1,116 @@
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
+=======
+import "./navbar.scss";
+import logo from "../../assets/logo.svg";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import profileicon from "../../assets/usernav.svg";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Navbar() {
+  const navigate = useNavigate();
+
+  const [navHome, setNavHome] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (window.location.pathname == "/") {
+      setNavHome(true);
+    } else {
+      setNavHome(false);
+    }
+  }, [navigate]);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY || 0;
+    if (window.location.pathname === "/" && currentScrollY < 100) {
+      setNavHome(true);
+    } else {
+      setNavHome(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleClick = (path) => {
+    navigate(path)
+    setOpenMenu(false)
+  }
+>>>>>>> e2021bff735eebc3b9011f1514b74a273c2f4b42
 
   return (
-    <div>
-      <Link to="/">
-        <p>Home</p>
-      </Link>
-      <Link to="/login">
-        <p>Login</p>
-      </Link>
-    </div>
+    <>
+      <div className={navHome && !openMenu? "navbar navbar-home" : "navbar"}>
+        <div
+          className={openMenu ? "menu-bg opened" : "menu-bg"}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          <div className="menu-bg__lines"></div>
+          <div className="menu-bg__lines"></div>
+          <div className="menu-bg__lines"></div>
+        </div>
+        <Link to="/">
+          <img className="logo" src={logo} alt="" />
+        </Link>
+        {auth.user?.role == "ROLE_ADMIN" ? (
+          <ul className="navlist">
+            <li>Gestion des ateliers</li>
+            <li>Gestion des vins</li>
+            <li>Gestion des utilisateurs</li>
+            <li>Gestion des créations</li>
+          </ul>
+        ) : (
+          <ul className="navlist">
+            <li>Notre concept</li>
+            <li>Les cépages</li>
+            <Link to="/wines">
+              <li>Les vins</li>
+            </Link>
+            <li>Nos ateliers</li>
+            <li>Contactez-nous</li>
+          </ul>
+        )}
+
+        <Link to={auth.isLogged ? "/profile" : "/login"}>
+          <img className="profileicon" src={profileicon} alt="" />
+        </Link>
+      </div>
+      {openMenu && (
+        <div className="menu-list">
+          {auth.user?.role == "ROLE_ADMIN" ? (
+            <ul className="navlist">
+              <li>Gestion des ateliers</li>
+              <li>Gestion des vins</li>
+              <li>Gestion des utilisateurs</li>
+              <li>Gestion des créations</li>
+            </ul>
+          ) : (
+            <ul className="navlist">
+              <li onClick={() => handleClick("/")}>Accueil</li>
+              <li>Notre concept</li>
+              <li>Les cépages</li>
+              <li onClick={() => handleClick("/wines")}>Les vins</li>
+              <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
+              <li>Contactez-nous</li>
+            </ul>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 

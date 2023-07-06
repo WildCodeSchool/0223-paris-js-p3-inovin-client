@@ -10,6 +10,7 @@ import "./App.scss";
 import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
+import Wines from "./pages/Wines/Wines";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
+        <Route path="/wines" element={<Wines />}></Route>
       </Routes>
     </>
   );
