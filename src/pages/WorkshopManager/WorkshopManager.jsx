@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getAllSessions } from "../../services/session";
+import {
+  getAllSessions,
+  getSessionById,
+  deleteSession,
+} from "../../services/session";
 import "./WorkshopManager.scss";
 import { useNavigate } from "react-router-dom";
 
-const getSessions = async () => {
-  try {
-    let result = await getAllSessions();
-    result = result.data;
-    console.log("await", result);
-    return result;
-  } catch (error) {
-    console.error(error);
-  }
-};
 const WorkshopManager = () => {
   const [sessions, setSessions] = useState([]);
   const navigate = useNavigate();
@@ -27,10 +21,19 @@ const WorkshopManager = () => {
     };
     getSessions();
   }, []);
-  useEffect(() => {
-    console.log("result", sessions);
-  }, [sessions]);
 
+  const handleDetailsClick = async (id) => {
+    navigate(`${id}`);
+  };
+  const handleDeleteClick = async (id) => {
+    try {
+      deleteSession(id);
+      const updatedSessions = [...sessions].filter((e) => e.id != id);
+      setSessions(updatedSessions);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="workshopManager">
       <h2>Gestion des Ateliers</h2>
@@ -65,8 +68,12 @@ const WorkshopManager = () => {
                 <td>{session.max_participants - session.participants}</td>
 
                 <td className="buttonCell">
-                  <button>Détails</button>
-                  <button>Supprimer</button>
+                  <button onClick={() => handleDetailsClick(session.id)}>
+                    Détails
+                  </button>
+                  <button onClick={() => handleDeleteClick(session.id)}>
+                    Supprimer
+                  </button>
                 </td>
               </tr>
             );

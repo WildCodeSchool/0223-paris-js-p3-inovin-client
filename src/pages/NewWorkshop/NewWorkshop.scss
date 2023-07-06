@@ -44,8 +44,10 @@
     padding-inline: 1rem;    
   }
   button:hover {
-    background-color: red;
+    
     transition: 300ms;
+    scale: 1.1;
+    cursor: pointer;
   }
 }
 }
