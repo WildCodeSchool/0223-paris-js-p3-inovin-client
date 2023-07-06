@@ -59,6 +59,22 @@ $font-title : Federo;
   text-align: center;
 }
 
+.round-button {
+  width: 100px;
+  height: 40px;
+
+  border-radius: 20%;
+  background-color: #C95B5B;
+  color: white;
+  font-size: 16px;
+  font-family: 'Benne';
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darkred;
+  }
+}
+
 
 
  }
