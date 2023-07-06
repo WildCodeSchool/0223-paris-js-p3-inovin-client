@@ -49,6 +49,12 @@
     background-color: transparent;
     border-bottom: none;
     filter: invert(1);
+
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.438) 30%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      
 }
 
 @media screen and (max-width : 1000px)  {
@@ -63,7 +69,7 @@
                 height: 4px;
                 width: 100%;
                 margin: 3px;
-                transition: transform 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
               }
           }
 

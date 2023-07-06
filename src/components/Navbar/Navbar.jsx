@@ -40,16 +40,21 @@ function Navbar() {
     };
   }, []);
 
+  const handleClick = (path) => {
+    navigate(path)
+    setOpenMenu(false)
+  }
+
   return (
     <>
-      <div className={navHome ? "navbar navbar-home" : "navbar"}>
+      <div className={navHome && !openMenu? "navbar navbar-home" : "navbar"}>
         <div
-          class={openMenu ? "menu-bg opened" : "menu-bg"}
+          className={openMenu ? "menu-bg opened" : "menu-bg"}
           onClick={() => setOpenMenu(!openMenu)}
         >
-          <div class="menu-bg__lines"></div>
-          <div class="menu-bg__lines"></div>
-          <div class="menu-bg__lines"></div>
+          <div className="menu-bg__lines"></div>
+          <div className="menu-bg__lines"></div>
+          <div className="menu-bg__lines"></div>
         </div>
         <Link to="/">
           <img className="logo" src={logo} alt="" />
@@ -88,12 +93,11 @@ function Navbar() {
             </ul>
           ) : (
             <ul className="navlist">
+              <li onClick={() => handleClick("/")}>Accueil</li>
               <li>Notre concept</li>
               <li>Les cépages</li>
-              <Link to="/wines">
-                <li>Les vins</li>
-              </Link>
-              <li>Nos ateliers</li>
+              <li onClick={() => handleClick("/wines")}>Les vins</li>
+              <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
               <li>Contactez-nous</li>
             </ul>
           )}
