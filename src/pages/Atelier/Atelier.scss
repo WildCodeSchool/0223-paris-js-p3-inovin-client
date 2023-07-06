@@ -43,6 +43,8 @@ $font-title : Federo;
     justify-content: center;
     font-family: 'Benne';
     font-size: 24px;
+    margin-bottom: 5%;
+
     
 }
 
@@ -52,23 +54,39 @@ $font-title : Federo;
   align-items: center;
 }
 
-.Oeil,
-.Nez,
-.Bouche {
-  position: relative;
-  text-align: center;
+.Oeil {
+  display: flex;
+    justify-content: center;
+    font-family: 'benne';
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.Couleur {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+ 
 }
 
 .round-button {
+  position: flex;
+  justify-content: center;
   width: 100px;
-  height: 40px;
-
+  height: 30px;
   border-radius: 20%;
   background-color: #C95B5B;
   color: white;
   font-size: 16px;
   font-family: 'Benne';
   cursor: pointer;
+  margin-top: 50px;
   
   &:hover {
     background-color: darkred;

@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
+
+$font-text : Benne;
+$font-title : Federo;
+
+.root {
+    position: relative;
+    width: 1280px;
+    height: 1037px;
+    align-items: flex-start;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .cOULEUR {
+    color: #000;
+    font-size: 20px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 622px;
+    top: 357px;
+    width: 231px;
+    height: 20px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .framboise {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 496px;
+    top: 437px;
+    width: 74px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .jauneVert {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 500px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .jaunePaille {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 576px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .orVert {
+    position: absolute;
+    left: 652px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .textBlock {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+  }
+  .textBlock2 {
+    margin-top: 0;
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+  }
+  .orJaune {
+    position: absolute;
+    left: 733px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .textBlock3 {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+  }
+  .textBlock4 {
+    margin-top: 0;
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+  }
+  .dore {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 808px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .ambre {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 885px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .roux {
+    color: #000;
+    font-size: 15px;
+    line-height: 13px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 962px;
+    top: 564px;
+    width: 57px;
+    height: 28px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .cerise {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 577px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .rubis {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 657px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .pourpre {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 737px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .violet {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 808px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .tuile {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 962px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .grenat {
+    color: #000;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: Benne, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    position: absolute;
+    left: 885px;
+    top: 437px;
+    width: 53px;
+    height: 16px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .rectangle245 {
+    position: absolute;
+    left: 512px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #d85967;
+  }
+  .rectangle252 {
+    position: absolute;
+    left: 512px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #ecda86;
+  }
+  .rectangle246 {
+    position: absolute;
+    left: 575px;
+    top: 471px;
+    width: 58px;
+    height: 58px;
+    border-radius: 29px;
+    background-color: #c8494233;
+  }
+  .rectangle247 {
+    position: absolute;
+    left: 665px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #a82d25;
+  }
+  .rectangle261 {
+    position: absolute;
+    left: 587px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #c84942;
+  }
+  .rectangle254 {
+    position: absolute;
+    left: 665px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #e0c259;
+  }
+  .rectangle260 {
+    position: absolute;
+    left: 587px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #f1d470;
+  }
+  .rectangle248 {
+    position: absolute;
+    left: 743px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #8e2b49;
+  }
+  .rectangle255 {
+    position: absolute;
+    left: 743px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #cfab49;
+  }
+  .rectangle249 {
+    position: absolute;
+    left: 818px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #842463;
+  }
+  .rectangle256 {
+    position: absolute;
+    left: 818px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #c89544;
+  }
+  .rectangle250 {
+    position: absolute;
+    left: 972px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #833820;
+  }
+  .rectangle257 {
+    position: absolute;
+    left: 972px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #bc813d;
+  }
+  .rectangle251 {
+    position: absolute;
+    left: 896px;
+    top: 483px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #6b3750;
+  }
+  .rectangle258 {
+    position: absolute;
+    left: 896px;
+    top: 610px;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #da9549;
+  }
+  

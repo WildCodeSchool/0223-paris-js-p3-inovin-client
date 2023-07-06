@@ -1,6 +1,7 @@
 import React from "react";
 import "./Atelier.scss";
 import logo from "../../assets/logo.svg";
+import Oeil from "../../components/Atelier/Oeil";
 
 const atelier = () => {
   return (
@@ -10,16 +11,15 @@ const atelier = () => {
       </header>
       <h1 className="title">Atelier dégustation</h1>
       <p className="subtitle">Noter le premier vin</p>
-      <div className="body-container">
-        <p className="Oeil">L'Oeil</p>
-        <p className="Nez">Le Nez</p>
-        <p className="Bouche">La Bouche</p>
-      </div>
+      <h2 className="Oeil">L'Oeil</h2>
+      <h3 className="Couleur">Couleur</h3>
+      < Oeil />
       <button className="round-button" onClick={() => navigate}>
         {" "}
         Validate
       </button>
-    </div>
+      </div>
+      
   );
 };
 
