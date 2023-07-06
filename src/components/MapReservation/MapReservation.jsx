@@ -17,8 +17,8 @@ function Map({ sessions }) {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clilpddzb003y01o39zxt20nz",
-      center: [2.5152007724586496, 46.60410199308436],
-      zoom: 4.9,
+      center: [3.516986262712662, 44.51521711882075],
+      zoom: 8.7,
       antialias: true,
     });
 
@@ -54,7 +54,6 @@ function Map({ sessions }) {
       map.current.getCanvas().style.cursor = "pointer";
       const coordinates = e.features[0].geometry.coordinates.slice();
       const description = e.features[0].properties.place_name;
-      console.log("description", description);
 
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -71,15 +70,39 @@ function Map({ sessions }) {
       popupRef.current.setLngLat(coordinates).setDOMContent(popupContent).addTo(map.current);
     });
 
-    // map.current.on("mouseleave", "locations", () => {
-    //   map.current.getCanvas().style.cursor = "default";
-    //   popupRef.current.remove();
-    // });
+    map.current.on("mouseleave", "locations", () => {
+      map.current.getCanvas().style.cursor = "default";
+      popupRef.current.remove();
+    });
   }, []);
 
   // -------------------------------- Add locations markers----------------------------------------
 
+  // const getData = async () => {
+  //   try {
+  //     const geojson = [];
+  //     const datasessions = await sessions;
+  //     datasessions.map((element) => {
+  //       geojson.push({
+  //         type: "Feature",
+  //         properties: { id: element.id, place_name: element.place_name },
+  //         geometry: {
+  //           type: "Point",
+  //           coordinates: [element.lng, element.lat],
+  //         },
+  //       });
+  //     });
+  //     map.current.getSource("locations").setData({
+  //       type: "FeatureCollection",
+  //       features: geojson,
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
+    // getData();
     const geojson = [];
     setTimeout(() => {
       sessions.map((element) => {
