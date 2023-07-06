@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import "./navbar.scss";
 import logo from "../../assets/logo.svg";
 import { useSelector } from "react-redux/es/hooks/useSelector";
@@ -9,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
-
+  const user = useSelector((state) => state.auth.user);
   const [navHome, setNavHome] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -41,13 +42,13 @@ function Navbar() {
   }, []);
 
   const handleClick = (path) => {
-    navigate(path)
-    setOpenMenu(false)
-  }
+    navigate(path);
+    setOpenMenu(false);
+  };
 
   return (
     <>
-      <div className={navHome && !openMenu? "navbar navbar-home" : "navbar"}>
+      <div className={navHome && !openMenu ? "navbar navbar-home" : "navbar"}>
         <div
           className={openMenu ? "menu-bg opened" : "menu-bg"}
           onClick={() => setOpenMenu(!openMenu)}
@@ -106,5 +107,4 @@ function Navbar() {
     </>
   );
 }
-
 export default Navbar;

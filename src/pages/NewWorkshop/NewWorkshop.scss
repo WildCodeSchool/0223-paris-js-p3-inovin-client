@@ -1,0 +1,53 @@
+.newWorkshop {
+  h2{
+    text-align: center;
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 300;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    border-style: hidden;
+    th {
+      text-align: center;
+      border: 1.5px solid #313131;
+      font-weight: 300;
+      
+    }   
+    td {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      
+      text-align: center;
+      border: 1.5px solid #313131;
+      border-bottom: none;
+      border-top: none;
+   }
+   input {
+    border: none;
+   }
+   select {
+    width: 90%;
+    margin: auto;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+   }
+   button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid #313131;
+    padding-inline: 1rem;    
+  }
+  button:hover {
+    
+    transition: 300ms;
+    scale: 1.1;
+    cursor: pointer;
+  }
+}
+}
