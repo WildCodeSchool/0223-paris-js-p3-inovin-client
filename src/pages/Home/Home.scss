@@ -2,6 +2,7 @@
 
 
 .homepage {
+    scroll-behavior: smooth;
     a {
         text-decoration: none;
     }
@@ -63,6 +64,7 @@
             font-weight: 100;
             line-height: 23px;
             letter-spacing: 0.8px;
+            margin-bottom: 40px;
         }
 
         .img-container {
@@ -120,7 +122,6 @@
             align-items: center;
             justify-content: center;
             width: 90%;
-            gap: 5%;
             .atelier-desc {
                 width: 50%;
                 display: flex;
@@ -151,7 +152,7 @@
 
 }
 
-@media screen and (max-width : 1000px) {
+@media screen and (max-width : 1177px) {
     .homepage {
         .video-container {
             height: initial;
@@ -172,7 +173,7 @@
                 font-size: 8vw;
             }
             .logo-concept {
-                width: 50vw;
+                width: 30vw;
             }
             .concept-desc {
                width: 70vw;

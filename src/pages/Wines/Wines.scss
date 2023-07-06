@@ -1,2 +1,37 @@
-@import "../../App.scss"
+@import "../../App.scss";
 
+.ourwines {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        font-size: 50px;
+        font-family: $font-title;
+        margin-bottom: 32px;
+    }
+    .desc {
+        text-align: center;
+        font-family: $font-text;
+        font-variant: small-caps;
+        line-height: 23px;
+        letter-spacing: 0.8px;
+        width: 50%;
+        margin-bottom: 80px;
+    }
+    .wines-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .wine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img {
+                height: 250px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+}

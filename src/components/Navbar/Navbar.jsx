@@ -13,6 +13,26 @@ function Navbar() {
   const [navHome, setNavHome] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = prevScrollPos > currentScrollPos;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(isVisible);
+      console.log(isVisible)
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {

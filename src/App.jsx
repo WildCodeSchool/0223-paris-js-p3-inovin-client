@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { login } from "./store/auth";
 import "./App.scss";
 import Wines from "./pages/Wines/Wines";
+import SelectedWine from "./pages/SelectedWine/SelectedWine"
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
+        <Route path="/redwines" element={<Wines color='Rouge' />}></Route>
+        <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>
+        <Route path="/wines/:id" element={<SelectedWine/>}></Route>
       </Routes>
     </>
   );
