@@ -6,9 +6,11 @@ import "./Reservation.scss";
 
 function Reservation() {
   const [locations, setLocations] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/locations/`).then((result) => setLocations(result.data));
+    // axios.get(`http://localhost:8080/locations/`).then((result) => setLocations(result.data));
+    axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
   }, []);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ function Reservation() {
     <div className="page-container">
       <div className="map-section">
         <div className="map-container">
-          <MapReservation locations={locations} />
+          <MapReservation sessions={sessions} />
         </div>
       </div>
       <div className="text-section">
