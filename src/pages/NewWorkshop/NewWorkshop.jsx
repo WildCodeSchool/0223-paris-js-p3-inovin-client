@@ -14,7 +14,6 @@ const NewWorkshop = () => {
   };
   const handleRegisterClick = async () => {
     const result = await postSession(workshop);
-    console.log(result.data[0].insertId);
     navigate("/ateliers");
   };
 

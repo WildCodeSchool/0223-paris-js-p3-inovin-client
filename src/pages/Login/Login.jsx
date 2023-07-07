@@ -20,8 +20,9 @@ function Login() {
       dispatch(login(result.data));
       navigate("/");
     } catch (error) {
-      console.log(error);
-      if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
+      console.error(error);
+      if (error.response.status == 403 || error.response.status == 401)
+        setError("email ou mot de passe incorrect");
     }
   };
 
@@ -29,11 +30,21 @@ function Login() {
     <>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <input type="submit" value="Se connecter" />
       </form>
-      <button onClick={() => navigate("/forgotPassword")}>J'ai oublié mon mot de passe ?</button>
+      <button onClick={() => navigate("/forgotPassword")}>
+        J'ai oublié mon mot de passe ?
+      </button>
     </>
   );
 }

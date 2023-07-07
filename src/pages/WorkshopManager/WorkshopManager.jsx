@@ -31,7 +31,7 @@ const WorkshopManager = () => {
       const updatedSessions = [...sessions].filter((e) => e.id != id);
       setSessions(updatedSessions);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (
