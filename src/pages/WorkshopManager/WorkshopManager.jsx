@@ -63,7 +63,7 @@ const WorkshopManager = () => {
               <tr key={index} className="ateliers">
                 <td>{date.toLocaleString("fr-FR", options)}</td>
                 <td>{session.category}</td>
-                <td>{session.location}</td>
+                <td>{session.place_name}</td>
                 <td>{session.participants}</td>
                 <td>{session.max_participants - session.participants}</td>
 
