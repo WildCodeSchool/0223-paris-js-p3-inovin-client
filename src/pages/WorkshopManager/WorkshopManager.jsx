@@ -7,6 +7,15 @@ import {
 import "./WorkshopManager.scss";
 import { useNavigate } from "react-router-dom";
 
+const options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+};
+
 const WorkshopManager = () => {
   const [sessions, setSessions] = useState([]);
   const navigate = useNavigate();
@@ -50,14 +59,6 @@ const WorkshopManager = () => {
         </thead>
         <tbody>
           {sessions.map((session, index) => {
-            const options = {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-            };
             const date = new Date(session.date);
             return (
               <tr key={index} className="ateliers">
@@ -68,10 +69,16 @@ const WorkshopManager = () => {
                 <td>{session.max_participants - session.participants}</td>
 
                 <td className="buttonCell">
-                  <button onClick={() => handleDetailsClick(session.id)}>
+                  <button
+                    onClick={() => handleDetailsClick(session.id)}
+                    className="WMButton"
+                  >
                     Détails
                   </button>
-                  <button onClick={() => handleDeleteClick(session.id)}>
+                  <button
+                    onClick={() => handleDeleteClick(session.id)}
+                    className="WMButton"
+                  >
                     Supprimer
                   </button>
                 </td>
@@ -80,7 +87,11 @@ const WorkshopManager = () => {
           })}
         </tbody>
       </table>
-      <button type="button" onClick={() => navigate("new")}>
+      <button
+        type="button"
+        onClick={() => navigate("new")}
+        className="WMButton"
+      >
         Ajouter un atelier
       </button>
     </div>

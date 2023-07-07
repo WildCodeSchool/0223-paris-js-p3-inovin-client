@@ -5,19 +5,20 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  
+  padding-top: 5rem;
   height: 80vh;
   h2{
     text-align: center;
     width: 100%;
     font-size: 4rem;
     font-weight: 300;
+    margin-bottom: 2rem;
   }
   table {
     width: 80%;
     border-collapse: collapse;
     border-style: hidden;
-    
+    margin-bottom: 2rem;
     th {
       text-align: center;
       border: 1.5px solid #313131;
@@ -40,7 +41,8 @@
     }
 
   }
-  button {
+  .WMButton {
+    color: black;
     border-radius: 10px;
     background-color: transparent;
     border: 1px solid #313131;
