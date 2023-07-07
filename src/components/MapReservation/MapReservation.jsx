@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "./MapReservation.scss";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map({ sessions }) {
+function Map({ filteredSessions }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const popupRef = useRef(new mapboxgl.Popup());
+  const [isMounted, setIsMounted] = useState(false);
 
   // ---------------------------------------- Add map----------------------------------------
   useEffect(() => {
@@ -41,14 +42,10 @@ function Map({ sessions }) {
           "circle-opacity": 1,
         },
       });
+      setIsMounted(true);
     });
 
     // ---------------------------------------- popups----------------------------------------
-
-    // const popup = new mapboxgl.Popup({
-    //   closeButton: false,
-    //   closeOnClick: false,
-    // });
 
     map.current.on("mouseenter", "locations", (e) => {
       map.current.getCanvas().style.cursor = "pointer";
@@ -78,49 +75,29 @@ function Map({ sessions }) {
 
   // -------------------------------- Add locations markers----------------------------------------
 
-  // const getData = async () => {
-  //   try {
-  //     const geojson = [];
-  //     const datasessions = await sessions;
-  //     datasessions.map((element) => {
-  //       geojson.push({
-  //         type: "Feature",
-  //         properties: { id: element.id, place_name: element.place_name },
-  //         geometry: {
-  //           type: "Point",
-  //           coordinates: [element.lng, element.lat],
-  //         },
-  //       });
-  //     });
-  //     map.current.getSource("locations").setData({
-  //       type: "FeatureCollection",
-  //       features: geojson,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const getData = () => {
+    const geojson = [];
+    filteredSessions.map((element) => {
+      geojson.push({
+        type: "Feature",
+        properties: { id: element.id, place_name: element.place_name },
+        geometry: {
+          type: "Point",
+          coordinates: [element.lng, element.lat],
+        },
+      });
+    });
+    map.current.getSource("locations").setData({
+      type: "FeatureCollection",
+      features: geojson,
+    });
+  };
 
   useEffect(() => {
-    // getData();
-    const geojson = [];
-    setTimeout(() => {
-      sessions.map((element) => {
-        geojson.push({
-          type: "Feature",
-          properties: { id: element.id, place_name: element.place_name },
-          geometry: {
-            type: "Point",
-            coordinates: [element.lng, element.lat],
-          },
-        });
-      });
-      map.current.getSource("locations").setData({
-        type: "FeatureCollection",
-        features: geojson,
-      });
-    }, "500");
-  }, [sessions]);
+    if (isMounted) {
+      getData();
+    }
+  }, [filteredSessions, isMounted]);
 
   // ---------------------------------------- RETURN----------------------------------------
   return <div ref={mapContainer} className="map" />;

@@ -6,53 +6,45 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
 
 function Reservation() {
-  const [locations, setLocations] = useState([]);
   const [sessions, setSessions] = useState([]);
-  const [sessionFilters, setSessionFilters] = useState([]);
+  const [filter, setFilter] = useState([]);
   const [filteredSessions, setFilteredSessions] = useState([]);
   const sessionCategory = ["Création", "Dégustation"];
 
+  useEffect(() => {
+    axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
+    axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
+  }, []);
+
   const handleFilterCategory = (e) => {
     if (e.target.checked) {
-      const newfilter = [...sessionFilters, e.target.value];
-      setSessionFilters(newfilter);
+      const newfilter = [...filter, e.target.value];
+      setFilter(newfilter);
     } else {
-      setSessionFilters((prevSessionFilter) => prevSessionFilter.filter((filter) => filter !== e.target.defaultValue));
+      setFilter((prevFilter) => prevFilter.filter((filter) => filter !== e.target.defaultValue));
     }
   };
 
-  //
-
   useEffect(() => {
-    console.log(sessionFilters);
-  }, [sessionFilters]);
-
-  useEffect(() => {
-    if (sessionFilters.includes("Création")) {
+    if (filter.includes("Création")) {
       setFilteredSessions(sessions.filter((session) => session.category === "Création"));
     }
-    if (sessionFilters.includes("Dégustation")) {
+    if (filter.includes("Dégustation")) {
       setFilteredSessions(sessions.filter((session) => session.category === "Dégustation"));
     }
-    if (sessionFilters.includes("Dégustation") && sessionFilters.includes("Création")) {
+    if (filter.includes("Dégustation") && filter.includes("Création")) {
       setFilteredSessions(sessions);
     }
-  }, [sessionFilters]);
-
-  useEffect(() => {
-    axios.get(`http://localhost:8080/locations/`).then((result) => setLocations(result.data));
-    axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
-  }, []);
-
-  useEffect(() => {
-    console.log(sessions);
-  }, [sessions]);
+    if (!filter.includes("Dégustation") && !filter.includes("Création")) {
+      setFilteredSessions(sessions);
+    }
+  }, [filter]);
 
   return (
     <div className="page-container">
       <div className="map-section">
         <div className="map-container">
-          <MapReservation sessions={sessions} />
+          <MapReservation filteredSessions={filteredSessions} />
         </div>
       </div>
       <div className="text-section">
