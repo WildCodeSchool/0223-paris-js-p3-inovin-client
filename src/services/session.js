@@ -17,7 +17,6 @@ const getSessionById = async (id) => {
 };
 
 const postSession = async (newSession) => {
-  console.log(newSession);
   try {
     return api.post(`/sessions`, newSession);
   } catch (error) {
@@ -26,7 +25,6 @@ const postSession = async (newSession) => {
 };
 
 const deleteSession = async (id) => {
-  console.log("session", id);
   try {
     return api.delete(`/sessions/${id}`);
   } catch (error) {
