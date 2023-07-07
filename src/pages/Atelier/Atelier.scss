@@ -33,7 +33,7 @@ $font-title : Federo;
     justify-content: center;
     font-family: 'Federo';
     font-size: 50px;
-    margin-top: 50px;
+    margin-top: 100px;
     margin-bottom: 30px;
 
   }
@@ -74,7 +74,7 @@ $font-title : Federo;
   margin-bottom: 30px;
  
 }
-
+  
 .round-button {
   position: flex;
   justify-content: center;
@@ -93,6 +93,38 @@ $font-title : Federo;
   }
 }
 
+.container-oeil {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  
+}
+
+.Intensite{
+  text-align: center;
+  font-family: 'benne';
+  font-size: 30px;
+
+}
+
+.Fluidité{
+  text-align: center;
+  font-family: 'benne';
+  font-size: 30px
+
+}
+
+.Limpidité{
+  text-align: center;
+  font-family: 'benne';
+  font-size: 30px
+}
+
+.Brillance{
+  text-align: center;
+  font-family: 'benne';
+  font-size: 30px
+}
 
 
  }

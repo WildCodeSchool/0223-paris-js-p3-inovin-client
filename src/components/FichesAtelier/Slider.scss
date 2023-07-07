@@ -1,0 +1,18 @@
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .slider-text {
+    text-align: center;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .slider-text.active {
+    opacity: 1;
+  }
+  

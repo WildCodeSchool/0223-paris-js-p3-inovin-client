@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import './Nez.scss';
+import './Slider.scss';
 
-function Nez() {
+function Slider() {
     // 😔🙂😆🤣😉😊😇🥰😋🤑
     const [data,setData] = useState(0)
     const [emoji,setEmoji] = useState('')
@@ -38,4 +38,4 @@ function Nez() {
         </div>
     );
 }
-export default Nez;
+export default Slider;
