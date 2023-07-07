@@ -16,6 +16,22 @@ const getSessionById = async (id) => {
   }
 };
 
+const getWinesBySessionId = async (id) => {
+  try {
+    return api.get(`/sessions/${id}/wine`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getUsersBySessionId = async (id) => {
+  try {
+    return api.get(`/sessions/${id}/user`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const postSession = async (newSession) => {
   console.log(newSession);
   try {
@@ -34,4 +50,11 @@ const deleteSession = async (id) => {
   }
 };
 
-export { getAllSessions, getSessionById, postSession, deleteSession };
+export {
+  getAllSessions,
+  getSessionById,
+  postSession,
+  deleteSession,
+  getUsersBySessionId,
+  getWinesBySessionId,
+};
