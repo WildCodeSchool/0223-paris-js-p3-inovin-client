@@ -4,10 +4,15 @@ import mapboxgl from "mapbox-gl";
 import "./MapReservation.scss";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map({ filteredSessions }) {
+function Map({ filteredSessions, setLocationIndex }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const popupRef = useRef(new mapboxgl.Popup());
+  const popupRef = useRef(
+    new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+    })
+  );
   const [isMounted, setIsMounted] = useState(false);
 
   // ---------------------------------------- Add map----------------------------------------
@@ -71,6 +76,11 @@ function Map({ filteredSessions }) {
       map.current.getCanvas().style.cursor = "default";
       popupRef.current.remove();
     });
+
+    map.current.on("click", "locations", (e) => {
+      const id = e.features[0].properties.location_id;
+      setLocationIndex(parseInt(id));
+    });
   }, []);
 
   // -------------------------------- Add locations markers----------------------------------------
@@ -80,7 +90,7 @@ function Map({ filteredSessions }) {
     filteredSessions.map((element) => {
       geojson.push({
         type: "Feature",
-        properties: { id: element.id, place_name: element.place_name },
+        properties: { id: element.id, place_name: element.place_name, location_id: element.location_id },
         geometry: {
           type: "Point",
           coordinates: [element.lng, element.lat],

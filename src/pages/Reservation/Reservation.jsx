@@ -9,6 +9,7 @@ function Reservation() {
   const [sessions, setSessions] = useState([]);
   const [filter, setFilter] = useState([]);
   const [filteredSessions, setFilteredSessions] = useState([]);
+  const [locationIndex, setLocationIndex] = useState("");
   const sessionCategory = ["Création", "Dégustation"];
 
   useEffect(() => {
@@ -24,6 +25,10 @@ function Reservation() {
       setFilter((prevFilter) => prevFilter.filter((filter) => filter !== e.target.defaultValue));
     }
   };
+
+  useEffect(() => {
+    console.log(filteredSessions);
+  }, [filteredSessions]);
 
   useEffect(() => {
     if (filter.includes("Création")) {
@@ -44,7 +49,7 @@ function Reservation() {
     <div className="page-container">
       <div className="map-section">
         <div className="map-container">
-          <MapReservation filteredSessions={filteredSessions} />
+          <MapReservation filteredSessions={filteredSessions} setLocationIndex={setLocationIndex} />
         </div>
       </div>
       <div className="text-section">
@@ -59,8 +64,44 @@ function Reservation() {
             );
           })}
         </div>
-        <div className="text-container">
+        <div className={!locationIndex ? "text-container" : "text-container-hidden"}>
           <span>Choisissez un lieu de dégustation sur la carte</span>
+        </div>
+        <div className="session-list-container">
+          <div className="session-list">
+            <span className="session-title">Ateliers Dégustation</span>
+            {filteredSessions
+              .filter((session) => session.id === locationIndex && session.category === "Dégustation")
+              .map((session, index) => {
+                const options = {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                };
+                const date = new Date(session.date);
+                return <div className="session">{date.toLocaleString("fr-FR", options)}</div>;
+              })}
+          </div>
+          <div className="session-list">
+            <span className="session-title">Ateliers Création</span>
+            {filteredSessions
+              .filter((session) => session.id === locationIndex && session.category === "Création")
+              .map((session, index) => {
+                const options = {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                };
+                const date = new Date(session.date);
+                return <div className="session">{date.toLocaleString("fr-FR", options)}</div>;
+              })}
+          </div>
         </div>
       </div>
     </div>
