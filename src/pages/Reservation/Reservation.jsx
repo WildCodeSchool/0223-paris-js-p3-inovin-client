@@ -4,6 +4,7 @@ import React from "react";
 import axios from "axios";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
+import SessionList from "../../components/SessionList/SessionList";
 
 function Reservation() {
   const sessionCategory = ["Création", "Dégustation"];
@@ -15,7 +16,6 @@ function Reservation() {
     name: "",
   });
   const [selectedSessionId, setSelectedSessionId] = useState("");
-  const [selectedButtonId, setSelectedButtonId] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
@@ -31,17 +31,7 @@ function Reservation() {
     }
   };
 
-  const handleClickSession = (date) => {
-    setSelectedSessionId(date);
-  };
-
-  useEffect(() => {
-    console.log("selectedSessionId", selectedSessionId);
-  }, [selectedSessionId]);
-
-  // useEffect(() => {
-  //   console.log(filteredSessions);
-  // }, [filteredSessions]);
+  const handleClickReservation = () => {};
 
   useEffect(() => {
     if (filter.includes("Création")) {
@@ -85,71 +75,25 @@ function Reservation() {
           </div>
           <div className={clickedLocation.id ? "session-list-container" : "session-list-container-hidden"}>
             <h1 className="session-title">{clickedLocation.name}</h1>
-            <div className="session-list">
-              <span className="session-title">Ateliers Dégustation</span>
-
-              {filteredSessions.filter(
-                (session) => session.id === clickedLocation.id && session.category === "Dégustation"
-              ).length === 0 ? (
-                <div>Il n'y a pas de dates disponibles</div>
-              ) : (
-                filteredSessions
-                  .filter((session) => session.id === clickedLocation.id && session.category === "Dégustation")
-                  .map((session, index) => {
-                    const options = {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                    };
-                    const date = new Date(session.date);
-                    return (
-                      <div
-                        key={session.date}
-                        className={session.date === selectedSessionId ? "session-selected" : "session"}
-                        onClick={() => handleClickSession(session.date)}
-                      >
-                        {date.toLocaleString("fr-FR", options)}
-                      </div>
-                    );
-                  })
-              )}
-            </div>
-            <div className="session-list">
-              <span className={"session-title"}>Ateliers Création</span>
-              {filteredSessions.filter(
-                (session) => session.id === clickedLocation.id && session.category === "Création"
-              ).length === 0 ? (
-                <div>Il n'y a pas de dates disponibles</div>
-              ) : (
-                filteredSessions
-                  .filter((session) => session.id === clickedLocation.id && session.category === "Création")
-                  .map((session, index) => {
-                    const options = {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                    };
-                    const date = new Date(session.date);
-                    return (
-                      <div
-                        key={session.date}
-                        className={session.date === selectedSessionId ? "session-selected" : "session"}
-                        onClick={() => handleClickSession(session.date)}
-                      >
-                        {date.toLocaleString("fr-FR", options)}
-                      </div>
-                    );
-                  })
-              )}
-            </div>
+            <SessionList
+              filteredSessions={filteredSessions}
+              clickedLocation={clickedLocation}
+              sessionCategory="Dégustation"
+              selectedSessionId={selectedSessionId}
+              setSelectedSessionId={setSelectedSessionId}
+            />
+            <SessionList
+              filteredSessions={filteredSessions}
+              clickedLocation={clickedLocation}
+              sessionCategory="Création"
+              selectedSessionId={selectedSessionId}
+              setSelectedSessionId={setSelectedSessionId}
+            />
           </div>
-          <div className="button"> Réserver</div>
+          <div className="button" onClick={handleClickReservation}>
+            {" "}
+            Réserver
+          </div>
         </div>
       </div>
     </div>
