@@ -11,11 +11,11 @@ function Reservation() {
   const [sessions, setSessions] = useState([]);
   const [filter, setFilter] = useState([]);
   const [filteredSessions, setFilteredSessions] = useState([]);
+  const [selectedSessionId, setSelectedSessionId] = useState("");
   const [clickedLocation, setClickedLocation] = useState({
     id: "",
     name: "",
   });
-  const [selectedSessionId, setSelectedSessionId] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
@@ -31,8 +31,6 @@ function Reservation() {
     }
   };
 
-  const handleClickReservation = () => {};
-
   useEffect(() => {
     if (filter.includes("Création")) {
       setFilteredSessions(sessions.filter((session) => session.category === "Création"));
@@ -47,6 +45,8 @@ function Reservation() {
       setFilteredSessions(sessions);
     }
   }, [filter]);
+
+  const handleClickReservation = () => {};
 
   return (
     <div className="page-container">

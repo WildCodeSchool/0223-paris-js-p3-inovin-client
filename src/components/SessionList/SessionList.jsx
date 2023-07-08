@@ -1,4 +1,4 @@
-import React from "react";
+import "./SessionList.scss";
 
 function SessionList({ filteredSessions, clickedLocation, sessionCategory, selectedSessionId, setSelectedSessionId }) {
   const handleClickSession = (date) => {
