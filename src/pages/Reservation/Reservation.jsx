@@ -5,6 +5,7 @@ import axios from "axios";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
 import SessionList from "../../components/SessionList/SessionList";
+import { postRegistration } from "../../services/session";
 
 function Reservation() {
   const sessionCategory = ["Création", "Dégustation"];
@@ -46,7 +47,9 @@ function Reservation() {
     }
   }, [filter]);
 
-  const handleClickReservation = () => {};
+  const handleClickReservation = async (id) => {
+    postRegistration(id);
+  };
 
   return (
     <div className="page-container">
@@ -90,8 +93,7 @@ function Reservation() {
               setSelectedSessionId={setSelectedSessionId}
             />
           </div>
-          <div className="button" onClick={handleClickReservation}>
-            {" "}
+          <div className="button" onClick={() => handleClickReservation(selectedSessionId)}>
             Réserver
           </div>
         </div>

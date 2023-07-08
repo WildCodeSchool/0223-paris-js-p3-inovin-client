@@ -100,6 +100,10 @@
         border-radius: 2vw;
         background-color: #c95b5b;
         color: #ffffff;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
