@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl";
 import "./MapReservation.scss";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map({ filteredSessions, setLocationIndex }) {
+function Map({ filteredSessions, setClickedLocation }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const popupRef = useRef(
@@ -79,7 +79,8 @@ function Map({ filteredSessions, setLocationIndex }) {
 
     map.current.on("click", "locations", (e) => {
       const id = e.features[0].properties.location_id;
-      setLocationIndex(parseInt(id));
+      const name = e.features[0].properties.place_name;
+      setClickedLocation({ id: parseInt(id), name: name });
     });
   }, []);
 

@@ -6,11 +6,16 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
 
 function Reservation() {
+  const sessionCategory = ["Création", "Dégustation"];
   const [sessions, setSessions] = useState([]);
   const [filter, setFilter] = useState([]);
   const [filteredSessions, setFilteredSessions] = useState([]);
-  const [locationIndex, setLocationIndex] = useState("");
-  const sessionCategory = ["Création", "Dégustation"];
+  const [clickedLocation, setClickedLocation] = useState({
+    id: "",
+    name: "",
+  });
+  const [selectedSessionId, setSelectedSessionId] = useState("");
+  const [selectedButtonId, setSelectedButtonId] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
@@ -26,9 +31,17 @@ function Reservation() {
     }
   };
 
+  const handleClickSession = (date) => {
+    setSelectedSessionId(date);
+  };
+
   useEffect(() => {
-    console.log(filteredSessions);
-  }, [filteredSessions]);
+    console.log("selectedSessionId", selectedSessionId);
+  }, [selectedSessionId]);
+
+  // useEffect(() => {
+  //   console.log(filteredSessions);
+  // }, [filteredSessions]);
 
   useEffect(() => {
     if (filter.includes("Création")) {
@@ -49,59 +62,94 @@ function Reservation() {
     <div className="page-container">
       <div className="map-section">
         <div className="map-container">
-          <MapReservation filteredSessions={filteredSessions} setLocationIndex={setLocationIndex} />
+          <MapReservation filteredSessions={filteredSessions} setClickedLocation={setClickedLocation} />
         </div>
       </div>
       <div className="text-section">
-        <h2>Ateliers disponibles</h2>
-        <div className="checkboxes">
-          {sessionCategory.map((e) => {
-            return (
-              <div key={sessionCategory.indexOf(e)}>
-                <input type="checkbox" name="" id="" value={e} onChange={handleFilterCategory} />
-                <label htmlFor={e}>{e}</label>
-              </div>
-            );
-          })}
-        </div>
-        <div className={!locationIndex ? "text-container" : "text-container-hidden"}>
-          <span>Choisissez un lieu de dégustation sur la carte</span>
-        </div>
-        <div className="session-list-container">
-          <div className="session-list">
-            <span className="session-title">Ateliers Dégustation</span>
-            {filteredSessions
-              .filter((session) => session.id === locationIndex && session.category === "Dégustation")
-              .map((session, index) => {
-                const options = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                };
-                const date = new Date(session.date);
-                return <div className="session">{date.toLocaleString("fr-FR", options)}</div>;
-              })}
+        <div className="text-section-title">
+          <h2>Ateliers disponibles</h2>
+          <div className="checkboxes">
+            {sessionCategory.map((e) => {
+              return (
+                <div key={sessionCategory.indexOf(e)}>
+                  <input type="checkbox" name="" id="" value={e} onChange={handleFilterCategory} />
+                  <label htmlFor={e}>{e}</label>
+                </div>
+              );
+            })}
           </div>
-          <div className="session-list">
-            <span className="session-title">Ateliers Création</span>
-            {filteredSessions
-              .filter((session) => session.id === locationIndex && session.category === "Création")
-              .map((session, index) => {
-                const options = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                };
-                const date = new Date(session.date);
-                return <div className="session">{date.toLocaleString("fr-FR", options)}</div>;
-              })}
+        </div>
+        <div className="text-section-sessions">
+          <div className={!clickedLocation.id ? "text-container" : "text-container-hidden"}>
+            <span>Choisissez un lieu de dégustation sur la carte</span>
           </div>
+          <div className={clickedLocation.id ? "session-list-container" : "session-list-container-hidden"}>
+            <h1 className="session-title">{clickedLocation.name}</h1>
+            <div className="session-list">
+              <span
+                className={
+                  filter.length === 0 || filter.includes("Dégustation") ? "session-title" : "session-title-hidden"
+                }
+              >
+                Ateliers Dégustation
+              </span>
+              {filteredSessions
+                .filter((session) => session.id === clickedLocation.id && session.category === "Dégustation")
+                .map((session, index) => {
+                  const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                  };
+                  const date = new Date(session.date);
+                  return (
+                    <div
+                      key={session.date}
+                      className={session.date === selectedSessionId ? "session-selected" : "session"}
+                      onClick={() => handleClickSession(session.date)}
+                    >
+                      {date.toLocaleString("fr-FR", options)}
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="session-list">
+              <span
+                className={
+                  (filter.length === 0 || filter.includes("Création") ? "session-title" : "session-title-hidden",
+                  clickedLocation.id ? "session-title" : "session-title-hidden")
+                }
+              >
+                Ateliers Création
+              </span>
+              {filteredSessions
+                .filter((session) => session.id === clickedLocation.id && session.category === "Création")
+                .map((session, index) => {
+                  const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                  };
+                  const date = new Date(session.date);
+                  return (
+                    <div
+                      key={session.date}
+                      className={session.date === selectedSessionId ? "session-selected" : "session"}
+                      onClick={() => handleClickSession(session.date)}
+                    >
+                      {date.toLocaleString("fr-FR", options)}
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+          <div className="button"> Réserver</div>
         </div>
       </div>
     </div>
