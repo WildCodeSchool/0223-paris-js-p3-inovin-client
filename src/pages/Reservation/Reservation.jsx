@@ -86,67 +86,67 @@ function Reservation() {
           <div className={clickedLocation.id ? "session-list-container" : "session-list-container-hidden"}>
             <h1 className="session-title">{clickedLocation.name}</h1>
             <div className="session-list">
-              <span
-                className={
-                  filter.length === 0 || filter.includes("Dégustation") ? "session-title" : "session-title-hidden"
-                }
-              >
-                Ateliers Dégustation
-              </span>
-              {filteredSessions
-                .filter((session) => session.id === clickedLocation.id && session.category === "Dégustation")
-                .map((session, index) => {
-                  const options = {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                  };
-                  const date = new Date(session.date);
-                  return (
-                    <div
-                      key={session.date}
-                      className={session.date === selectedSessionId ? "session-selected" : "session"}
-                      onClick={() => handleClickSession(session.date)}
-                    >
-                      {date.toLocaleString("fr-FR", options)}
-                    </div>
-                  );
-                })}
+              <span className="session-title">Ateliers Dégustation</span>
+
+              {filteredSessions.filter(
+                (session) => session.id === clickedLocation.id && session.category === "Dégustation"
+              ).length === 0 ? (
+                <div>Il n'y a pas de dates disponibles</div>
+              ) : (
+                filteredSessions
+                  .filter((session) => session.id === clickedLocation.id && session.category === "Dégustation")
+                  .map((session, index) => {
+                    const options = {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                    };
+                    const date = new Date(session.date);
+                    return (
+                      <div
+                        key={session.date}
+                        className={session.date === selectedSessionId ? "session-selected" : "session"}
+                        onClick={() => handleClickSession(session.date)}
+                      >
+                        {date.toLocaleString("fr-FR", options)}
+                      </div>
+                    );
+                  })
+              )}
             </div>
             <div className="session-list">
-              <span
-                className={
-                  (filter.length === 0 || filter.includes("Création") ? "session-title" : "session-title-hidden",
-                  clickedLocation.id ? "session-title" : "session-title-hidden")
-                }
-              >
-                Ateliers Création
-              </span>
-              {filteredSessions
-                .filter((session) => session.id === clickedLocation.id && session.category === "Création")
-                .map((session, index) => {
-                  const options = {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                  };
-                  const date = new Date(session.date);
-                  return (
-                    <div
-                      key={session.date}
-                      className={session.date === selectedSessionId ? "session-selected" : "session"}
-                      onClick={() => handleClickSession(session.date)}
-                    >
-                      {date.toLocaleString("fr-FR", options)}
-                    </div>
-                  );
-                })}
+              <span className={"session-title"}>Ateliers Création</span>
+              {filteredSessions.filter(
+                (session) => session.id === clickedLocation.id && session.category === "Création"
+              ).length === 0 ? (
+                <div>Il n'y a pas de dates disponibles</div>
+              ) : (
+                filteredSessions
+                  .filter((session) => session.id === clickedLocation.id && session.category === "Création")
+                  .map((session, index) => {
+                    const options = {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                    };
+                    const date = new Date(session.date);
+                    return (
+                      <div
+                        key={session.date}
+                        className={session.date === selectedSessionId ? "session-selected" : "session"}
+                        onClick={() => handleClickSession(session.date)}
+                      >
+                        {date.toLocaleString("fr-FR", options)}
+                      </div>
+                    );
+                  })
+              )}
             </div>
           </div>
           <div className="button"> Réserver</div>
