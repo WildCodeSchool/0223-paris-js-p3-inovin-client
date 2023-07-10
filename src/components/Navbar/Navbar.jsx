@@ -67,7 +67,7 @@ function Navbar() {
             <li>Notre concept</li>
             <li>Les cépages</li>
             <Link to="/wines">
-              <li>Les vins</li>
+              <li>Nos vins</li>
             </Link>
             <li>Nos ateliers</li>
             <li>Contactez-nous</li>
@@ -92,7 +92,7 @@ function Navbar() {
               <li onClick={() => handleClick("/")}>Accueil</li>
               <li>Notre concept</li>
               <li>Les cépages</li>
-              <li onClick={() => handleClick("/wines")}>Les vins</li>
+              <li onClick={() => handleClick("/wines")}>Nos vins</li>
               <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
               <li>Contactez-nous</li>
             </ul>
