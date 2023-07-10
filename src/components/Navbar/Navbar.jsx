@@ -27,9 +27,9 @@ function Navbar() {
   };
 
   const handleClick = (path) => {
-    navigate(path)
-    setOpenMenu(false)
-  }
+    navigate(path);
+    setOpenMenu(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +46,6 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
 
   useEffect(() => {
     if (window.location.pathname == "/") {
@@ -66,11 +65,8 @@ function Navbar() {
 
   return (
     <>
-      <div className={visible ? navHome && !openMenu? "navbar navbar-home" : "navbar" : "navbar navbar-hidden"}>
-        <div
-          className={openMenu ? "menu-bg opened" : "menu-bg"}
-          onClick={() => setOpenMenu(!openMenu)}
-        >
+      <div className={visible ? (navHome && !openMenu ? "navbar navbar-home" : "navbar") : "navbar navbar-hidden"}>
+        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
@@ -92,7 +88,10 @@ function Navbar() {
             <Link to="/wines">
               <li>Nos vins</li>
             </Link>
-            <li>Nos ateliers</li>
+            <Link to="/Reservation">
+              <li>Nos ateliers</li>
+            </Link>
+
             <li>Contactez-nous</li>
           </ul>
         )}
