@@ -1,0 +1,94 @@
+@import "../../App.scss";
+
+
+.selected-wine {
+    padding: 100px 0 40px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    min-height: 100vh;
+    margin: auto;
+    flex-wrap: wrap;
+
+    .carac {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-family: $font-text;
+        font-variant: small-caps;
+        line-height: 23px;
+        letter-spacing: 0.8px;
+            .desc-desk {
+                margin-top: 24px;
+                text-align: justify;
+            }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            .fav-icon {
+                height: 32px;
+                width: 32px;
+                margin-bottom: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                &:hover {
+                    transition: all 0.3s;
+                    transform: scale(1.2);
+                }
+            }
+            .name {
+                font-size: 40px;
+                line-height: 40px;
+                font-family: $font-text;
+            }
+        }
+
+    }
+    .picture {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+.desc-mobile {
+    display: none;
+}
+}
+
+@media screen and (max-width : 760px)  {
+    .selected-wine {
+        flex-direction: column;
+        margin: auto;
+
+        .carac {
+            width: 90%;
+            margin-top: 40px;
+            align-items: center;
+            .title {
+                flex-direction: column;
+                margin: 0;
+                .fav-icon {
+                    margin: 16px 0;
+                }
+                .name {
+                    font-size: 28px;
+                    // white-space: nowrap;
+                }
+            }
+        }
+        .picture {
+            width: initial;
+            height: 50vh;
+            img {
+                height: inherit; 
+                width: 100%;
+ 
+            }
+        }
+
+    }
+}

@@ -33,9 +33,6 @@ const WorkshopDetails = () => {
         setSession(sessionInfos.data);
         setWines(wineInfos.data);
         setUsers(userInfos.data);
-        console.log(sessionInfos.data);
-        console.log(wineInfos.data);
-        console.log(userInfos.data);
       } catch (error) {
         console.error(error);
       }
@@ -70,6 +67,31 @@ const WorkshopDetails = () => {
             <td>{session.place_name}</td>
             <td>{session.participants}</td>
             <td>{session.max_participants - session.participants}</td>
+
+            <td className="buttonCell">
+              <button className="WMButton">Modifier</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Synthèse des participants</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Préférences</th>
+            <th>Commentaire</th>
+
+            <th>Gestion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{users[0].firstname}</td>
+            <td>{users[0].lastname}</td>
+            <td>{users[0].comment}</td>
+            <td>{users[0].comment}</td>
 
             <td className="buttonCell">
               <button className="WMButton">Modifier</button>
