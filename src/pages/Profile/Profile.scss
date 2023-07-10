@@ -1,0 +1,82 @@
+@import "../../App.scss";
+
+.profilepage {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+        font-family: $font-text;
+        font-size: 30px;
+        line-height: 23px;
+        font-variant: small-caps;
+        letter-spacing: 0.8px;
+    }
+    h1 {
+        font-size: 50px;
+        padding-bottom: 40px;
+        margin-bottom: 80px;
+        text-align: center;
+        width: 50%;
+        font-family: $font-title;
+        border-bottom: 1px solid black;
+    }
+    .ateliers {
+
+    }
+    .favorites {
+        width: 80%;
+        h2 {
+            text-align: center;
+        }
+        .wines-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items:  center;
+            height: 60vh;
+            .pagination-btn {
+                width: 50px;
+                height: 50px;
+                border-top: 1px solid black;
+                border-left: 1px solid black;
+                cursor: pointer;
+                &-previous {
+                    transform: rotate(-45deg);
+                }
+                &-previous-disabled {
+                    opacity: (0.3);
+                    cursor: auto;
+                }
+                &-next {
+                    transform: rotate(135deg);
+                }
+                &-next-disabled {
+                    opacity: (0.3);
+                    cursor:auto;
+                }
+            }
+            .wine {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 25%;
+                justify-content: center;
+                height: inherit;
+                img {
+                    margin-bottom: 8px;
+                    cursor: pointer;
+                    margin-bottom: 40px;
+                    height: 60%;
+                }
+                p {
+                    font-family: $font-text;
+                    font-size: 20px;
+                    font-variant: small-caps;
+                    line-height: 20px;
+                    letter-spacing: 0.8px;
+                }
+            }
+        }
+    }
+}
