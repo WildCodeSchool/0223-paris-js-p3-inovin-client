@@ -2,10 +2,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import "./navbar.scss";
 import logo from "../../assets/logo.svg";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import profileicon from "../../assets/usernav.svg";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -49,10 +47,7 @@ function Navbar() {
   return (
     <>
       <div className={navHome && !openMenu ? "navbar navbar-home" : "navbar"}>
-        <div
-          className={openMenu ? "menu-bg opened" : "menu-bg"}
-          onClick={() => setOpenMenu(!openMenu)}
-        >
+        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
