@@ -14,13 +14,8 @@ function Navbar() {
 
   const auth = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (window.location.pathname == "/") {
-      setNavHome(true);
-    } else {
-      setNavHome(false);
-    }
-  }, [navigate]);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY || 0;
@@ -31,6 +26,36 @@ function Navbar() {
     }
   };
 
+  const handleClick = (path) => {
+    navigate(path)
+    setOpenMenu(false)
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = prevScrollPos > currentScrollPos;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(isVisible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
+
+  useEffect(() => {
+    if (window.location.pathname == "/") {
+      setNavHome(true);
+    } else {
+      setNavHome(false);
+    }
+  }, [navigate]);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
@@ -39,15 +64,13 @@ function Navbar() {
     };
   }, []);
 
-  const handleClick = (path) => {
-    navigate(path);
-    setOpenMenu(false);
-  };
-
   return (
     <>
-      <div className={navHome && !openMenu ? "navbar navbar-home" : "navbar"}>
-        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
+      <div className={visible ? navHome && !openMenu? "navbar navbar-home" : "navbar" : "navbar navbar-hidden"}>
+        <div
+          className={openMenu ? "menu-bg opened" : "menu-bg"}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>

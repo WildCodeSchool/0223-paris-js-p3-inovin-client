@@ -12,6 +12,7 @@ import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
 import Wines from "./pages/Wines/Wines";
+import SelectedWine from "./pages/SelectedWine/SelectedWine"
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
+        <Route path="/redwines" element={<Wines color='Rouge' />}></Route>
+        <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>
+        <Route path="/wines/:id" element={<SelectedWine/>}></Route>
       </Routes>
     </>
   );
