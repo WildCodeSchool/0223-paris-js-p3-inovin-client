@@ -1,8 +1,16 @@
 import api from "./api";
 
-const getAllSessions = async (id) => {
+const getAllSessions = async () => {
   try {
     return api.get("/sessions");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postRegistration = async (id) => {
+  try {
+    return api.post(`/sessions/${id}/register`);
   } catch (error) {
     console.error(error);
   }
@@ -34,4 +42,4 @@ const deleteSession = async (id) => {
   }
 };
 
-export { getAllSessions, getSessionById, postSession, deleteSession };
+export { getAllSessions, getSessionById, postSession, deleteSession, postRegistration };
