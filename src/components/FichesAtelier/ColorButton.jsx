@@ -1,7 +1,7 @@
-import "./Oeil.scss";
+import "./ColorButton.scss";
 import React, { useState } from "react";
 
-const oeil = () => {
+const ColorButton = () => {
   const [selectedCircle, setSelectedCircle] = useState(null);
   const colors = [
     { text: "Framboise", color: "#d85967", colorfocus: "pink" },
@@ -52,4 +52,4 @@ const oeil = () => {
   );
 };
 
-export default oeil;
+export default ColorButton;
