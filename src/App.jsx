@@ -11,7 +11,7 @@ import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
 import Wines from "./pages/Wines/Wines";
-import Atelier from "./pages/Atelier/Atelier";
+import FichesAtelier from "./pages/FichesAtelier/FichesAtelier";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +38,8 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
+        <Route path="/ateliers_degustation" element={<FichesAtelier />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
-        <Route path="/atelier" element={<Atelier />}></Route>
       </Routes>
     </>
   );

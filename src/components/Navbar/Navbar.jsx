@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import "./navbar.scss";
 import logo from "../../assets/logo.svg";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import profileicon from "../../assets/usernav.svg";
 import { useState } from "react";
 import { useEffect } from "react";
