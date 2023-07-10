@@ -43,6 +43,7 @@
             }
             .name {
                 font-size: 40px;
+                line-height: 40px;
                 font-family: $font-text;
             }
         }
@@ -51,7 +52,7 @@
     .picture {
         width: 40%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
     }
 .desc-mobile {
     display: none;
@@ -75,7 +76,7 @@
                 }
                 .name {
                     font-size: 28px;
-                    white-space: nowrap;
+                    // white-space: nowrap;
                 }
             }
         }

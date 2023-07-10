@@ -22,16 +22,79 @@
     .wines-container {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
+        width: 90%;
         .wine {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 33%;
+            justify-content: flex-start;
+            height: 90vh;
             img {
-                height: 250px;
                 margin-bottom: 8px;
+                cursor: pointer;
+                margin-bottom: 80px;
+                height: 60%;
+            }
+            p {
+                font-family: $font-text;
+                font-size: 24px;
+                font-variant: small-caps;
+        line-height: 23px;
+        letter-spacing: 0.8px;
             }
         }
     }
 
 }
+
+@media screen and (max-width : 900px)  {
+    .ourwines {
+
+        h1 {
+            font-size: 6vw;
+        }
+        .wines-container {
+            .wine {
+                width: 50%;
+                p {
+                    white-space: nowrap;
+                    font-size: 3vw;
+                }
+            }
+            }
+
+        }
+    
+    }
+
+
+    @media screen and (max-width : 500px)  {
+        .ourwines {
+    
+            h1 {
+                font-size: 6vw;
+            }
+            .desc {
+                margin-bottom: 40px;
+            }
+            .wines-container {
+                .wine {
+                    width: 50%;
+                    height: 50vh;
+    
+                    img {
+                     margin-bottom: 40px;
+                    }
+                    p {
+                        white-space: nowrap;
+                        font-size: 3vw;
+                    }
+                }
+                }
+    
+            }
+        
+        }

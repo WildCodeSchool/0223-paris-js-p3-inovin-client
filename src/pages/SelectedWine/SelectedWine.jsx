@@ -79,6 +79,7 @@ function SelectedWine() {
         </div>
         <p>{selectedWine?.domain}</p>
         <p>Région : {selectedWine?.region}</p>
+        <p>Appellation : {selectedWine?.appellation}</p>
         <p>Cépage : {selectedWine?.cepage}</p>
         <p className="desc-desk">{selectedWine?.comment}</p>
       </div>
