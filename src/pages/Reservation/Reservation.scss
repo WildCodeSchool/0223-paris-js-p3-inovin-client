@@ -1,0 +1,19 @@
+.pageContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10vh;
+
+  .mapContainer {
+    width: 60vw;
+    height: 80vh;
+    margin: 0 2vw 0 2vw;
+  }
+
+  .textContainer {
+    display: flex;
+    width: 40vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
