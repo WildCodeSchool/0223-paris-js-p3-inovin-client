@@ -36,10 +36,10 @@ function Home() {
   useEffect(() => {
     getVisibleCardIndex();  
 
-    winesContainerRef.current.addEventListener('scroll', getVisibleCardIndex);
+    winesContainerRef.current?.addEventListener('scroll', getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current.removeEventListener('scroll', getVisibleCardIndex);
+      winesContainerRef.current?.removeEventListener('scroll', getVisibleCardIndex);
     };
   }, [visibleIndex]);
 
@@ -55,7 +55,7 @@ function Home() {
           <source src={video} type="video/mp4" />
         </video>
       </div>
-      <div className="concept">
+      <div className="concept" id="concept">
         <h2>Notre concept</h2>
         <img className="logo-concept" src={concept} alt="" />
         <p className="concept-desc">
@@ -87,19 +87,19 @@ function Home() {
           Le Sauvignon Blanc, frais et vif à souhait.
         </p>
         <div className="img-container" ref={winesContainerRef}>
-          <Link>
+          <Link to="/redwines">
             <div >
               <img src={redwine} alt="" />
               <span>Nos vins rouges</span>
             </div>
           </Link>
-          <Link>
+          <Link to="/whitewines">
             <div >
               <img src={whitewine} alt="" />
               <span>Nos vins blancs</span>
             </div>
           </Link>
-          <Link>
+          <Link to="/wines">
             <div >
               <img src={allwines} alt="" />
               <span>Tous nos vins</span>

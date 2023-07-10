@@ -14,6 +14,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    transition: transform 0.3s ease-in-out;
+
+    &-hidden {
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
     .menu-bg {
         display: none;
     }
