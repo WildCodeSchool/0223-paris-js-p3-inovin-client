@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 .profilepage {
-    padding-top: 100px;
+    padding: 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,17 +21,63 @@
         font-family: $font-title;
         border-bottom: 1px solid black;
     }
+    p {
+        font-family: $font-text;
+        font-size: 20px;
+        font-variant: small-caps;
+        line-height: 20px;
+        letter-spacing: 0.8px;
+    }
+    .wine {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        justify-content: center;
+        height: inherit;
+        img {
+            margin-bottom: 8px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            height: 60%;
+        }
+    }
     .ateliers {
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+        width: 100%;
+        padding-bottom: 100px;
+        position: relative;
+        padding-bottom: 80px;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 50%;
+            height: 1px;
+            background-color: black;
+        }
+        h2 {
+            margin-bottom: 16px;
+        }
+        img {
+            height: 50vh;
+            margin: 24px 0;
+        }
+        p {
+            margin: 8px;
+        }
     }
     .favorites {
-        width: 80%;
+        @extend .ateliers;
         h2 {
             text-align: center;
         }
         .wines-container {
             display: flex;
-            width: 100%;
+            width: 90%;
             justify-content: space-between;
             align-items:  center;
             height: 60vh;
@@ -56,27 +102,20 @@
                     cursor:auto;
                 }
             }
-            .wine {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 25%;
-                justify-content: center;
-                height: inherit;
-                img {
-                    margin-bottom: 8px;
-                    cursor: pointer;
-                    margin-bottom: 40px;
-                    height: 60%;
-                }
-                p {
-                    font-family: $font-text;
-                    font-size: 20px;
-                    font-variant: small-caps;
-                    line-height: 20px;
-                    letter-spacing: 0.8px;
-                }
-            }
+
         }
+        position: relative;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 50%;
+            height: 1px;
+            background-color: black;
+        }
+    }
+    .creations {
+        @extend .ateliers;
+        width: 90%;
     }
 }
