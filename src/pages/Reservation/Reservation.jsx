@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import MapReservation from "../../components/MapReservation/MapReservation";
 import React from "react";
 import axios from "axios";
@@ -14,15 +15,14 @@ function Reservation() {
   const [filteredSessions, setFilteredSessions] = useState([]);
   const [selectedSessionId, setSelectedSessionId] = useState("");
   const [clickedLocation, setClickedLocation] = useState({});
+  const [validationIsClicked, setValidationIsClicked] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
     axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
   }, []);
-
-  useEffect(() => {
-    console.log(sessions);
-  }, [sessions]);
 
   const handleFilterCategory = (e) => {
     if (e.target.checked) {
@@ -50,6 +50,19 @@ function Reservation() {
 
   const handleClickReservation = async (id) => {
     postRegistration(id);
+    setValidationIsClicked(true);
+  };
+
+  const handleClickRegisterAgain = () => {
+    setValidationIsClicked(false);
+    setClickedLocation({});
+    setFilter([]);
+    setSelectedSessionId("");
+    setFilteredSessions(sessions);
+  };
+
+  const handleClickBackToProfile = () => {
+    navigate("/");
   };
 
   return (
@@ -97,6 +110,19 @@ function Reservation() {
           </div>
           <div className="button" onClick={() => handleClickReservation(selectedSessionId)}>
             Réserver
+          </div>
+        </div>
+      </div>
+      <div className={validationIsClicked ? "popup-div-section" : "popup-div-section-hidden"}>
+        <div className="popup-div">
+          <h2> Vous avez bien réservé l'atelier</h2>
+          <div className="button-container">
+            <div className="button" onClick={handleClickRegisterAgain}>
+              Réserver une autre atelier
+            </div>
+            <div className="button" onClick={handleClickBackToProfile}>
+              Revenir à votre Profil
+            </div>
           </div>
         </div>
       </div>

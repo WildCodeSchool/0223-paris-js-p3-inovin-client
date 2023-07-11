@@ -128,4 +128,48 @@
   .mapboxgl-popup-close-button {
     display: none;
   }
+
+  .popup-div-section {
+    position: absolute;
+    backdrop-filter: blur(5px);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-hidden {
+      display: none;
+    }
+
+    .popup-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      background-color: #ffffff;
+      width: 40vw;
+      height: 30vh;
+      box-shadow: 5px 5px 10px #a6a6a6;
+      border-radius: 1vw;
+
+      h2 {
+        font-family: $font-title;
+        font-size: 2vw;
+      }
+
+      .button {
+        text-transform: uppercase;
+        text-align: center;
+        padding: 1vw 4vw 1vw 4vw;
+        border-radius: 2vw;
+        background-color: #c95b5b;
+        color: #ffffff;
+        margin-bottom: 1vh;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
