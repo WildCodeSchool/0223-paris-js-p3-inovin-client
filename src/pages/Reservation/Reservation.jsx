@@ -13,15 +13,16 @@ function Reservation() {
   const [filter, setFilter] = useState([]);
   const [filteredSessions, setFilteredSessions] = useState([]);
   const [selectedSessionId, setSelectedSessionId] = useState("");
-  const [clickedLocation, setClickedLocation] = useState({
-    id: "",
-    name: "",
-  });
+  const [clickedLocation, setClickedLocation] = useState({});
 
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
     axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
   }, []);
+
+  useEffect(() => {
+    console.log(sessions);
+  }, [sessions]);
 
   const handleFilterCategory = (e) => {
     if (e.target.checked) {
@@ -78,6 +79,7 @@ function Reservation() {
           </div>
           <div className={clickedLocation.id ? "session-list-container" : "session-list-container-hidden"}>
             <h1 className="session-title">{clickedLocation.name}</h1>
+            <img src={clickedLocation.image} alt="toto" />
             <SessionList
               filteredSessions={filteredSessions}
               clickedLocation={clickedLocation}

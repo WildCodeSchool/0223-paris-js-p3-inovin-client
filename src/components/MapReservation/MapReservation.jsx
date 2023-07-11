@@ -80,7 +80,8 @@ function Map({ filteredSessions, setClickedLocation }) {
     map.current.on("click", "locations", (e) => {
       const id = e.features[0].properties.location_id;
       const name = e.features[0].properties.place_name;
-      setClickedLocation({ id: parseInt(id), name: name });
+      const image = e.features[0].properties.image;
+      setClickedLocation({ id: parseInt(id), name: name, image: image });
     });
   }, []);
 
@@ -91,10 +92,15 @@ function Map({ filteredSessions, setClickedLocation }) {
     filteredSessions.map((element) => {
       geojson.push({
         type: "Feature",
-        properties: { id: element.id, place_name: element.place_name, location_id: element.location_id },
+        properties: {
+          id: element.id,
+          place_name: element.place_name,
+          location_id: element.location_id,
+          image: element.image,
+        },
         geometry: {
           type: "Point",
-          coordinates: [element.lng, element.lat],
+          coordinates: [element.lng, element.lat, element.image],
         },
       });
     });

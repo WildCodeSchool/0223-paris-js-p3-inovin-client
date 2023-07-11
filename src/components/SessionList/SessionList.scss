@@ -1,10 +1,10 @@
 @import "../../App.scss";
 
 .session-list-container {
-  text-align: center;
-  margin-top: 10vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   &-hidden {
     display: none;
@@ -14,6 +14,11 @@
     font-size: 2vw;
     font-family: $font-text;
     text-transform: uppercase;
+  }
+
+  img {
+    margin-top: 1vh;
+    width: 80%;
   }
 
   .session-list {
