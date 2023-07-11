@@ -23,7 +23,11 @@ const WorkshopManager = () => {
     const getSessions = async () => {
       try {
         const result = await getAllSessions();
-        setSessions(result.data);
+
+        let sessions = result.data;
+        sessions.sort((a, b) => a.id - b.id);
+
+        setSessions(sessions);
       } catch (error) {
         console.error(error);
       }
@@ -38,6 +42,7 @@ const WorkshopManager = () => {
     try {
       deleteSession(id);
       const updatedSessions = [...sessions].filter((e) => e.id != id);
+
       setSessions(updatedSessions);
     } catch (error) {
       console.log(error);
