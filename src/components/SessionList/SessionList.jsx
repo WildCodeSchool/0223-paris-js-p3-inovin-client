@@ -1,4 +1,5 @@
 import "./SessionList.scss";
+import { useState } from "react";
 
 function SessionList({
   filteredSessions,
@@ -11,6 +12,8 @@ function SessionList({
   const handleClickSession = (id) => {
     setSelectedSessionId(id);
   };
+
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="session-list">
@@ -33,7 +36,16 @@ function SessionList({
               minute: "numeric",
             };
             const date = new Date(session.date);
-            return (
+            return registeredSessions.some((e) => e.session_id === session.id) ? (
+              <div
+                key={session.id}
+                className={session.id === selectedSessionId ? "session-selected" : "session"}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {isHovered ? "Vous avez déjà réservé cet atelier" : date.toLocaleString("fr-FR", options)}
+              </div>
+            ) : (
               <div
                 key={session.id}
                 className={session.id === selectedSessionId ? "session-selected" : "session"}
