@@ -38,7 +38,10 @@ function Home() {
     winesContainerRef.current.addEventListener("scroll", getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current?.removeEventListener("scroll", getVisibleCardIndex);
+      winesContainerRef.current?.removeEventListener(
+        "scroll",
+        getVisibleCardIndex
+      );
     };
   }, [visibleIndex]);
 
@@ -107,7 +110,11 @@ function Home() {
         <div className="slide-indicator">
           <div
             className={
-              visibleIndex ? (visibleIndex == 1 ? "indicator indicator_1" : "indicator indicator_2") : "indicator"
+              visibleIndex
+                ? visibleIndex == 1
+                  ? "indicator indicator_1"
+                  : "indicator indicator_2"
+                : "indicator"
             }
           />
         </div>

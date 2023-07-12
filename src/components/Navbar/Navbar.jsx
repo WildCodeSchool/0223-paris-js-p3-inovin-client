@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import "./navbar.scss";
+
 import logo from "../../assets/logo.svg";
 import profileicon from "../../assets/usernav.svg";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./navbar.scss";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -65,8 +66,19 @@ function Navbar() {
 
   return (
     <>
-      <div className={visible ? (navHome && !openMenu ? "navbar navbar-home" : "navbar") : "navbar navbar-hidden"}>
-        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
+      <div
+        className={
+          visible
+            ? navHome && !openMenu
+              ? "navbar navbar-home"
+              : "navbar"
+            : "navbar navbar-hidden"
+        }
+      >
+        <div
+          className={openMenu ? "menu-bg opened" : "menu-bg"}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
@@ -76,7 +88,9 @@ function Navbar() {
         </Link>
         {auth.user?.role == "ROLE_ADMIN" ? (
           <ul className="navlist">
-            <li>Gestion des ateliers</li>
+            <Link to="/ateliers">
+              <li>Gestion des ateliers</li>
+            </Link>
             <li>Gestion des vins</li>
             <li>Gestion des utilisateurs</li>
             <li>Gestion des créations</li>
@@ -96,7 +110,7 @@ function Navbar() {
           </ul>
         )}
 
-        <Link to={auth.isLogged ? "/profile" : "/login"}>
+        <Link to={auth.isLogged ? "/profilepage" : "/login"}>
           <img className="profileicon" src={profileicon} alt="" />
         </Link>
       </div>
@@ -104,7 +118,9 @@ function Navbar() {
         <div className="menu-list">
           {auth.user?.role == "ROLE_ADMIN" ? (
             <ul className="navlist">
-              <li>Gestion des ateliers</li>
+              <li onClick={() => handleClick("/ateliers")}>
+                Gestion des ateliers
+              </li>
               <li>Gestion des vins</li>
               <li>Gestion des utilisateurs</li>
               <li>Gestion des créations</li>
