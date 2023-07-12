@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
 import { login } from "./store/auth";
-import "./App.scss";
 import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
@@ -14,6 +13,7 @@ import Wines from "./pages/Wines/Wines";
 import SelectedWine from "./pages/SelectedWine/SelectedWine"
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
+import "./App.scss";
 
 function App() {
   const dispatch = useDispatch();
