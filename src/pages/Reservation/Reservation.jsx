@@ -24,7 +24,7 @@ function Reservation() {
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
     axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
-    api.get(`/sessions/registered`).then((result) => setRegisteredSessions(result.data));
+    api.get(`/sessions/user`).then((result) => setRegisteredSessions(result.data));
   }, []);
 
   useEffect(() => {
