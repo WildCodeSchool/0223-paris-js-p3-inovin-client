@@ -1,8 +1,14 @@
 import "./ColorButton.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const ColorButton = () => {
+const ColorButton = ({ tags, onChange, name }) => {
   const [selectedCircle, setSelectedCircle] = useState(null);
+
+  const handleSliderChange = (id) => {
+    const selectedLabel = id;
+    onChange(name, selectedLabel);
+  };
+
   const colors = [
     { text: "Framboise", color: "#d85967", colorfocus: "pink" },
     { text: "Cerise", color: "#C84942", colorfocus: "pink" },
@@ -32,22 +38,29 @@ const ColorButton = () => {
         gap: "5px",
       }}
     >
-      {colors.map((item, index) => (
-        <div className="colormap" key={index}>
-          <p>{item.text}</p>
-          <div
-            className="circle"
-            onClick={() => handleCircleClick(index)}
-            style={{
-              backgroundColor: item.color,
-              outline:
-                selectedCircle === index
-                  ? `5px solid ${item.colorfocus}`
-                  : "none",
-            }}
-          />
-        </div>
-      ))}
+      {tags
+        ?.filter((e) => {
+          return e.category == "Oeil" && e.sub_category == "Couleur";
+        })
+        .map((item, index) => (
+          <div className="colormap" key={index}>
+            <p>{item.name}</p>
+            <div
+              className="circle"
+              onClick={() => {
+                handleCircleClick(index);
+                handleSliderChange(item.id);
+              }}
+              style={{
+                backgroundColor: colors[index].color,
+                outline:
+                  selectedCircle === index
+                    ? `5px solid ${colors[index].colorfocus}`
+                    : "none",
+              }}
+            />
+          </div>
+        ))}
     </div>
   );
 };

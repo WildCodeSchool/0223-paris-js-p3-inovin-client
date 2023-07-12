@@ -42,7 +42,7 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
-        <Route path="/ateliers_degustation" element={<FichesAtelier />}></Route>
+        <Route path="/ateliers_degustation/:id" element={<FichesAtelier />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
         <Route path="/redwines" element={<Wines color='Rouge' />}></Route>
         <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>

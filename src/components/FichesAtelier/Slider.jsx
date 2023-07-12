@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Slider.scss';
 
 function Slider({ name, labels, onChange }) {
   const handleSliderChange = (event) => {
-    const selectedLabel = event.target.value;
+    const selectedLabel = labels[event.target.value - 1].id;
     onChange(name, selectedLabel);
   };
+
+
 
   return (
     <div>
       <datalist id="values">
         {labels.map((label, index) => (
-          <option key={index} value={label} label={label} />
+          <option key={index} value={label.id} label={label.name} />
         ))}
       </datalist>
       <input
@@ -20,7 +22,7 @@ function Slider({ name, labels, onChange }) {
         name="taste"
         list="values"
         min="1"
-        max="4"
+        max={labels.length}
         step="1"
         onChange={handleSliderChange}
       />

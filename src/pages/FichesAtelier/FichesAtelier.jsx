@@ -3,12 +3,40 @@ import "./FichesAtelier.scss";
 import ColorButton from "../../components/FichesAtelier/ColorButton";
 import Slider from "../../components/FichesAtelier/Slider";
 import KeyAromaticButton from "../../components/FichesAtelier/KeyAromaticButton";
+import api from "../../services/api";
+import { useParams } from "react-router-dom";
 
 const FichesAtelier = () => {
-  const [selectedValue, setSelectedValue] = useState({intensite : "", fludite: ""}); 
+  const [selectedValue, setSelectedValue] = useState({
+    couleur: "",
+    intensiteCouleur: "",
+    fluidite: "",
+    limpidité: "",
+    brillance: "",
+    intensiteArome: "",
+    complexite: "",
+    aromeNez:"",
+    tanins: "",
+    acidite: "",
+    robe: "",
+    sucre:"",
+    alcool:"",
+    persistance: "",
+    aromeBouche: ""
+
+  });
+  const [wines, setWines] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    api.get("tags/wines").then((result) => setTags(result.data));
+    api.get(`sessions/${id}/wine`).then((result) => setWines(result.data));
+  }, []);
 
   const handleSliderChange = (name, label) => {
-    setSelectedValue({...selectedValue, [name]: label});
+    setSelectedValue({ ...selectedValue, [name]: label });
     console.log(label);
     console.log(selectedValue);
   };
@@ -19,29 +47,52 @@ const FichesAtelier = () => {
       <p className="subtitle">Noter le premier vin</p>
       <h2 className="oeil">L'OEIL</h2>
       <h3 className="couleur">COULEUR</h3>
-      <ColorButton />
+      <ColorButton tags={tags} onChange={handleSliderChange} name="couleur" />
       <div className="container-oeil">
         <div className="container-suboeil">
           <h3 className="intensite">INTENSITÉ DE LA COULEUR</h3>
           <Slider
-            name="intensite"
-            labels={["Pâle", "Claire", "Soutenue", "Intense"]}
+            name="intensiteCouleur"
+            labels={tags.filter((e) => {
+              return (
+                e.category == "Oeil" &&
+                e.sub_category == "Intensité de la Couleur "
+              );
+            })}
             onChange={handleSliderChange}
           />
         </div>
         <div className="container-suboeil">
           <h3 className="fluidité">FLUIDITÉ DES LARMES</h3>
-          <Slider labels={["Visqueuses", "Épaisses", "Coulantes", "Fluides"]}onChange={handleSliderChange} />
-          
-          
+          <Slider
+            name="fluidite"
+            labels={tags.filter((e) => {
+              return (
+                e.category == "Oeil" && e.sub_category == "Fluidité des Larmes"
+              );
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-suboeil">
           <h3 className="limpidité">LIMPIDITÉ</h3>
-          <Slider labels={["Trouble", "Floue", "Voilée", "Limpide"]} onChange={handleSliderChange}/>
+          <Slider
+            name="limpidité"
+            labels={tags.filter((e) => {
+              return e.category == "Oeil" && e.sub_category == "Limpidité";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-suboeil">
           <h3 className="brillance">BRILLANCE</h3>
-          <Slider labels={["Terne", "Lumineuse", "Étincelante"]} onChange={handleSliderChange}/>
+          <Slider
+            name="brillance"
+            labels={tags.filter((e) => {
+              return e.category == "Oeil" && e.sub_category == "Brillance";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
       </div>
 
@@ -49,59 +100,107 @@ const FichesAtelier = () => {
       <div className="container-nez">
         <div className="container-subnez">
           <h3 className="intensite">INTENSITÉ DES ARÔMES</h3>
-          <Slider labels={["Fermé", "Discret", "Aromatique", "Ouvert"]}onChange={handleSliderChange} />
+          <Slider
+            name="intensiteArome"
+            labels={tags.filter((e) => {
+              return (
+                e.category == "Nez" && e.sub_category == "Intensité des Arômes"
+              );
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subnez">
           <h3 className="complexite">COMPLEXITÉ</h3>
-          <Slider labels={["Douteux", "Simple", "Franc", "Complexe"]}onChange={handleSliderChange} />
+          <Slider
+            name="complexite"
+            labels={tags.filter((e) => {
+              return e.category == "Nez" && e.sub_category == "Complexité";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
       </div>
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
-      <KeyAromaticButton label="Fruité" />
-      <KeyAromaticButton label="Floral" />
-      <KeyAromaticButton label="Végétal" />
-      <KeyAromaticButton label="Boisé" />
-      <KeyAromaticButton label="Balsamique" />
-      <KeyAromaticButton label="Minéral" />
-      <KeyAromaticButton label="Animal" />
-      <KeyAromaticButton label="Epicé" />
+      {tags
+        .filter(
+          (e) => e.category == "Nez" && e.sub_category == "Familles Arômatiques"
+        )
+        .map((e) => (
+          <KeyAromaticButton label={e.name} id={e.id} name='aromeNez' onChange={handleSliderChange}/>
+        ))}
 
       <h2 className="bouche">LA BOUCHE</h2>
       <div className="container-bouche">
         <div className="container-subbouche">
           <h3 className="tanins">TANINS</h3>
-          <Slider labels={["Âpre", "Charpenté", "Fondu", "Lisse"]}onChange={handleSliderChange} />
+          <Slider
+            name="tanins"
+            labels={tags.filter((e) => {
+              return e.category == "La Bouche" && e.sub_category == "Tanins";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subbouche">
-          <h3 className="tanins">ACIDITÉ</h3>
-          <Slider labels={["Moux", "Frais", "Vif", "Nerveux"]}onChange={handleSliderChange} />
+          <h3 className="acidité">ACIDITÉ</h3>
+          <Slider
+            name="acidité"
+            labels={tags.filter((e) => {
+              return e.category == "La Bouche" && e.sub_category == "Acidité";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subbouche">
-          <h3 className="tanins">ROBE</h3>
-          <Slider labels={["Légère", "Fluide", "Charpentée", "Epaisse"]} onChange={handleSliderChange}/>
+          <h3 className="robe">ROBE</h3>
+          <Slider
+            name="robe"
+            labels={tags.filter((e) => {
+              return e.category == "La Bouche" && e.sub_category == "Robe";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subbouche">
-          <h3 className="tanins">SUCRE</h3>
-          <Slider labels={["Sec", "Doux", "Moelleux", "Liquoreux"]} onChange={handleSliderChange}/>
+          <h3 className="sucre">SUCRE</h3>
+          <Slider
+             name="sucre"
+             labels={tags.filter((e) => {
+               return e.category == "La Bouche" && e.sub_category == "Sucre";
+             })}
+             onChange={handleSliderChange}
+           />
         </div>
         <div className="container-subbouche">
-          <h3 className="tanins">ALCOOL</h3>
-          <Slider labels={["Faible", "Généreux", "Gras", "Alcooleux"]} onChange={handleSliderChange}/>
+          <h3 className="alcool">ALCOOL</h3>
+          <Slider
+            name="alcool"
+            labels={tags.filter((e) => {
+              return e.category == "La Bouche" && e.sub_category == "Alcool";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subbouche">
-          <h3 className="tanins">PERSISTANCE ARÔMATIQUE</h3>
-          <Slider labels={["Courte", "Développée", "Longue", "Persistante"]} onChange={handleSliderChange}/>
+          <h3 className="persistance-aromatique">PERSISTANCE ARÔMATIQUE</h3>
+          <Slider
+           name="persistance"
+           labels={tags.filter((e) => {
+             return e.category == "La Bouche" && e.sub_category == "Persistance Arômatique";
+           })}
+           onChange={handleSliderChange}
+         />
         </div>
       </div>
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
-      <button className="key-aromatic">Fruité</button>
-      <button className="key-aromatic">Floral</button>
-      <button className="key-aromatic">Végétal</button>
-      <button className="key-aromatic">Boisé</button>
-      <button className="key-aromatic">Balsamique</button>
-      <button className="key-aromatic">Minéral</button>
-      <button className="key-aromatic">Animal</button>
-      <button className="key-aromatic">Epicé</button>
+      {tags
+        .filter(
+          (e) => e.category == "La Bouche" && e.sub_category == "Familles Arômatiques"
+        )
+        .map((e) => (
+          <KeyAromaticButton label={e.name} id={e.id} name='aromeBouche' onChange={handleSliderChange} />
+        ))}
     </div>
   );
 };
