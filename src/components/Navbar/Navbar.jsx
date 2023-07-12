@@ -98,7 +98,7 @@ function Navbar() {
           </ul>
         )}
 
-        <Link to={auth.isLogged ? "/profile" : "/login"}>
+        <Link to={auth.isLogged ? "/profilepage" : "/login"}>
           <img className="profileicon" src={profileicon} alt="" />
         </Link>
       </div>
