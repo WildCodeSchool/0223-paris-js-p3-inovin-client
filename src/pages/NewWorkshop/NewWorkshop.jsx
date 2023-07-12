@@ -1,12 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postSession } from "../../services/session";
+import { postSession, getLocations } from "../../services/session";
 import "./NewWorkshop.scss";
 
 const NewWorkshop = () => {
   const [workshop, setWorkshop] = useState({});
+  const [locations, setLocations] = useState({});
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getLocationsInfos = async () => {
+      try {
+        const locationsInfos = await getLocations();
+        setLocations(locationsInfos.data);
+      } catch (error) {}
+    };
+    getLocationsInfos();
+  }, []);
 
   const handleChange = (event) => {
     let { value, name } = event.target;
@@ -64,8 +75,14 @@ const NewWorkshop = () => {
                 onChange={handleChange}
               >
                 <option value="">--Lieu--</option>
-                <option value="La Cascade">La Cascade</option>
-                <option value="La Tour de Carol">La Tour de Carol</option>
+                {locations.length > 0 &&
+                  locations.map((location, index) => {
+                    return (
+                      <option key={index} value={location.id}>
+                        {location.place_name}
+                      </option>
+                    );
+                  })}
               </select>
             </td>
             <td>

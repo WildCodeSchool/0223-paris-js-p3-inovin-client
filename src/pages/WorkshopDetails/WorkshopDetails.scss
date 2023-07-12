@@ -1,12 +1,8 @@
 
-.workshopManager {
+.workshopDetails {
+  padding-top: 10rem;
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 5rem;
-  height: 80vh;
   h2{
     text-align: center;
     width: 100%;
@@ -14,15 +10,28 @@
     font-weight: 300;
     margin-bottom: 2rem;
   }
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 300;
+  }
+  h4 {
+    text-align: center;
+    font-weight: 200;
+  }
   table {
     width: 80%;
     border-collapse: collapse;
     border-style: hidden;
     margin-bottom: 2rem;
+    margin: auto;
     th {
       text-align: center;
       border: 1.5px solid #313131;
       font-weight: 300;
+      font-weight: 200;
       
     }   
 
@@ -37,18 +46,18 @@
     .buttonCell {
       display: flex;
       justify-content: space-around;
-      border: none;      
+      border: none;
+       
     }
-
   }
-  .WMButton {
-    color: black;
-    border-radius: 10px;
-    background-color: transparent;
-    border: 1px solid #313131;
-    padding-inline: 1rem;    
+  .addButton {
+    width: fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
-  button:hover {
-    cursor: pointer;
+  .backButton {
+    width: fit-content;
+    margin-left: 3rem;
   }
 }

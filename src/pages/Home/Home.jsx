@@ -1,9 +1,9 @@
-import React , { useRef, useEffect, useState }from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./Home.scss";
 import BtnInscription from "../../components/BtnInscription/BtnInscription";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
-import video from '../../assets/homevideo.mp4';
+import video from "../../assets/homevideo.mp4";
 import logo from "../../assets/logo.svg";
 import concept from "../../assets/concept.svg";
 import img1 from "../../assets/image1.png";
@@ -17,32 +17,34 @@ import ateliercrea from "../../assets/ateliercrea.png";
 
 function Home() {
   const auth = useSelector((state) => state.auth);
-  const [visibleIndex, setVisibleIndex] = useState(0)
+  const [visibleIndex, setVisibleIndex] = useState(0);
 
   const winesContainerRef = useRef(null);
 
   const getVisibleCardIndex = () => {
     const containerScrollLeft = winesContainerRef.current.scrollLeft;
 
-    if(containerScrollLeft < 180) {
-       setVisibleIndex(0)
+    if (containerScrollLeft < 180) {
+      setVisibleIndex(0);
     } else if (containerScrollLeft < 540) {
-       setVisibleIndex(1)
+      setVisibleIndex(1);
     } else {
-       setVisibleIndex(2)
+      setVisibleIndex(2);
     }
   };
 
   useEffect(() => {
-    getVisibleCardIndex();  
+    getVisibleCardIndex();
 
-    winesContainerRef.current?.addEventListener('scroll', getVisibleCardIndex);
+    winesContainerRef.current.addEventListener("scroll", getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current?.removeEventListener('scroll', getVisibleCardIndex);
+      winesContainerRef.current?.removeEventListener(
+        "scroll",
+        getVisibleCardIndex
+      );
     };
   }, [visibleIndex]);
-
 
   return (
     <div className="homepage">
@@ -88,26 +90,34 @@ function Home() {
         </p>
         <div className="img-container" ref={winesContainerRef}>
           <Link to="/redwines">
-            <div >
+            <div>
               <img src={redwine} alt="" />
               <span>Nos vins rouges</span>
             </div>
           </Link>
           <Link to="/whitewines">
-            <div >
+            <div>
               <img src={whitewine} alt="" />
               <span>Nos vins blancs</span>
             </div>
           </Link>
           <Link to="/wines">
-            <div >
+            <div>
               <img src={allwines} alt="" />
               <span>Tous nos vins</span>
             </div>
           </Link>
         </div>
-        <div className="slide-indicator" >
-          <div className={visibleIndex ? visibleIndex == 1 ? "indicator indicator_1" : "indicator indicator_2" : "indicator" }/>
+        <div className="slide-indicator">
+          <div
+            className={
+              visibleIndex
+                ? visibleIndex == 1
+                  ? "indicator indicator_1"
+                  : "indicator indicator_2"
+                : "indicator"
+            }
+          />
         </div>
       </div>
       <div className="ateliers">
