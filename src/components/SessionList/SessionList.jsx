@@ -1,6 +1,13 @@
 import "./SessionList.scss";
 
-function SessionList({ filteredSessions, clickedLocation, sessionCategory, selectedSessionId, setSelectedSessionId }) {
+function SessionList({
+  filteredSessions,
+  clickedLocation,
+  sessionCategory,
+  selectedSessionId,
+  setSelectedSessionId,
+  registeredSessions,
+}) {
   const handleClickSession = (id) => {
     setSelectedSessionId(id);
   };
@@ -29,7 +36,10 @@ function SessionList({ filteredSessions, clickedLocation, sessionCategory, selec
             return (
               <div
                 key={session.id}
-                className={session.id === selectedSessionId ? "session-selected" : "session"}
+                className={
+                  (session.id === selectedSessionId ? "session-selected" : "session",
+                  registeredSessions.some((e) => e.session_id === session.id) ? "session-registered" : "session")
+                }
                 onClick={() => handleClickSession(session.id)}
               >
                 {date.toLocaleString("fr-FR", options)}

@@ -27,10 +27,6 @@ function Reservation() {
     api.get(`/sessions/user`).then((result) => setRegisteredSessions(result.data));
   }, []);
 
-  useEffect(() => {
-    "registeredSessions", console.log(registeredSessions);
-  }, [registeredSessions]);
-
   const handleFilterCategory = (e) => {
     if (e.target.checked) {
       const newfilter = [...filter, e.target.value];
@@ -75,7 +71,7 @@ function Reservation() {
   };
 
   const handleClickBackToProfile = () => {
-    navigate("/");
+    navigate("/profilepage");
   };
 
   return (
@@ -112,6 +108,7 @@ function Reservation() {
               sessionCategory="Dégustation"
               selectedSessionId={selectedSessionId}
               setSelectedSessionId={setSelectedSessionId}
+              registeredSessions={registeredSessions}
             />
             <SessionList
               filteredSessions={filteredSessions}
@@ -119,6 +116,7 @@ function Reservation() {
               sessionCategory="Création"
               selectedSessionId={selectedSessionId}
               setSelectedSessionId={setSelectedSessionId}
+              registeredSessions={registeredSessions}
             />
           </div>
           <div

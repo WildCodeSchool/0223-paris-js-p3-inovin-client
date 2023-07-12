@@ -40,6 +40,10 @@
       border: 1px solid rgb(173, 173, 173);
       font-size: 0.9vw;
 
+      &-registered {
+        @extend .session;
+      }
+
       &-selected {
         @extend .session;
         background-color: #c95b5b;
