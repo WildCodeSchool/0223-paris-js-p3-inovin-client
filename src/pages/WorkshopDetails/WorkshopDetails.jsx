@@ -5,6 +5,8 @@ import {
   getSessionById,
   getUsersBySessionId,
   getWinesBySessionId,
+  deleteUserFromSession,
+  deleteWineFromSession,
 } from "../../services/session";
 
 import "./WorkshopDetails.scss";
@@ -42,6 +44,25 @@ const WorkshopDetails = () => {
 
     getSessionInfos(id);
   }, []);
+  const handleDeleteWineClick = async (wineId) => {
+    try {
+      await deleteWineFromSession(session.id, wineId);
+      const updatedWines = [...wines].filter((e) => e.id != wineId);
+      setWines(updatedWines);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDeleteUserClick = (id) => {
+    try {
+      deleteUserFromSession(id);
+      const updatedUsers = [...users].filter((e) => e.id != id);
+      setUsers(updatedUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleAddParticipant = () => {};
   const handleAddWine = () => {};
@@ -96,7 +117,7 @@ const WorkshopDetails = () => {
           <tbody>
             {users.map((user) => {
               return (
-                <tr>
+                <tr key={user.id}>
                   <td>{user.firstname}</td>
                   <td>{user.lastname}</td>
                   <td>{user.comment}</td>
@@ -104,7 +125,14 @@ const WorkshopDetails = () => {
 
                   <td className="buttonCell">
                     <button className="WMButton">Modifier</button>
-                    <button className="WMButton">Supprimer</button>
+                    <button
+                      className="WMButton"
+                      name="user"
+                      dataid={user.id}
+                      onClick={() => handleDeleteUserClick(user.id)}
+                    >
+                      Supprimer
+                    </button>
                   </td>
                 </tr>
               );
@@ -132,7 +160,7 @@ const WorkshopDetails = () => {
           <tbody>
             {wines.map((wine) => {
               return (
-                <tr>
+                <tr key={wine.id}>
                   <td>{wine.name}</td>
                   <td>{wine.color}</td>
                   <td>{wine.cepage}</td>
@@ -140,7 +168,12 @@ const WorkshopDetails = () => {
 
                   <td className="buttonCell">
                     <button className="WMButton">Modifier</button>
-                    <button className="WMButton">Supprimer</button>
+                    <button
+                      className="WMButton"
+                      onClick={() => handleDeleteWineClick(wine.id)}
+                    >
+                      Supprimer
+                    </button>
                   </td>
                 </tr>
               );

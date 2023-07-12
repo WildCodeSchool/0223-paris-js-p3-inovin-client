@@ -28,9 +28,9 @@ function Navbar() {
   };
 
   const handleClick = (path) => {
-    navigate(path)
-    setOpenMenu(false)
-  }
+    navigate(path);
+    setOpenMenu(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +47,6 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
 
   useEffect(() => {
     if (window.location.pathname == "/") {
@@ -67,7 +66,15 @@ function Navbar() {
 
   return (
     <>
-      <div className={visible ? navHome && !openMenu? "navbar navbar-home" : "navbar" : "navbar navbar-hidden"}>
+      <div
+        className={
+          visible
+            ? navHome && !openMenu
+              ? "navbar navbar-home"
+              : "navbar"
+            : "navbar navbar-hidden"
+        }
+      >
         <div
           className={openMenu ? "menu-bg opened" : "menu-bg"}
           onClick={() => setOpenMenu(!openMenu)}
@@ -81,7 +88,9 @@ function Navbar() {
         </Link>
         {auth.user?.role == "ROLE_ADMIN" ? (
           <ul className="navlist">
-            <li>Gestion des ateliers</li>
+            <Link to="/ateliers">
+              <li>Gestion des ateliers</li>
+            </Link>
             <li>Gestion des vins</li>
             <li>Gestion des utilisateurs</li>
             <li>Gestion des créations</li>
@@ -106,7 +115,9 @@ function Navbar() {
         <div className="menu-list">
           {auth.user?.role == "ROLE_ADMIN" ? (
             <ul className="navlist">
-              <li>Gestion des ateliers</li>
+              <li onClick={() => handleClick("/ateliers")}>
+                Gestion des ateliers
+              </li>
               <li>Gestion des vins</li>
               <li>Gestion des utilisateurs</li>
               <li>Gestion des créations</li>

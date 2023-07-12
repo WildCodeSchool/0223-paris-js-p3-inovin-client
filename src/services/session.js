@@ -1,6 +1,6 @@
 import api from "./api";
 
-const getAllSessions = async (id) => {
+const getAllSessions = async () => {
   try {
     return api.get("/sessions");
   } catch (error) {
@@ -50,6 +50,24 @@ const deleteSession = async (id) => {
   }
 };
 
+const getLocations = async () => {
+  try {
+    return api.get("/locations");
+  } catch (error) {
+    console.error(error);
+  }
+};
+const deleteUserFromSession = async (sessionId, userId) => {
+  try {
+    return api.delete(`/sessions/${sessionId}/users/${userId}`);
+  } catch (error) {}
+};
+const deleteWineFromSession = async (sessionId, wineId) => {
+  try {
+    return api.delete(`/sessions/${sessionId}/wine/${wineId}`);
+  } catch (error) {}
+};
+
 export {
   getAllSessions,
   getSessionById,
@@ -57,4 +75,7 @@ export {
   deleteSession,
   getUsersBySessionId,
   getWinesBySessionId,
+  getLocations,
+  deleteUserFromSession,
+  deleteWineFromSession,
 };
