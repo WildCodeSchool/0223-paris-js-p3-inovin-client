@@ -5,6 +5,10 @@
   justify-content: space-between;
   margin-top: 60px;
 
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                       Map Section                                      
+  /* ------------------------------------------------------------------------------------------------ */
+
   .map-section {
     display: flex;
     align-items: center;
@@ -16,6 +20,10 @@
       margin: auto 2vw auto 2vw;
     }
   }
+
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                        text section                                         
+  /* ------------------------------------------------------------------------------------------------ */
 
   .text-section {
     margin-right: 2vw;
@@ -30,7 +38,7 @@
       }
 
       .checkboxes {
-        margin-top: 2vw;
+        margin-top: 1vw;
         font-family: $font-text;
         width: 100%;
         display: flex;
@@ -46,6 +54,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 5px;
+            font-size: 1.75vh;
           }
 
           input {
@@ -66,6 +75,10 @@
         }
       }
     }
+
+    /* ------------------------------------------------------------------------------------------------ */
+    /*                                        Sessions                                        
+    /* ------------------------------------------------------------------------------------------------ */
 
     .text-section-sessions {
       display: flex;
@@ -93,10 +106,10 @@
       }
 
       .button {
-        margin-bottom: 5vh;
+        margin-bottom: 3vh;
         text-transform: uppercase;
         text-align: center;
-        padding: 1vw 4vw 1vw 4vw;
+        padding: 0.75vw 4vw 0.75vw 4vw;
         border-radius: 2vw;
         background-color: #c95b5b;
         color: #ffffff;
@@ -111,6 +124,10 @@
       }
     }
   }
+
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                       Mapbox popups                                        
+  /* ------------------------------------------------------------------------------------------------ */
 
   .mapboxgl-popup-content {
     text-align: center;
@@ -132,6 +149,10 @@
   .mapboxgl-popup-close-button {
     display: none;
   }
+
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                    Confirmation popup                                        
+  /* ------------------------------------------------------------------------------------------------ */
 
   .popup-div-section {
     position: absolute;
@@ -174,6 +195,83 @@
           cursor: pointer;
         }
       }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                        Media Tablet                                      
+/* ------------------------------------------------------------------------------------------------ */
+
+@media screen and (max-width: 913px) {
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+
+    .map-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70vh;
+      margin-right: 0;
+
+      .map-container {
+        width: 90vw;
+        height: 60vh;
+        margin: 9vh 2vw auto 2vw;
+      }
+    }
+
+    .text-section {
+      margin-top: 0;
+      .text-section-title {
+        h2 {
+          position: absolute;
+          top: 6vh;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          font-size: 7vw;
+        }
+      }
+      .text-section-sessions {
+        span {
+          font-size: 4vw;
+        }
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 80vh;
+
+        .text-container {
+          width: 50vw;
+          margin-top: 5vh;
+        }
+
+        .button {
+          margin-top: 5vh;
+          margin-bottom: 5vh;
+          font-size: 4vw;
+          border-radius: 2vw;
+        }
+      }
+
+      .checkboxes {
+        div {
+          label {
+            font-size: 2.5vw;
+          }
+        }
+      }
+    }
+
+    .mapboxgl-popup-content {
+      display: none;
     }
   }
 }

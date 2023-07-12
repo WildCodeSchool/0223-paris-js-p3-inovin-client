@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 .session-list-container {
-  margin-top: 5vh;
+  margin-top: 4vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,9 +11,11 @@
   }
 
   h1 {
-    font-size: 2vw;
+    font-size: 1.8vw;
     font-family: $font-text;
     text-transform: uppercase;
+    border-bottom: 1px solid rgb(108, 108, 108);
+    margin-bottom: 0.5vh;
   }
 
   img {
@@ -29,7 +31,13 @@
 
     .session-title {
       text-align: center;
-      margin-top: 5vh;
+      margin-top: 3vh;
+      font-size: 1vh;
+      border-bottom: 1px solid rgb(108, 108, 108);
+      margin-bottom: 0.5vh;
+    }
+    .comment {
+      font-size: 1.5vh;
     }
 
     .session {
@@ -53,6 +61,37 @@
 
       &:hover {
         cursor: pointer;
+      }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                        Media Tablet                                      
+/* ------------------------------------------------------------------------------------------------ */
+
+@media screen and (max-width: 913px) {
+  .session-list-container {
+    width: 70vw;
+    h1 {
+      font-size: 4vw;
+      font-family: $font-text;
+      text-transform: uppercase;
+    }
+
+    .session-list {
+      .session {
+        font-size: 2.5vw;
+        margin-bottom: 0.5vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
+
+        &-selected {
+          @extend .session;
+          background-color: #c95b5b;
+          color: #ffffff;
+          border: 0;
+        }
       }
     }
   }

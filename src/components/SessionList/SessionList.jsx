@@ -19,7 +19,7 @@ function SessionList({
       {filteredSessions.filter(
         (session) => session.location_id === clickedLocation.id && session.category === sessionCategory
       ).length === 0 ? (
-        <div>Il n'y a pas de dates disponibles</div>
+        <div className="comment">Il n'y a pas de dates disponibles</div>
       ) : (
         filteredSessions
           .filter((session) => session.location_id === clickedLocation.id && session.category === sessionCategory)
@@ -36,10 +36,7 @@ function SessionList({
             return (
               <div
                 key={session.id}
-                className={
-                  (session.id === selectedSessionId ? "session-selected" : "session",
-                  registeredSessions.some((e) => e.session_id === session.id) ? "session-registered" : "session")
-                }
+                className={session.id === selectedSessionId ? "session-selected" : "session"}
                 onClick={() => handleClickSession(session.id)}
               >
                 {date.toLocaleString("fr-FR", options)}

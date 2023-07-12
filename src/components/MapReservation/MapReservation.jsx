@@ -24,7 +24,7 @@ function Map({ filteredSessions, setClickedLocation }) {
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clilpddzb003y01o39zxt20nz",
       center: [3.516986262712662, 44.51521711882075],
-      zoom: 8.7,
+      zoom: 8.5,
       antialias: true,
     });
 
@@ -42,7 +42,7 @@ function Map({ filteredSessions, setClickedLocation }) {
         type: "circle",
         source: "locations",
         paint: {
-          "circle-radius": 10,
+          "circle-radius": 8,
           "circle-color": "#C95B5B",
           "circle-opacity": 1,
         },
