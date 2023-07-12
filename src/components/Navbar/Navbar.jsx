@@ -102,12 +102,13 @@ function Navbar() {
             <Link to="/wines">
               <li>Les vins</li>
             </Link>
-            <li>Nos ateliers</li>
+            <Link to="/atelier">
+              <li>Nos ateliers</li>
+            </Link>
             <li>Contactez-nous</li>
           </ul>
         )}
-
-        <Link to={auth.isLogged ? "/profilepage" : "/login"}>
+<Link to={auth.isLogged ? "/profilepage" : "/login"}>
           <img className="profileicon" src={profileicon} alt="" />
         </Link>
       </div>

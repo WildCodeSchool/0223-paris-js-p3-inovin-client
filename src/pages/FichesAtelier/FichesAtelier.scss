@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
+
+$font-text : Benne;
+$font-title : Federo;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h3 {
+  font-family: 'Benne';
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.page-container {
+
+  .title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Federo';
+    font-size: 50px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+   }
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Benne';
+    font-size: 24px;
+    margin-bottom: 3%;
+}
+
+.oeil {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 40px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
+
+}
+
+.couleur {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  }
+}
+
+.container-oeil {
+  display: flex; flex-wrap: wrap;
+  margin-top: 100px;
+
+.container-suboeil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
+}
+
+.nez {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
+
+}
+
+.container-nez {
+  display: flex; flex-wrap: wrap;
+  margin-top: 100px;
+
+.container-subnez {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
+}
+
+.bouche {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
+
+}
+
+.container-bouche {
+  display: flex; flex-wrap: wrap;
+  margin-top: 100px;
+
+  .container-subbouche {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
+}
+
+
+  
