@@ -6,7 +6,7 @@ import axios from "axios";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
 import SessionList from "../../components/SessionList/SessionList";
-import { postRegistration } from "../../services/session";
+import api from "../../services/api";
 
 function Reservation() {
   const sessionCategory = ["Création", "Dégustation"];
@@ -16,6 +16,7 @@ function Reservation() {
   const [selectedSessionId, setSelectedSessionId] = useState("");
   const [clickedLocation, setClickedLocation] = useState({});
   const [validationIsClicked, setValidationIsClicked] = useState(false);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -49,7 +50,12 @@ function Reservation() {
   }, [filter]);
 
   const handleClickReservation = async (id) => {
-    postRegistration(id);
+    try {
+      await api.post(`/sessions/${id}/register`);
+    } catch (error) {
+      console.error(error);
+      setError(error.response.data);
+    }
     setValidationIsClicked(true);
   };
 
@@ -59,6 +65,7 @@ function Reservation() {
     setFilter([]);
     setSelectedSessionId("");
     setFilteredSessions(sessions);
+    setError(null);
   };
 
   const handleClickBackToProfile = () => {
@@ -108,22 +115,37 @@ function Reservation() {
               setSelectedSessionId={setSelectedSessionId}
             />
           </div>
-          <div className="button" onClick={() => handleClickReservation(selectedSessionId)}>
+          <div
+            className={selectedSessionId ? "button" : "button-hidden"}
+            onClick={() => handleClickReservation(selectedSessionId)}
+          >
             Réserver
           </div>
         </div>
       </div>
       <div className={validationIsClicked ? "popup-div-section" : "popup-div-section-hidden"}>
         <div className="popup-div">
-          <h2> Vous avez bien réservé l'atelier</h2>
-          <div className="button-container">
-            <div className="button" onClick={handleClickRegisterAgain}>
-              Réserver une autre atelier
-            </div>
-            <div className="button" onClick={handleClickBackToProfile}>
-              Revenir à votre Profil
-            </div>
-          </div>
+          {error === "Allready registered" ? (
+            <>
+              {" "}
+              <h2> Vous avez déjà reservé cet Atelier </h2>
+              <div className="button" onClick={handleClickRegisterAgain}>
+                Réserver une autre atelier
+              </div>
+            </>
+          ) : (
+            <>
+              <h2> Vous avez bien réservé l'atelier</h2>
+              <div className="button-container">
+                <div className="button" onClick={handleClickRegisterAgain}>
+                  Réserver une autre atelier
+                </div>
+                <div className="button" onClick={handleClickBackToProfile}>
+                  Revenir à votre Profil
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
