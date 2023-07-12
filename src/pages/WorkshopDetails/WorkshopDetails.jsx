@@ -5,6 +5,7 @@ import {
   getSessionById,
   getUsersBySessionId,
   getWinesBySessionId,
+  getRecipesBySessionId,
   deleteUserFromSession,
   deleteWineFromSession,
 } from "../../services/session";
@@ -22,9 +23,9 @@ const options = {
 
 const WorkshopDetails = () => {
   const [session, setSession] = useState({});
-  const [wines, setWines] = useState();
-  const [users, setUsers] = useState(null);
-
+  const [wines, setWines] = useState({});
+  const [users, setUsers] = useState({});
+  const [recipes, setRecipes] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
@@ -36,7 +37,11 @@ const WorkshopDetails = () => {
         setSession(sessionInfos.data);
         setWines(wineInfos.data);
         setUsers(userInfos.data);
-        console.log(wineInfos.data);
+
+        if (sessionInfos.data.category === "Création") {
+          const recipesInfos = await getRecipesBySessionId(id);
+          setRecipes(recipesInfos.data);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -103,7 +108,7 @@ const WorkshopDetails = () => {
         </tbody>
       </table>
       <h3>Synthèse des participants</h3>
-      {users?.length > 0 ? (
+      {users.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -146,7 +151,7 @@ const WorkshopDetails = () => {
         Ajouter un participant
       </button>
       <h3>Liste des vins à présenter</h3>
-      {wines?.length > 0 ? (
+      {wines.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -186,6 +191,27 @@ const WorkshopDetails = () => {
       <button className="addButton" onClick={handleAddWine}>
         Ajouter un vin
       </button>
+
+      {session.category === "Création" && (
+        <div>
+          <h3>Créations</h3>
+          {recipes.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom de la création</th>
+                  <th>Créateur</th>
+                  <th>Sélectionnné</th>
+                  <th>Gestion</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          ) : (
+            <h4>Aucune création à présenter</h4>
+          )}
+        </div>
+      )}
     </div>
   );
 };
