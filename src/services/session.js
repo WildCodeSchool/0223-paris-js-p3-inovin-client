@@ -8,14 +8,6 @@ const getAllSessions = async () => {
   }
 };
 
-// const postRegistration = async (id) => {
-//   try {
-//     return api.post(`/sessions/${id}/register`);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 const getSessionById = async (id) => {
   try {
     return api.get(`/sessions/${id}`);

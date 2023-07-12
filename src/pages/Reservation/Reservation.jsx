@@ -16,6 +16,7 @@ function Reservation() {
   const [selectedSessionId, setSelectedSessionId] = useState("");
   const [clickedLocation, setClickedLocation] = useState({});
   const [validationIsClicked, setValidationIsClicked] = useState(false);
+  const [registeredSessionsId, setRegisteredSessionsId] = useState([]);
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -23,7 +24,12 @@ function Reservation() {
   useEffect(() => {
     axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
     axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
+    api.get(`/sessions/registered`).then((result) => setRegisteredSessionsId(result.data));
   }, []);
+
+  useEffect(() => {
+    "registeredSessionsId", console.log(registeredSessionsId);
+  }, [registeredSessionsId]);
 
   const handleFilterCategory = (e) => {
     if (e.target.checked) {
