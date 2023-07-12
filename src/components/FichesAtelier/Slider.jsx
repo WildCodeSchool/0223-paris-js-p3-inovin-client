@@ -1,20 +1,32 @@
-import React from "react";
-import "./Slider.scss";
+import React from 'react';
+import './Slider.scss';
 
-function Slider() {
+function Slider({ name, labels, onChange }) {
+  const handleSliderChange = (event) => {
+    const selectedLabel = event.target.value;
+    onChange(name, selectedLabel);
+  };
+
   return (
     <div>
-      <label htmlFor="tempB"></label>
-      <br />
-      <input type="range" id="tempB" name="temp" list="values" max="75" />
-
       <datalist id="values">
-        <option value="0" label="Pâle" />
-        <option value="25" label="Claire" />
-        <option value="50" label="Soutenue" />
-        <option value="75" label="Intense" />
+        {labels.map((label, index) => (
+          <option key={index} value={label} label={label} />
+        ))}
       </datalist>
+      <input
+        type="range"
+        id="tasteB"
+        name="taste"
+        list="values"
+        min="1"
+        max="4"
+        step="1"
+        onChange={handleSliderChange}
+      />
     </div>
   );
 }
+
 export default Slider;
+

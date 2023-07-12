@@ -9,6 +9,7 @@ const auth = createSlice({
       return { ...state, user: action.payload, isLogged: true };
     },
     logout: (state, action) => {
+      console.log({ ...state, user: null, isLogged: false });
       return { ...state, user: null, isLogged: false };
     },
   },

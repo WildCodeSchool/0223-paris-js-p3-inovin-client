@@ -36,10 +36,13 @@ function Home() {
   useEffect(() => {
     getVisibleCardIndex();
 
-    winesContainerRef.current?.addEventListener('scroll', getVisibleCardIndex);
+    winesContainerRef.current.addEventListener("scroll", getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current?.removeEventListener('scroll', getVisibleCardIndex);
+      winesContainerRef.current?.removeEventListener(
+        "scroll",
+        getVisibleCardIndex
+      );
     };
   }, [visibleIndex]);
 
@@ -88,19 +91,19 @@ function Home() {
         <div className="img-container" ref={winesContainerRef}>
 
           <Link to="/redwines">
-            <div >
+            <div>
               <img src={redwine} alt="" />
               <span>Nos vins rouges</span>
             </div>
           </Link>
           <Link to="/whitewines">
-            <div >
+            <div>
               <img src={whitewine} alt="" />
               <span>Nos vins blancs</span>
             </div>
           </Link>
           <Link to="/wines">
-            <div >
+            <div>
               <img src={allwines} alt="" />
               <span>Tous nos vins</span>
             </div>

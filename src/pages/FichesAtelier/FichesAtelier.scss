@@ -10,106 +10,123 @@ $font-title : Federo;
     box-sizing: border-box;
 }
 
-.title {
-  display: flex;
-  justify-content: center;
-  font-family: 'Federo';
-  font-size: 50px;
-  margin-top: 100px;
-  margin-bottom: 20px;
-
+h3 {
+  font-family: 'Benne';
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .page-container {
 
-    background-color: white;
-  
+  .title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Federo';
+    font-size: 50px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+   }
 
-   .subtitle {
+.subtitle {
     display: flex;
     justify-content: center;
     font-family: 'Benne';
     font-size: 24px;
     margin-bottom: 3%;
-
-    
 }
 
-.Oeil {
+.oeil {
   display: flex;
-    justify-content: center;
-    font-family: 'benne';
-    font-size: 40px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    padding-top: 10px;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 40px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
+
 }
 
-.Couleur {
+.couleur {
   display: flex;
   justify-content: center;
   font-family: 'benne';
   font-size: 30px;
   margin-top: 50px;
   margin-bottom: 30px;
- 
-}
-  
-.round-button {
-  position: flex;
-  justify-content: center;
-  width: 100px;
-  height: 30px;
-  border-radius: 20%;
-  background-color: #C95B5B;
-  color: white;
-  font-size: 16px;
-  font-family: 'Benne';
-  cursor: pointer;
-  margin-top: 50px;
-  
-  &:hover {
-    background-color: darkred;
   }
 }
 
 .container-oeil {
-  display: flex;
-  justify-content: space-between;
+  display: flex; flex-wrap: wrap;
   margin-top: 100px;
-  
+
+.container-suboeil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
 }
 
-.Intensite{
-  text-align: center;
+.nez {
+  display: flex;
+  justify-content: center;
   font-family: 'benne';
-  font-size: 30px;
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
 
 }
 
+.container-nez {
+  display: flex; flex-wrap: wrap;
+  margin-top: 100px;
 
+.container-subnez {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
+}
 
-.Fluidité{
-  text-align: center;
+.bouche {
+  display: flex;
+  justify-content: center;
   font-family: 'benne';
-  font-size: 30px
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
 
 }
 
-.Limpidité{
-  text-align: center;
-  font-family: 'benne';
-  font-size: 30px
+.container-bouche {
+  display: flex; flex-wrap: wrap;
+  margin-top: 100px;
+
+  .container-subbouche {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  } 
 }
 
-.Brillance{
-  text-align: center;
-  font-family: 'benne';
-  font-size: 30px
-}
 
-
- }
-  
   

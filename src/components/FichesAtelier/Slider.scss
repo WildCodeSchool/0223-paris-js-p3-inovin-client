@@ -2,7 +2,7 @@ datalist {
   display: flex;
   justify-content: space-between;
   writing-mode: horizontal-tb;
-  width: 400px;
+  width: 300px;
   font-family: 'benne';
   font-size: 20px;
   
@@ -13,9 +13,16 @@ datalist {
 }
 
 input[type="range"] {
-  width: 400px;
+  width: 300px;
   margin: 0;
   overflow: hidden;
   background-color: black;
 
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  -webkit-appearance: none;
+  color: black;
+  margin-top: -1px;
 }

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
+
+$font-text : Benne;
+$font-title : Federo;
+
+.key-aromatic {
+        cursor: pointer;
+        border-radius:60% ;
+        height: 40px;
+        padding: 16px 16px 12px 16px;
+        font-size: 18px;
+        font-family: $font-text;
+        background-color: white;
+        border: 0.5px solid #000;;
+        font-variant: small-caps;
+        letter-spacing: 0.8px;
+        margin: 0 10px 0 10px;
+        
+      }
+  
