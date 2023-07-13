@@ -66,19 +66,8 @@ function Navbar() {
 
   return (
     <>
-      <div
-        className={
-          visible
-            ? navHome && !openMenu
-              ? "navbar navbar-home"
-              : "navbar"
-            : "navbar navbar-hidden"
-        }
-      >
-        <div
-          className={openMenu ? "menu-bg opened" : "menu-bg"}
-          onClick={() => setOpenMenu(!openMenu)}
-        >
+      <div className={visible ? (navHome && !openMenu ? "navbar navbar-home" : "navbar") : "navbar navbar-hidden"}>
+        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
@@ -97,14 +86,16 @@ function Navbar() {
           </ul>
         ) : (
           <ul className="navlist">
-            <li>Notre concept</li>
-            <li>Les cépages</li>
             <Link to="/wines">
-              <li>Les vins</li>
+              <li>Nos vins</li>
             </Link>
             <Link to="/atelier">
               <li>Nos ateliers</li>
             </Link>
+            <Link to="/Reservation">
+              <li>Nos ateliers</li>
+            </Link>
+
             <li>Contactez-nous</li>
           </ul>
         )}
@@ -116,9 +107,7 @@ function Navbar() {
         <div className="menu-list">
           {auth.user?.role == "ROLE_ADMIN" ? (
             <ul className="navlist">
-              <li onClick={() => handleClick("/ateliers")}>
-                Gestion des ateliers
-              </li>
+              <li onClick={() => handleClick("/ateliers")}>Gestion des ateliers</li>
               <li>Gestion des vins</li>
               <li>Gestion des utilisateurs</li>
               <li>Gestion des créations</li>
@@ -128,7 +117,7 @@ function Navbar() {
               <li onClick={() => handleClick("/")}>Accueil</li>
               <li>Notre concept</li>
               <li>Les cépages</li>
-              <li onClick={() => handleClick("/wines")}>Les vins</li>
+              <li onClick={() => handleClick("/wines")}>Nos vins</li>
               <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
               <li>Contactez-nous</li>
             </ul>

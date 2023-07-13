@@ -17,6 +17,7 @@ function Slider({ name, labels, onChange }) {
         ))}
       </datalist>
       <input
+      className='input-slider'
         type="range"
         id="tasteB"
         name="taste"
