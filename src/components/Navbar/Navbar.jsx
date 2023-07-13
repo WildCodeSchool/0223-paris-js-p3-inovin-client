@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import "./navbar.scss";
+
 import logo from "../../assets/logo.svg";
 import profileicon from "../../assets/usernav.svg";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./navbar.scss";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -28,9 +28,9 @@ function Navbar() {
   };
 
   const handleClick = (path) => {
-    navigate(path)
-    setOpenMenu(false)
-  }
+    navigate(path);
+    setOpenMenu(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +47,6 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
 
   useEffect(() => {
     if (window.location.pathname == "/") {
@@ -67,11 +66,8 @@ function Navbar() {
 
   return (
     <>
-      <div className={visible ? navHome && !openMenu? "navbar navbar-home" : "navbar" : "navbar navbar-hidden"}>
-        <div
-          className={openMenu ? "menu-bg opened" : "menu-bg"}
-          onClick={() => setOpenMenu(!openMenu)}
-        >
+      <div className={visible ? (navHome && !openMenu ? "navbar navbar-home" : "navbar") : "navbar navbar-hidden"}>
+        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
@@ -81,19 +77,22 @@ function Navbar() {
         </Link>
         {auth.user?.role == "ROLE_ADMIN" ? (
           <ul className="navlist">
-            <li>Gestion des ateliers</li>
+            <Link to="/ateliers">
+              <li>Gestion des ateliers</li>
+            </Link>
             <li>Gestion des vins</li>
             <li>Gestion des utilisateurs</li>
             <li>Gestion des créations</li>
           </ul>
         ) : (
           <ul className="navlist">
-            <li>Notre concept</li>
-            <li>Les cépages</li>
             <Link to="/wines">
-              <li>Les vins</li>
+              <li>Nos vins</li>
             </Link>
-            <li>Nos ateliers</li>
+            <Link to="/Reservation">
+              <li>Nos ateliers</li>
+            </Link>
+
             <li>Contactez-nous</li>
           </ul>
         )}
@@ -106,7 +105,7 @@ function Navbar() {
         <div className="menu-list">
           {auth.user?.role == "ROLE_ADMIN" ? (
             <ul className="navlist">
-              <li>Gestion des ateliers</li>
+              <li onClick={() => handleClick("/ateliers")}>Gestion des ateliers</li>
               <li>Gestion des vins</li>
               <li>Gestion des utilisateurs</li>
               <li>Gestion des créations</li>
@@ -116,7 +115,7 @@ function Navbar() {
               <li onClick={() => handleClick("/")}>Accueil</li>
               <li>Notre concept</li>
               <li>Les cépages</li>
-              <li onClick={() => handleClick("/wines")}>Les vins</li>
+              <li onClick={() => handleClick("/wines")}>Nos vins</li>
               <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
               <li>Contactez-nous</li>
             </ul>
