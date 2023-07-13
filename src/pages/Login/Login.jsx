@@ -28,7 +28,7 @@ function Login() {
   return (
     <>
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="submit-form">
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <input type="submit" value="Se connecter" />

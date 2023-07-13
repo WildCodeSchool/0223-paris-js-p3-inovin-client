@@ -1,0 +1,173 @@
+@import "../../App.scss";
+
+.profilepage {
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+        font-family: $font-text;
+        font-size: 30px;
+        line-height: 23px;
+        font-variant: small-caps;
+        letter-spacing: 0.8px;
+    }
+    h1 {
+        font-size: 50px;
+        padding-bottom: 40px;
+        margin-bottom: 80px;
+        text-align: center;
+        width: 50%;
+        font-family: $font-title;
+        border-bottom: 1px solid black;
+    }
+    p {
+        font-family: $font-text;
+        font-size: 20px;
+        font-variant: small-caps;
+        line-height: 20px;
+        letter-spacing: 0.8px;
+    }
+    .wines-container {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        align-items:  center;
+        height: 60vh;
+        gap: 16px;
+        .wine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            justify-content: center;
+            height: inherit;
+            img {
+                margin-bottom: 8px;
+                cursor: pointer;
+                margin-bottom: 40px;
+                height: 60%;
+            }
+        }
+        .pagination-btn {
+            width: 50px;
+            height: 50px;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            cursor: pointer;
+            &-previous {
+                transform: rotate(-45deg);
+            }
+            &-previous-disabled {
+                opacity: (0);
+                cursor: auto;
+            }
+            &-next {
+                transform: rotate(135deg);
+            }
+            &-next-disabled {
+                opacity: (0);
+                cursor:auto;
+            }
+        }
+
+    }
+
+    .ateliers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+        width: 100%;
+        padding-bottom: 40px;
+        position: relative;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 50%;
+            height: 1px;
+            background-color: black;
+        }
+        h2 {
+            margin-bottom: 16px;
+        }
+        .atelier {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding-bottom: 40px;
+            &::after {
+                position: absolute;
+                bottom: 0;
+                content: "";
+                width: 50%;
+                height: 1px;
+                background-color: black;
+            }
+            &:last-of-type::after {
+                display: none;
+            }
+            img {
+                height: 50vh;
+                margin: 40px 0;
+            }
+            p {
+                margin: 8px;
+            }
+            button {
+                margin-top: 16px
+            }
+        }
+
+    }
+    .favorites {
+        @extend .ateliers;
+        h2 {
+            text-align: center;
+        }
+        
+        position: relative;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: 50%;
+            height: 1px;
+            background-color: black;
+        }
+    }
+    .creations {
+        @extend .ateliers;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width : 1000px) {
+    .profilepage {
+        p {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .wines-container {
+            height: 30vh;
+
+            .pagination-btn {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .ateliers {
+            margin-bottom: 32px;
+            .atelier {
+                width: 90%;
+                img {
+                    width: 90%;
+                    height: initial;
+                }
+            }
+    
+        }
+    }
+}

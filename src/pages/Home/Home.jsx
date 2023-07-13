@@ -18,7 +18,6 @@ import ateliercrea from "../../assets/ateliercrea.png";
 function Home() {
   const auth = useSelector((state) => state.auth);
   const [visibleIndex, setVisibleIndex] = useState(0);
-
   const winesContainerRef = useRef(null);
 
   const getVisibleCardIndex = () => {
@@ -61,9 +60,8 @@ function Home() {
         <h2>Notre concept</h2>
         <img className="logo-concept" src={concept} alt="" />
         <p className="concept-desc">
-          L'atelier Inovin est une expérience unique vous permettant de créer
-          votre propre vin au travers d’une dégustation de cépages vers votre
-          assemblage...
+          L'atelier Inovin est une expérience unique vous permettant de créer votre propre vin au travers d’une
+          dégustation de cépages vers votre assemblage...
         </p>
         <div className="img-container">
           <img src={img1} alt="" />
@@ -95,6 +93,7 @@ function Home() {
               <span>Nos vins rouges</span>
             </div>
           </Link>
+
           <Link to="/whitewines">
             <div>
               <img src={whitewine} alt="" />
@@ -126,11 +125,10 @@ function Home() {
           <div className="atelier-desc">
             <h3>Atelier dégustation</h3>
             <p>
-              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels
-              des bras en transe. Le vin, tel un poème, coule dans les veines,
-              Des trésors en flacons, des élixirs sans peine. Le Chardonnay,
-              noble et audacieux, Le Merlot, épicé et envoûtant, Le Pinot Noir,
-              subtil et délicat, Le Sauvignon Blanc, frais et vif à souhait.
+              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels des bras en transe. Le vin, tel un poème,
+              coule dans les veines, Des trésors en flacons, des élixirs sans peine. Le Chardonnay, noble et audacieux,
+              Le Merlot, épicé et envoûtant, Le Pinot Noir, subtil et délicat, Le Sauvignon Blanc, frais et vif à
+              souhait.
             </p>
             <Link to="/reservation">
               <BtnInscription type="dégustation" />
@@ -143,11 +141,10 @@ function Home() {
           <div className="atelier-desc">
             <h3>Atelier création</h3>
             <p>
-              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels
-              des bras en transe. Le vin, tel un poème, coule dans les veines,
-              Des trésors en flacons, des élixirs sans peine. Le Chardonnay,
-              noble et audacieux, Le Merlot, épicé et envoûtant, Le Pinot Noir,
-              subtil et délicat, Le Sauvignon Blanc, frais et vif à souhait.
+              Dans les vignobles où le soleil danse, Les ceps s'étirent, tels des bras en transe. Le vin, tel un poème,
+              coule dans les veines, Des trésors en flacons, des élixirs sans peine. Le Chardonnay, noble et audacieux,
+              Le Merlot, épicé et envoûtant, Le Pinot Noir, subtil et délicat, Le Sauvignon Blanc, frais et vif à
+              souhait.
             </p>
             <Link to="/reservation">
               <BtnInscription type="création" />
