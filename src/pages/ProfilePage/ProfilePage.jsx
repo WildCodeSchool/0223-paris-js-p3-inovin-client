@@ -26,6 +26,7 @@ function Profile() {
   const date = Date.now();
 
   useEffect(() => {
+    if (window.innerWidth <= 700) setItemPerPage(2);
     const handleResize = () => {
       if (window.innerWidth <= 700) return setItemPerPage(2);
       if (window.innerWidth > 700) return setItemPerPage(4);
@@ -118,6 +119,11 @@ function Profile() {
       <h1>Mon profil</h1>
       <div className="ateliers">
         <h2>Mes ateliers</h2>
+        {!upcomingWorkshops.length &&
+         <div className="empty-wine">
+        <p>Vous n'êtes inscrit(e) à aucun atelier</p>
+        <button onClick={() => nav("/reservation")}>S'inscrire à un atelier</button>
+      </div> }
         {upcomingWorkshops.map((e, i) => {
           return (
             <div key={i} className="atelier">
@@ -135,83 +141,110 @@ function Profile() {
       </div>
       <div className="favorites">
         <h2>Mes vins favoris</h2>
-        <div className="wines-container">
-          <div
-            onClick={() => currentPageWine > 1 && handlePaginationWine(-1)}
-            className={
-              currentPageWine > 1
-                ? "pagination-btn pagination-btn-previous"
-                : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
-            }
-          />
-          {getWine()?.map((e) => {
-            return (
-              <div className="wine" key={e.id}>
-                <img src={e.image} onClick={() => nav(`/wines/${e.id}`)} />
-                <p>
-                  {e.name}, {e.manufacture_year}
-                </p>
-              </div>
-            );
-          })}
-          <div
-            onClick={() =>
-              currentPageWine < pagesWine && handlePaginationWine(1)
-            }
-            className={
-              currentPageWine === pagesWine
-                ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
-                : "pagination-btn pagination-btn-next"
-            }
-          />
-        </div>
+        {!favWines.length && (
+          <div className="empty-wine">
+            <p>Aucun vin sauvegardé...</p>
+            <p>
+              Pas de panique, explorez nos vins et cliquez sur le petit coeur
+              pour les sauvegarder
+            </p>
+            <button onClick={() => nav("/wines")}>Explorer nos vins</button>
+          </div>
+        )}
+        {Boolean(favWines.length) && (
+          <div className="wines-container">
+            <div
+              onClick={() => currentPageWine > 1 && handlePaginationWine(-1)}
+              className={
+                currentPageWine > 1
+                  ? "pagination-btn pagination-btn-previous"
+                  : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
+              }
+            />
+            {getWine()?.map((e) => {
+              return (
+                <div className="wine" key={e.id}>
+                  <img src={e.image} onClick={() => nav(`/wines/${e.id}`)} />
+                  <p>
+                    {e.name}, {e.manufacture_year}
+                  </p>
+                </div>
+              );
+            })}
+            <div
+              onClick={() =>
+                currentPageWine < pagesWine && handlePaginationWine(1)
+              }
+              className={
+                currentPageWine === pagesWine
+                  ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
+                  : "pagination-btn pagination-btn-next"
+              }
+            />
+          </div>
+        )}
       </div>
       <div className="creations">
         <h2>Mes créations</h2>
-        <div className="wines-container">
-          <div
-            onClick={() =>
-              currentPageCreation > 1 && handlePaginationCreation(-1)
-            }
-            className={
-              currentPageCreation > 1
-                ? "pagination-btn pagination-btn-previous"
-                : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
-            }
-          />
-          {getCreation().map((e) => {
-            return (
+        {!creation.length && (
+          <div className="empty-wine">
+            <p>Vous n'avez pas encore participé à un atelier création</p>
+            <button onClick={() => nav("/reservation")}>
+              S'inscrire à un atelier
+            </button>
+          </div>
+        )}
+        {Boolean(
+          creation.length && (
+            <div className="wines-container">
               <div
-                className="wine"
-                key={e.id}
-                onClick={() => nav(`/recipes/${e.id}`)}
-              >
-                <img src={e.image} />
-                <p>
-                  {e.time.toLocaleDateString("fr-FR", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </p>
-                <p>{e.place_name}</p>
-              </div>
-            );
-          })}
-          <div
-            onClick={() =>
-              currentPageCreation < pagesCreation && handlePaginationCreation(1)
-            }
-            className={
-              currentPageCreation === pagesCreation
-                ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
-                : "pagination-btn pagination-btn-next"
-            }
-          />
-        </div>
+                onClick={() =>
+                  currentPageCreation > 1 && handlePaginationCreation(-1)
+                }
+                className={
+                  currentPageCreation > 1
+                    ? "pagination-btn pagination-btn-previous"
+                    : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
+                }
+              />
+              {getCreation().map((e) => {
+                return (
+                  <div
+                    className="wine"
+                    key={e.id}
+                    onClick={() => nav(`/recipes/${e.id}`)}
+                  >
+                    <img src={e.image} />
+                    <p>
+                      {e.time.toLocaleDateString("fr-FR", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                    <p>{e.place_name}</p>
+                  </div>
+                );
+              })}
+              <div
+                onClick={() =>
+                  currentPageCreation < pagesCreation &&
+                  handlePaginationCreation(1)
+                }
+                className={
+                  currentPageCreation === pagesCreation
+                    ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
+                    : "pagination-btn pagination-btn-next"
+                }
+              />
+            </div>
+          )
+        )}
       </div>
-      <button onClick={disconnect}>Se déconnecter</button>
+      <button onClick={disconnect} className="logout">
+        Se déconnecter
+      </button>
     </div>
   );
 }
