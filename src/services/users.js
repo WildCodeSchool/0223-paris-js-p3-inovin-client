@@ -12,4 +12,6 @@ const updateAvatar = (form) => {
   return api.post("/users/updateAvatar", form);
 };
 
+
+
 export { getAllUsers, getCurrentUser, updateAvatar };

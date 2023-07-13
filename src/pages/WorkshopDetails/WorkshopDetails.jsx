@@ -59,17 +59,19 @@ const WorkshopDetails = () => {
     }
   };
 
-  const handleDeleteUserClick = (id) => {
+  const handleDeleteUserClick = async (userId) => {
     try {
-      deleteUserFromSession(id);
-      const updatedUsers = [...users].filter((e) => e.id != id);
+      await deleteUserFromSession(session.id, userId);
+      const updatedUsers = [...users].filter((e) => e.user_id != userId);
       setUsers(updatedUsers);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleAddParticipant = () => {};
+  const handleAddParticipant = () => {
+    navigate("users");
+  };
   const handleAddWine = () => {};
 
   const date = new Date(session.date);
@@ -129,12 +131,9 @@ const WorkshopDetails = () => {
                   <td>{user.comment}</td>
 
                   <td className="buttonCell">
-                    <button className="WMButton">Modifier</button>
                     <button
                       className="WMButton"
-                      name="user"
-                      dataid={user.id}
-                      onClick={() => handleDeleteUserClick(user.id)}
+                      onClick={() => handleDeleteUserClick(user.user_id)}
                     >
                       Supprimer
                     </button>
@@ -172,7 +171,6 @@ const WorkshopDetails = () => {
                   <td>{wine.manufacture_year}</td>
 
                   <td className="buttonCell">
-                    <button className="WMButton">Modifier</button>
                     <button
                       className="WMButton"
                       onClick={() => handleDeleteWineClick(wine.id)}
@@ -202,10 +200,25 @@ const WorkshopDetails = () => {
                   <th>Nom de la création</th>
                   <th>Créateur</th>
                   <th>Sélectionnné</th>
+                  <th>Gagnant d'un concours</th>
                   <th>Gestion</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                {recipes.map((recipe) => {
+                  return (
+                    <tr>
+                      <td>{recipe.name}</td>
+                      <td>{recipe.user_id} </td>
+                      <td>{recipe.selected_for_context}</td>
+                      <td>{recipe.won_contest}</td>
+                      <td className="buttonCell">
+                        <button className="WMButton">Supprimer</button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           ) : (
             <h4>Aucune création à présenter</h4>

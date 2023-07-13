@@ -95,7 +95,7 @@ const WorkshopManager = () => {
       <button
         type="button"
         onClick={() => navigate("new")}
-        className="WMButton"
+        className="addButton"
       >
         Ajouter un atelier
       </button>

@@ -66,13 +66,21 @@ const getRecipesBySessionId = async (id) => {
 
 const deleteUserFromSession = async (sessionId, userId) => {
   try {
-    return api.delete(`/sessions/${sessionId}/users/${userId}`);
+    return api.delete(`/sessions/${sessionId}/user/${userId}`);
   } catch (error) {}
 };
 const deleteWineFromSession = async (sessionId, wineId) => {
   try {
     return api.delete(`/sessions/${sessionId}/wine/${wineId}`);
   } catch (error) {}
+};
+
+const postUserHasSession = async (sessionId, userId) => {
+  try {
+    return api.post(`/usershassession/`, { sessionId, userId });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export {
@@ -86,4 +94,5 @@ export {
   deleteUserFromSession,
   deleteWineFromSession,
   getRecipesBySessionId,
+  postUserHasSession,
 };
