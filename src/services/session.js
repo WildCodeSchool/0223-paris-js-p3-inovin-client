@@ -67,17 +67,21 @@ const getRecipesBySessionId = async (id) => {
 const deleteUserFromSession = async (sessionId, userId) => {
   try {
     return api.delete(`/sessions/${sessionId}/user/${userId}`);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 const deleteWineFromSession = async (sessionId, wineId) => {
   try {
     return api.delete(`/sessions/${sessionId}/wine/${wineId}`);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const postUserHasSession = async (sessionId, userId) => {
   try {
-    return api.post(`/usershassession/`, { sessionId, userId });
+    return api.post(`/sessions/userhassession/`, { sessionId, userId });
   } catch (error) {
     console.error(error);
   }

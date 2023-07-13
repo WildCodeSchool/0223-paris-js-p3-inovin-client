@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../../services/users";
+
 import "./Users.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { postUserHasSession } from "../../services/session";
+import { getAllUsers } from "../../services/users";
 
 export const Users = () => {
   const [users, setUsers] = useState({});
@@ -13,7 +14,6 @@ export const Users = () => {
       try {
         const usersInfos = await getAllUsers();
         setUsers(usersInfos.data);
-        console.log(usersInfos.data);
       } catch (error) {
         console.error(error);
       }
