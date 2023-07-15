@@ -5,6 +5,8 @@
     h1 {
         text-align: center;
         margin-bottom: 40px;
+        font-family: $font-title;
+        font-size: 50px;
     }
     p {
         font-family: $font-text;
@@ -13,10 +15,13 @@
         letter-spacing: 0.8px;
     }
     .wines {
-        width: 50%;
+        width: 70%;
         margin: auto;
         display: flex;
         justify-content: space-between;
+        &:last-of-type{
+            margin-bottom: 40px;
+        }
         .wine {
             width: 200px;
             text-align: center;
@@ -25,8 +30,8 @@
     .inputs {
         display: flex;
         margin: 60px auto;
-        width: 50%;
-    justify-content: space-between;
+        width: 70%;
+        justify-content: space-between;
     
     .input-container {
     position: relative;
@@ -69,9 +74,12 @@
         }
     }
 }
+.error {
+    margin: auto;
+    width: fit-content;
 
-    h1 {
-        font-family: $font-title;
-        font-size: 50px;
-    }
+}
+button {
+    margin: auto;
+}
 }

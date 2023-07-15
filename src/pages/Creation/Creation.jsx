@@ -14,6 +14,8 @@ function Creation() {
     wine3: 15,
   });
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const handleChange = (e) => {
     const sum = +inputValue.wine1 + +inputValue.wine2 + +inputValue.wine3;
 
@@ -27,6 +29,13 @@ function Creation() {
   };
 
   const handleClick = async () => {
+    if (+inputValue.wine1 + +inputValue.wine2 + +inputValue.wine3 < 100) {
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 3000);
+      return;
+    }
     try {
       await api.post(`recipes/${id}`);
       const result = await api.get(`recipes/session/${id}`);
@@ -69,12 +78,7 @@ function Creation() {
     });
 
     setCondensedData(Array.from(groupedData.values()).slice(0, 3));
-    // console.log('notes', notes)
   }, [notes]);
-
-  useEffect(() => {
-    console.log(condensedData);
-  }, [inputValue]);
 
   return (
     <div className="creation">
@@ -164,19 +168,7 @@ function Creation() {
           <p>sur 75cl</p>
         </div>
       </div>
-
-      {condensedData.map((e) => {
-        return (
-          <>
-            <p>{e.wine}</p>
-            <p>id: {e.wine_id}</p>
-            <p>note: {e.note}</p>
-            {e.tags.map((tag) => (
-              <p>{tag}</p>
-            ))}
-          </>
-        );
-      })}
+      <p className="error" style={{ color: errorMessage ? 'red' : 'white' }}>Le total des vins ne fait pas 100%</p>
       <button onClick={handleClick}>créer la recette</button>
     </div>
   );
