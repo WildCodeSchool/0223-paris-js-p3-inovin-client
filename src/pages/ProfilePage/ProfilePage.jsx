@@ -59,6 +59,10 @@ function Profile() {
   }, []);
 
   useEffect(() => {
+    console.log(creation);
+  }, [creation]);
+
+  useEffect(() => {
     setPagesWine(Math.ceil(favWines.length / 4) || 1);
     setPagesCreation(Math.ceil(creation.length / 4) || 1);
   }, [favWines]);
@@ -119,11 +123,14 @@ function Profile() {
       <h1>Mon profil</h1>
       <div className="ateliers">
         <h2>Mes ateliers</h2>
-        {!upcomingWorkshops.length &&
-         <div className="empty-wine">
-        <p>Vous n'êtes inscrit(e) à aucun atelier</p>
-        <button onClick={() => nav("/reservation")}>S'inscrire à un atelier</button>
-      </div> }
+        {!upcomingWorkshops.length && (
+          <div className="empty-wine">
+            <p>Vous n'êtes inscrit(e) à aucun atelier</p>
+            <button onClick={() => nav("/reservation")}>
+              S'inscrire à un atelier
+            </button>
+          </div>
+        )}
         {upcomingWorkshops.map((e, i) => {
           return (
             <div key={i} className="atelier">
@@ -194,52 +201,50 @@ function Profile() {
             </button>
           </div>
         )}
-        {Boolean(
-          creation.length && (
-            <div className="wines-container">
-              <div
-                onClick={() =>
-                  currentPageCreation > 1 && handlePaginationCreation(-1)
-                }
-                className={
-                  currentPageCreation > 1
-                    ? "pagination-btn pagination-btn-previous"
-                    : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
-                }
-              />
-              {getCreation().map((e) => {
-                return (
-                  <div
-                    className="wine"
-                    key={e.id}
-                    onClick={() => nav(`/recipes/${e.id}`)}
-                  >
-                    <img src={e.image} />
-                    <p>
-                      {e.time.toLocaleDateString("fr-FR", {
-                        weekday: "long",
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </p>
-                    <p>{e.place_name}</p>
-                  </div>
-                );
-              })}
-              <div
-                onClick={() =>
-                  currentPageCreation < pagesCreation &&
-                  handlePaginationCreation(1)
-                }
-                className={
-                  currentPageCreation === pagesCreation
-                    ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
-                    : "pagination-btn pagination-btn-next"
-                }
-              />
-            </div>
-          )
+        {Boolean(creation.length) && (
+          <div className="wines-container">
+            <div
+              onClick={() =>
+                currentPageCreation > 1 && handlePaginationCreation(-1)
+              }
+              className={
+                currentPageCreation > 1
+                  ? "pagination-btn pagination-btn-previous"
+                  : "pagination-btn pagination-btn-previous pagination-btn-previous-disabled"
+              }
+            />
+            {getCreation().map((e) => {
+              return (
+                <div
+                  className="wine"
+                  key={e.id}
+                  onClick={() => nav(`/recipes/${e.id}`)}
+                >
+                  <img src={e.image} />
+                  <p>
+                    {e.time.toLocaleDateString("fr-FR", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+                  <p>{e.place_name}</p>
+                </div>
+              );
+            })}
+            <div
+              onClick={() =>
+                currentPageCreation < pagesCreation &&
+                handlePaginationCreation(1)
+              }
+              className={
+                currentPageCreation === pagesCreation
+                  ? "pagination-btn pagination-btn-next pagination-btn-next-disabled"
+                  : "pagination-btn pagination-btn-next"
+              }
+            />
+          </div>
         )}
       </div>
       <button onClick={disconnect} className="logout">
