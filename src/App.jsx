@@ -15,6 +15,7 @@ import SelectedWine from "./pages/SelectedWine/SelectedWine"
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
 import "./App.scss";
+import Creation from "./pages/Creation/Creation";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>
         <Route path="/wines/:id" element={<SelectedWine/>}></Route>
         <Route path="/recipes/:id" element={<SelectedRecipe/>}></Route>
+        <Route path="/creation/:id" element={<Creation/>}></Route>
       </Routes>
     </>
   );

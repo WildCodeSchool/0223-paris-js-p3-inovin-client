@@ -1,0 +1,77 @@
+@import "../../App.scss";
+
+.creation {
+    padding-top: 100px;
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    p {
+        font-family: $font-text;
+        line-height: 23px;
+        font-variant: small-caps;
+        letter-spacing: 0.8px;
+    }
+    .wines {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        .wine {
+            width: 200px;
+            text-align: center;
+        }
+    }
+    .inputs {
+        display: flex;
+        margin: 60px auto;
+        width: 50%;
+    justify-content: space-between;
+    
+    .input-container {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    transform: rotate(-90deg);
+
+        .range-creation {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            width: 200px;
+            position: absolute;
+            z-index: 2;
+            &::-webkit-slider-runnable-track {
+                background: transparent;
+                height: 100px;
+                border: 1px solid black;
+              }
+            &::-moz-range-track {
+                background: transparent;
+                height: 100px;
+                border: 1px solid black;
+              }
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 16px;
+                height: 98px;
+                background-color: #C95B5B;
+                border-radius: 0;
+            }
+        }
+        .input-bg {
+            background-color: #C95B5B;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+    h1 {
+        font-family: $font-title;
+        font-size: 50px;
+    }
+}
