@@ -60,12 +60,20 @@
                 -webkit-appearance: none;
                 width: 16px;
                 height: 98px;
-                background-color: #C95B5B;
                 border-radius: 0;
             }
         }
+        .range-creation-yellow {
+            &::-webkit-slider-thumb {
+                background-color: #EBD68C;
+            }
+        }
+        .range-creation-red {
+            &::-webkit-slider-thumb {
+                background-color: #C95B5B;
+            }
+        }
         .input-bg {
-            background-color: #C95B5B;
             width: 100%;
             height: 100%;
             position: absolute;
@@ -79,7 +87,10 @@
     width: fit-content;
 
 }
-button {
+.btn {
     margin: auto;
+    &-yellow {
+        background-color: #EBD68C;
+    }
 }
 }
