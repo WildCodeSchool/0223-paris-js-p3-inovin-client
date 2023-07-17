@@ -36,7 +36,7 @@ const NewWorkshop = () => {
 
   return (
     <div className="newWorkshop">
-      <button type="button" onClick={handleBackClick}>
+      <button type="button" onClick={handleBackClick} className="backButton">
         Retour
       </button>
       <h2>Ajouter un nouvel Atelier</h2>

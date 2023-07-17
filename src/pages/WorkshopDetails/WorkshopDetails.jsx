@@ -133,6 +133,12 @@ const WorkshopDetails = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton"
+                      onClick={() => handleSeeUserClick(user.user_id)}
+                    >
+                      Voir détails
+                    </button>
+                    <button
+                      className="WMButton"
                       onClick={() => handleDeleteUserClick(user.user_id)}
                     >
                       Supprimer
@@ -173,6 +179,12 @@ const WorkshopDetails = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton"
+                      onClick={() => handleSeeWineClick(user.user_id)}
+                    >
+                      Voir détails
+                    </button>
+                    <button
+                      className="WMButton"
                       onClick={() => handleDeleteWineClick(wine.id)}
                     >
                       Supprimer
@@ -207,7 +219,7 @@ const WorkshopDetails = () => {
               <tbody>
                 {recipes.map((recipe) => {
                   return (
-                    <tr>
+                    <tr key={recipe.id}>
                       <td>{recipe.name}</td>
                       <td>{recipe.user_id} </td>
                       <td>{recipe.selected_for_context}</td>
