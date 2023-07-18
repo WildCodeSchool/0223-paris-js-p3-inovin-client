@@ -6,7 +6,8 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 5rem;
-  height: 80vh;
+  
+  min-height: 80vh;
   h2{
     text-align: center;
     width: 100%;
@@ -41,14 +42,12 @@
     }
 
   }
-  .WMButton {
-    color: black;
-    border-radius: 10px;
-    background-color: transparent;
-    border: 1px solid #313131;
-    padding-inline: 1rem;    
+  .addButton {
+      margin-bottom: 3rem;
   }
   button:hover {
     cursor: pointer;
+    scale: 1.1;
+    transition: 300ms;
   }
 }
