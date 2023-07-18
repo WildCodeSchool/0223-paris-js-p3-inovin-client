@@ -1,0 +1,65 @@
+
+.workshopDetails {
+  padding-top: 3.7rem;
+  display: flex;
+  flex-direction: column;
+  h2{
+    text-align: center;
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 300;
+  }
+  h4 {
+    text-align: center;
+    font-weight: 200;
+  }
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-bottom: 2rem;
+    margin: auto;
+    th {
+      text-align: center;
+      border: 1.5px solid #313131;
+      font-weight: 300;
+      font-weight: 200;
+      
+    }   
+
+    td {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;      
+      text-align: center;
+      border: 1.5px solid #313131;
+      border-bottom: none;
+      border-top: none;
+   }
+    .buttonCell {
+      display: flex;
+      justify-content: space-around;
+      border: none;
+       
+    }
+  }
+  .addButton {
+    width: fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .backButton {
+    width: fit-content;
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
+}
+

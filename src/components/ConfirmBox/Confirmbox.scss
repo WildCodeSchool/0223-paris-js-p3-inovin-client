@@ -1,0 +1,50 @@
+.confirmbox-bg {
+  position: fixed;
+  top:0;
+  z-index: 1;
+  background-color: rgba($color: #313131, $alpha: 0.3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.confirmbox {
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: rgb(243, 216, 216);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  .confirmbox-buttons {    
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .confirmbox-buttons__confirm{  
+      position: relative;      
+      transition: 300ms;
+    }
+    .confirmbox-buttons__confirm:hover{           
+      transition: 300ms;
+    }
+    .confirmbox-buttons__cancel{
+      background-color: gray;
+    }
+  }
+  .confirmbox-buttons button {        
+    transition: 300ms;
+  }
+  .confirmbox-buttons button:hover {    
+    scale: 1.2;
+    transition: 300ms;
+  }
+  .confirmbox-content p {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+  }
+ 
+}
