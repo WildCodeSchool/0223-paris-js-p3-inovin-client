@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import './NoteSelector.scss';
+import React, { useState } from "react";
+import "./NoteSelector.scss";
 
-const NoteSelector = () => {
-  const [note, setNote] = useState(5); 
-
-  const handleNoteChange = (event) => {
+function NoteSelector ({setNote, note}) {
+const handleNoteChange = (event) => {
     const selectedNote = parseInt(event.target.value);
     setNote(selectedNote);
   };

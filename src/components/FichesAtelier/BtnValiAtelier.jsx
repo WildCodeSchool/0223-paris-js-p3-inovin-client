@@ -2,8 +2,8 @@ import "./BtnValiAtelier.scss";
 
 import React from "react";
 
-function BtnValiAtelier({ type }) {
-  return <button className="btn">Valider{type}</button>;
+function BtnValiAtelier({ handleSubmit,  }) {
+  return <button className="btn" onClick={handleSubmit}>Valider</button>;
 }
 
 export default BtnValiAtelier;

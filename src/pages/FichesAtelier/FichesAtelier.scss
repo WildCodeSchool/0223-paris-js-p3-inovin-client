@@ -163,6 +163,27 @@ flex-direction: column;
   margin:auto;
    }
 
+   .container-subimpression {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 40px;
+    padding-top: 50px;
+    width: 95%;
+   }
+
+
+   .container-BtnValiAtelier{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 40px;
+    padding-top: 50px;
+    width: 95%;
+  }
+
 .container-footer {
   display: flex;
   justify-content: center;

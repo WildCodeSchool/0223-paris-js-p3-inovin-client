@@ -30,11 +30,17 @@ const FichesAtelier = () => {
   const [tags, setTags] = useState([]);
 
   const { id } = useParams();
+  
+  const [note, setNote] = useState(5); 
+
+ 
 
   useEffect(() => {
     api.get("tags/wines").then((result) => setTags(result.data));
     api.get(`sessions/${id}/wine`).then((result) => setWines(result.data));
   }, []);
+ 
+
 
   const handleSliderChange = (name, label) => {
     if (name === "aromeNez" || name === "aromeBouche") {
@@ -56,6 +62,12 @@ const FichesAtelier = () => {
     }
     console.log(selectedValue);
   };
+
+  const handleSubmit = () => {
+    api.post(`notes/${id}`,{wine_id : wines[0]?.wine_id,note : note})
+  }
+
+  
 
   return (
     <div className="page-container">
@@ -241,11 +253,11 @@ const FichesAtelier = () => {
       <h2 className="impression">IMPRESSION GÉNÉRALE</h2>
       <div className="container-impression">
         <div className="container-subimpression">
-          <NoteSelector />
-          <div className="container-BtnValiAtelier">
-            <BtnValiAtelier />
+          <NoteSelector setNote={setNote} note={note} />
           </div>
-        </div>
+          <div className="container-BtnValiAtelier">
+            <BtnValiAtelier handleSubmit={handleSubmit} />
+           </div>
         <div className="container-footer"></div>
       </div>
     </div>
