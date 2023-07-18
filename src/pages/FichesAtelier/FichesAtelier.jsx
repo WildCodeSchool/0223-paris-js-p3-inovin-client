@@ -5,6 +5,8 @@ import Slider from "../../components/FichesAtelier/Slider";
 import KeyAromaticButton from "../../components/FichesAtelier/KeyAromaticButton";
 import api from "../../services/api";
 import { useParams } from "react-router-dom";
+import NoteSelector from "../../components/FichesAtelier/NoteSelector";
+import BtnValiAtelier from "../../components/FichesAtelier/BtnValiAtelier";
 
 const FichesAtelier = () => {
   const [selectedValue, setSelectedValue] = useState({
@@ -15,15 +17,14 @@ const FichesAtelier = () => {
     brillance: "",
     intensiteArome: "",
     complexite: "",
-    aromeNez:"",
+    aromeNez: [],
     tanins: "",
     acidite: "",
     robe: "",
-    sucre:"",
-    alcool:"",
+    sucre: "",
+    alcool: "",
     persistance: "",
-    aromeBouche: ""
-
+    aromeBouche: [],
   });
   const [wines, setWines] = useState([]);
   const [tags, setTags] = useState([]);
@@ -36,8 +37,23 @@ const FichesAtelier = () => {
   }, []);
 
   const handleSliderChange = (name, label) => {
-    setSelectedValue({ ...selectedValue, [name]: label });
-    console.log(label);
+    if (name === "aromeNez" || name === "aromeBouche") {
+      if (!selectedValue[name].includes(label)) {
+        const newArray = [...selectedValue[name]];
+        newArray.push(label);
+        setSelectedValue({
+          ...selectedValue,
+          [name]: newArray,
+        });
+      } else {
+        setSelectedValue({
+          ...selectedValue,
+          [name]: selectedValue[name].filter((e) => e !== label),
+        });
+      }
+    } else {
+      setSelectedValue({ ...selectedValue, [name]: label });
+    }
     console.log(selectedValue);
   };
 
@@ -122,14 +138,22 @@ const FichesAtelier = () => {
         </div>
       </div>
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
-      {tags
-        .filter(
-          (e) => e.category == "Nez" && e.sub_category == "Familles Arômatiques"
-        )
-        .map((e) => (
-          <KeyAromaticButton label={e.name} id={e.id} name='aromeNez' onChange={handleSliderChange}/>
-        ))}
-
+      <div className="container-famillesAromatiques">
+        {tags
+          .filter(
+            (e) =>
+              e.category == "Nez" && e.sub_category == "Familles Arômatiques"
+          )
+          .map((e) => (
+            <KeyAromaticButton
+              key={e.id}
+              label={e.name}
+              id={e.id}
+              name="aromeNez"
+              onChange={handleSliderChange}
+            />
+          ))}
+      </div>
       <h2 className="bouche">LA BOUCHE</h2>
       <div className="container-bouche">
         <div className="container-subbouche">
@@ -165,12 +189,12 @@ const FichesAtelier = () => {
         <div className="container-subbouche">
           <h3 className="sucre">SUCRE</h3>
           <Slider
-             name="sucre"
-             labels={tags.filter((e) => {
-               return e.category == "La Bouche" && e.sub_category == "Sucre";
-             })}
-             onChange={handleSliderChange}
-           />
+            name="sucre"
+            labels={tags.filter((e) => {
+              return e.category == "La Bouche" && e.sub_category == "Sucre";
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="container-subbouche">
           <h3 className="alcool">ALCOOL</h3>
@@ -185,22 +209,45 @@ const FichesAtelier = () => {
         <div className="container-subbouche">
           <h3 className="persistance-aromatique">PERSISTANCE ARÔMATIQUE</h3>
           <Slider
-           name="persistance"
-           labels={tags.filter((e) => {
-             return e.category == "La Bouche" && e.sub_category == "Persistance Arômatique";
-           })}
-           onChange={handleSliderChange}
-         />
+            name="persistance"
+            labels={tags.filter((e) => {
+              return (
+                e.category == "La Bouche" &&
+                e.sub_category == "Persistance Arômatique"
+              );
+            })}
+            onChange={handleSliderChange}
+          />
         </div>
       </div>
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
-      {tags
-        .filter(
-          (e) => e.category == "La Bouche" && e.sub_category == "Familles Arômatiques"
-        )
-        .map((e) => (
-          <KeyAromaticButton label={e.name} id={e.id} name='aromeBouche' onChange={handleSliderChange} />
-        ))}
+      <div className="container-famillesAromatiques">
+        {tags
+          .filter(
+            (e) =>
+              e.category == "La Bouche" &&
+              e.sub_category == "Familles Arômatiques"
+          )
+          .map((e) => (
+            <KeyAromaticButton
+              key={e.id}
+              label={e.name}
+              id={e.id}
+              name="aromeBouche"
+              onChange={handleSliderChange}
+            />
+          ))}
+      </div>
+      <h2 className="impression">IMPRESSION GÉNÉRALE</h2>
+      <div className="container-impression">
+        <div className="container-subimpression">
+          <NoteSelector />
+          <div className="container-BtnValiAtelier">
+            <BtnValiAtelier />
+          </div>
+        </div>
+        <div className="container-footer"></div>
+      </div>
     </div>
   );
 };

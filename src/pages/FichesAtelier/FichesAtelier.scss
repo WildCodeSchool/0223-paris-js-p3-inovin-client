@@ -12,12 +12,16 @@ $font-title : Federo;
 
 h3 {
   font-family: 'Benne';
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 40px;
+  text-align: center;
 
 }
 
 .page-container {
+  display: flex;
+flex-direction: column;
+
 
   .title {
     display: flex;
@@ -105,6 +109,16 @@ h3 {
 
   } 
 }
+.famillesAromatiques {
+  font-family:'benne';
+  font-size: 30px;
+}
+.container-famillesAromatiques {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
 
 .bouche {
   display: flex;
@@ -125,7 +139,7 @@ h3 {
   display: flex; flex-wrap: wrap;
   margin-top: 100px;
 
-  .container-subbouche {
+ .container-subbouche {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,5 +150,29 @@ h3 {
   } 
 }
 
+.impression {
+  display: flex;
+  justify-content: center;
+  font-family: 'benne';
+  font-size: 40px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 95%;
+  margin:auto;
+   }
 
+.container-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-left: 40px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding-top: 50px;
+  width: 95%;
+
+}
   
