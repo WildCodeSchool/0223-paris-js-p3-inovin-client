@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useConfirm from "../../services/useConfirm";
+
 import {
   getSessionById,
   getUsersBySessionId,
@@ -11,6 +13,7 @@ import {
 } from "../../services/session";
 
 import "./WorkshopDetails.scss";
+import Confirmbox from "../../components/ConfirmBox/Confirmbox";
 
 const options = {
   weekday: "long",
@@ -22,12 +25,14 @@ const options = {
 };
 
 const WorkshopDetails = () => {
+  const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
   const [session, setSession] = useState({});
   const [wines, setWines] = useState({});
   const [users, setUsers] = useState({});
   const [recipes, setRecipes] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
     const getSessionInfos = async (id) => {
       try {
@@ -49,21 +54,34 @@ const WorkshopDetails = () => {
 
     getSessionInfos(id);
   }, []);
-  const handleDeleteWineClick = async (wineId) => {
+  const handleDeleteWineClick = async (wine) => {
     try {
-      await deleteWineFromSession(session.id, wineId);
-      const updatedWines = [...wines].filter((e) => e.id != wineId);
-      setWines(updatedWines);
+      const isConfirmed = await confirm(
+        "Voulez vous supprimer cette donnée capitale ?"
+      );
+
+      if (isConfirmed) {
+        await deleteWineFromSession(session.id, wine.id);
+        const updatedWines = [...wines].filter((e) => e.id != wine.id);
+        setWines(updatedWines);
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleDeleteUserClick = async (userId) => {
+  const handleDeleteUserClick = async (user) => {
     try {
-      await deleteUserFromSession(session.id, userId);
-      const updatedUsers = [...users].filter((e) => e.user_id != userId);
-      setUsers(updatedUsers);
+      const isConfirmed = await confirm(
+        `Etes-vous sure de vouloir supprimer ${user.firstname} ${user.lastname} de cet atelier ?`
+      );
+      if (isConfirmed) {
+        await deleteUserFromSession(session.id, user.user_id);
+        const updatedUsers = [...users].filter(
+          (e) => e.user_id != user.user_id
+        );
+        setUsers(updatedUsers);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -78,6 +96,13 @@ const WorkshopDetails = () => {
 
   return (
     <div className="workshopDetails">
+      {confirmState.show ? (
+        <Confirmbox
+          text={confirmState.text}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      ) : null}
       <button onClick={() => navigate("/ateliers")} className="backButton">
         Retour
       </button>
@@ -139,7 +164,7 @@ const WorkshopDetails = () => {
                     </button>
                     <button
                       className="WMButton"
-                      onClick={() => handleDeleteUserClick(user.user_id)}
+                      onClick={() => handleDeleteUserClick(user)}
                     >
                       Supprimer
                     </button>
@@ -185,7 +210,7 @@ const WorkshopDetails = () => {
                     </button>
                     <button
                       className="WMButton"
-                      onClick={() => handleDeleteWineClick(wine.id)}
+                      onClick={() => handleDeleteWineClick(wine)}
                     >
                       Supprimer
                     </button>
