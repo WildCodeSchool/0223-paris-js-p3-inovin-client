@@ -11,10 +11,12 @@ import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
 import Wines from "./pages/Wines/Wines";
-import SelectedWine from "./pages/SelectedWine/SelectedWine"
+import SelectedWine from "./pages/SelectedWine/SelectedWine";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
+
 import "./App.scss";
+import { Users } from "./pages/Users/Users";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,12 +44,13 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
+        <Route path="/ateliers/:id/users" element={<Users />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
-        <Route path="/redwines" element={<Wines color='Rouge' />}></Route>
-        <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>
-        <Route path="/wines/:id" element={<SelectedWine/>}></Route>
-        <Route path="/recipes/:id" element={<SelectedRecipe/>}></Route>
+        <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
+        <Route path="/whitewines" element={<Wines color="Blanc" />}></Route>
+        <Route path="/wines/:id" element={<SelectedWine />}></Route>
+        <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
       </Routes>
     </>
   );

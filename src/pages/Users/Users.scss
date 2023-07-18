@@ -1,6 +1,6 @@
 
-.workshopDetails {
-  padding-top: 3.7rem;
+.usersForSession {
+  padding-top: 10rem;
   display: flex;
   flex-direction: column;
   h2{
@@ -47,19 +47,16 @@
       display: flex;
       justify-content: space-around;
       border: none;
-       
+      .manageButton {
+    width: fit-content;
+    margin: none;
+
+  } 
     }
   }
-  .addButton {
-    width: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+  
   .backButton {
     width: fit-content;
     margin-left: 3rem;
-    margin-top: 3rem;
   }
 }
-

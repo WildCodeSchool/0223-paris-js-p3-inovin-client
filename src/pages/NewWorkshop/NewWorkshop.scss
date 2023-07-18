@@ -1,17 +1,22 @@
 .newWorkshop {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  .backButton {
+    width: fit-content;
+    margin-left: 3rem;
+  }
   h2{
     text-align: center;
     width: 100%;
     font-size: 4rem;
     font-weight: 300;
   }
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   table {
     width: 80%;
     border-collapse: collapse;
     border-style: hidden;
+    margin: auto;
     th {
       text-align: center;
       border: 1.5px solid #313131;
@@ -37,11 +42,11 @@
     background-color: transparent;
     text-align: center;
    }
-   button {
-    border-radius: 10px;
-    background-color: transparent;
-    border: 1px solid #313131;
-    padding-inline: 1rem;    
+   .buttonCell {
+    display: flex;
+    justify-content: space-around;
+    border: none;
+     
   }
   button:hover {
     
