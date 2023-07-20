@@ -3,7 +3,7 @@ import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
 import { resetPassword } from "../../services/auth";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
-import "../Login/Login.scss";
+import "./resetPassword.scss";
 
 function ResetPassword() {
 
@@ -19,42 +19,38 @@ function ResetPassword() {
         e.preventDefault();
         try {
             await resetPassword(password, token);
-            navigate("/login");
+            toast.success(" Mot de passe modifier 👌", {
+                position:"bottom-center"
+            }) ;
+    
+            setTimeout(() => {
+                navigate("/login");
+              }, "3000")
+    
+            ;    
         } catch (error) {
             console.error(error);
         }
     }
 
 
-    const notify = () => toast("Wow so easy !");
-    // const  notify  =  ( )  =>   {
-        
-    //     toast.success(" Email envoyé 👌", {
-    //         position: toast.POSITION.TOP_RIGHT
-    //     });
-    // };
- 
-
 
     return (
         <>
             {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}> 
+            <form  className="formLog"  onSubmit={handleSubmit}>
+
+            <h1>Reinitialiser votre mot de passe</h1>
 
             <div className="inputForm">
-            <input className="inputLogReg" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className="inputLogReg" type="password" placeholder="Nouveau mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>  
 
-            < div>
-            < bouton  onClick = { notify } > notify ! </ bouton > 
-            < ToastContainer/> 
+             < div>
+            <button  type="submit" >Valider</button> 
+            < ToastContainer /> 
             </div>  
-
-            <div className="inputForm">
-            <input className="inputLogReg" type="submit" value="Reinitialiser mon mot de passe" />
-            </div>   
-
-           
+             
             
             </form>
 
