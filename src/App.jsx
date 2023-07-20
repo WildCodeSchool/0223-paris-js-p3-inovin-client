@@ -11,7 +11,8 @@ import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
 import Wines from "./pages/Wines/Wines";
-import SelectedWine from "./pages/SelectedWine/SelectedWine";
+import FichesAtelier from "./pages/FichesAtelier/FichesAtelier";
+import SelectedWine from "./pages/SelectedWine/SelectedWine"
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
+        <Route path="/ateliers_degustation/:id" element={<FichesAtelier />}></Route>
         <Route path="/ateliers/:id/users" element={<Users />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>

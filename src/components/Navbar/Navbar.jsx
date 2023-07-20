@@ -89,6 +89,9 @@ function Navbar() {
             <Link to="/wines">
               <li>Nos vins</li>
             </Link>
+            <Link to="/atelier">
+              <li>Nos ateliers</li>
+            </Link>
             <Link to="/Reservation">
               <li>Nos ateliers</li>
             </Link>
@@ -96,8 +99,7 @@ function Navbar() {
             <li>Contactez-nous</li>
           </ul>
         )}
-
-        <Link to={auth.isLogged ? "/profilepage" : "/login"}>
+<Link to={auth.isLogged ? "/profilepage" : "/login"}>
           <img className="profileicon" src={profileicon} alt="" />
         </Link>
       </div>
