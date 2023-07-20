@@ -43,27 +43,7 @@ function ForgotPassword() {
             }
         }
 
-    }
-       
-
-    // const validate = () =>{
-    //     alert("verifiez votre boite mail !");
-    //     navigate("/login")
-    // }
-    
-
-    // const notify = () =>{
-    //     toast.success(" Email envoyé 👌", {
-    //         position:"bottom-center"
-    //     }) ;
-
-    //     setTimeout(() => {
-    //         navigate("/login");
-    //       }, "3000")
-
-    //     ;
-
-    // } 
+    }      
 
     return (
         <>
