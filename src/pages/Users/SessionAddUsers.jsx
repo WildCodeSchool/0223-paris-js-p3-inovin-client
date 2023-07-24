@@ -2,28 +2,37 @@ import { useEffect, useState } from "react";
 
 import "./Users.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import { postUserHasSession } from "../../services/session";
+import {
+  postUserHasSession,
+  getUsersBySessionId,
+} from "../../services/session";
 import { getAllUsers } from "../../services/users";
 
-export const Users = () => {
-  const [users, setUsers] = useState({});
+export const SessionAddUsers = () => {
+  const [users, setUsers] = useState([]);
+  const [registeredUsers, setRegisteredUsers] = useState([]);
+
   let { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    const getUsers = async () => {
+    const getUsers = async (id) => {
       try {
+        const registeredUsersInfos = await getUsersBySessionId(id);
         const usersInfos = await getAllUsers();
+        setRegisteredUsers(registeredUsersInfos.data);
         setUsers(usersInfos.data);
       } catch (error) {
         console.error(error);
       }
     };
-    getUsers();
+    getUsers(id);
   }, []);
 
-  const handleAddClick = async (userId) => {
+  const handleAddClick = async (event, user) => {
+    console.log(user);
     try {
-      await postUserHasSession(id, userId);
+      await postUserHasSession(id, user.id);
+      event.target.disabled = true;
     } catch (error) {
       console.error(error);
     }
@@ -37,7 +46,7 @@ export const Users = () => {
       >
         Retour
       </button>
-      {users?.length > 0 ? (
+      {users?.length > 0 && registeredUsers ? (
         <div>
           <h2>Utilisateurs inscrits</h2>
           <table>
@@ -59,7 +68,15 @@ export const Users = () => {
                     <td className="buttonCell">
                       <button
                         className="manageButton"
-                        onClick={() => handleAddClick(user.id)}
+                        onClick={(event) => handleAddClick(event, user)}
+                        disabled={
+                          registeredUsers.some(
+                            (registeredUser) =>
+                              registeredUser.user_id === user.id
+                          )
+                            ? true
+                            : false
+                        }
                       >
                         Ajouter
                       </button>

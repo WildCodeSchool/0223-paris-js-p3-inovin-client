@@ -16,7 +16,8 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
 
 import "./App.scss";
-import { Users } from "./pages/Users/Users";
+import { SessionAddUsers } from "./pages/Users/SessionAddUsers";
+import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,8 @@ function App() {
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
-        <Route path="/ateliers/:id/users" element={<Users />} />
+        <Route path="/ateliers/:id/users" element={<SessionAddUsers />} />
+        <Route path="/ateliers/:id/wines" element={<SessionAddWines />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
         <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
