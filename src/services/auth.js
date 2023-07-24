@@ -1,5 +1,9 @@
 import api from "./api";
 
+const register = async (data) => {
+  return api.post("/users/register", data);
+};
+
 const login = async (email, password) => {
   return api.post("/users/login", { email, password });
 };
@@ -16,5 +20,5 @@ const resetPassword = async (password, token) => {
   return api.post("/users/resetPassword", { password, token });
 };
 
-export { login, logout, sendResetPassword, resetPassword };
-export default { login, logout, sendResetPassword, resetPassword };
+export {register, login, logout, sendResetPassword, resetPassword };
+export default { register, login, logout, sendResetPassword, resetPassword };

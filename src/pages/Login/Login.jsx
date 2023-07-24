@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Login.scss";
 import { login } from "../../store/auth";
+//import  BtnLogRegister from "../../components/BtnLogRegister";
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -27,11 +29,19 @@ function Login() {
 
   return (
     <>
+      <div className="containerConnexion">
+      <h1>Bienvenue</h1>     
+      <button className="btnLogReg" onClick={() => navigate("/login")}>Se connecter</button>
+      <button className="btnLogReg" onClick={() => navigate("/register")}>S'inscrire</button>
+    </div>  
+      {/* <BtnLogRegister/> */}
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit} className="submit-form">
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <input type="submit" value="Se connecter" />
+
+      <form className="formLog" onSubmit={handleSubmit}>
+        <input type="email" value={email} placeholder="email *" onChange={(e) => setEmail(e.target.value)} />
+        <input type="password" value={password} placeholder="password *" onChange={(e) => setPassword(e.target.value)} />
+        <input className="btnLog"  type="submit" value="Se connecter" />
+
       </form>
       <button onClick={() => navigate("/forgotPassword")}>J'ai oublié mon mot de passe ?</button>
     </>

@@ -1,5 +1,41 @@
 @import "../../App.scss";
 
-.submit-form {
-  margin-top: 100px;
+// .submit-form {
+//   margin-top: 100px;
+// }
+
+.containerConnexion{
+
+    
+    .btnLogReg{
+        order: 0;
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color:black;
+        border-radius: 15px;
+        background-color:initial;
+        // border-color: initial;
+        border-style: initial;
+
+    }
+
+    .btnLog{
+        order: 0;
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: #fff;
+        border-radius: 15px;
+        background-color:#C95B5B;
+        border-color:#C95B5B;
+        border-style: initial;
+    
+    }
+
 }
+
+
+
