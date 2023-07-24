@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { resetPassword } from "../../services/auth"
+import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
+import { resetPassword } from "../../services/auth";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import "../Login/Login.scss";
 
 function ResetPassword() {
 
@@ -23,13 +26,39 @@ function ResetPassword() {
     }
 
 
+    const notify = () => toast("Wow so easy !");
+    // const  notify  =  ( )  =>   {
+        
+    //     toast.success(" Email envoyé 👌", {
+    //         position: toast.POSITION.TOP_RIGHT
+    //     });
+    // };
+ 
+
+
     return (
         <>
             {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}>     
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <input type="submit" value="Reinitialiser mon mot de passe" />
+            <form onSubmit={handleSubmit}> 
+
+            <div className="inputForm">
+            <input className="inputLogReg" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>  
+
+            < div>
+            < bouton  onClick = { notify } > notify ! </ bouton > 
+            < ToastContainer/> 
+            </div>  
+
+            <div className="inputForm">
+            <input className="inputLogReg" type="submit" value="Reinitialiser mon mot de passe" />
+            </div>   
+
+           
+            
             </form>
+
+            
         </>
     );
 }

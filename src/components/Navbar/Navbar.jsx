@@ -111,7 +111,12 @@ function Navbar() {
               <li>Nos ateliers</li>
             </Link>
 
+            <li>Nos ateliers</li>
+
+            <Link to="/contact">
             <li>Contactez-nous</li>
+            </Link>
+            
           </ul>
         )}
 <Link to={auth.isLogged ? "/profilepage" : "/login"}>
@@ -140,8 +145,8 @@ function Navbar() {
               <li>Les cépages</li>
               <li onClick={() => handleClick("/wines")}>Nos vins</li>
               <li onClick={() => handleClick("/reservation")}>Nos ateliers</li>
-              <li>Contactez-nous</li>
-            </ul>
+              <li onClick={() => handleClick("/contact")}>Contactez-nous</li>
+             </ul>
           )}
         </div>
       )}

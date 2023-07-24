@@ -62,16 +62,13 @@ function App() {
         <Route path="/admin/vins" element={<AdminWines />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
-
         <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
         <Route path="/whitewines" element={<Wines color="Blanc" />}></Route>
         <Route path="/wines/:id" element={<SelectedWine />}></Route>
         <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
-
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
         <Route path="/resetPassword" element={<ResetPassword />}></Route>
-
 
       </Routes>
     </>
