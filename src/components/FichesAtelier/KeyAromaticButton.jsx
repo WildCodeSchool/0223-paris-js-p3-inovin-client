@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./KeyAromaticButton.scss";
 
-const KeyAromaticButton = ({ label, id, onChange, name }) => {
+const KeyAromaticButton = ({ label, id, onChange, name, currentWine }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = () => {
@@ -9,6 +9,10 @@ const KeyAromaticButton = ({ label, id, onChange, name }) => {
     const selectedLabel = id;
     onChange(name, selectedLabel);
   };
+
+  useEffect(() => {
+    setIsSelected(false);
+  }, [currentWine])
 
   return (
     <button
