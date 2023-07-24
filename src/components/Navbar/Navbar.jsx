@@ -81,7 +81,7 @@ function Navbar() {
               <li>Gestion des ateliers</li>
             </Link>
             <li>Gestion des vins</li>
-            <li>Gestion des utilisateurs</li>
+            <Link to={"/utilisateurs"}><li>Gestion des utilisateurs</li></Link>
             <li>Gestion des créations</li>
           </ul>
         ) : (
