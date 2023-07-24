@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import authService from "../../services/auth";
+import  BtnLogRegister from "../../components/BtnLogRegister/BtnLogRegister";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/auth";
 import "./Register.scss";
-//import  BtnLogRegister from "../../components/BtnLogRegister.jsx"
+
 
 
 function Register() {
         
     const [error, setError] = useState(null);
+    const [user, setUser] = useState({ firstName: "",lastName:"",birthday:"", phone:"", email: "", password: "", repeatPassword:"" });
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
-    const [state, setState] = useState({ firstName: "",lastName:"",birthday:"", phone:"", email: "", password: "", repeatPassword:"" });
-    
     const onChange= (event) => {
     const { name, value } = event.target;
-    setState(prevState => ({ ...prevState, [name]: value }));    
+    setUser(prevState => ({ ...prevState, [name]: value }));    
     } 
 
     const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                await authService.register(state);
-                navigate("/login?register=true");
+                await authService.register(user);
+                const result = await authService.login( user.email, user.password); 
+                dispatch(login(result.data));  
+                navigate("/profile")
             } catch (error) {
             console.log(error);
             if (error.response.status == 403 || error.response.status == 401) setError("Erreur de saisie");
@@ -31,39 +36,42 @@ function Register() {
         };
 
 
+
   return (
     <>
-    <div className="containerConnexion">
-      <h1>Bienvenue</h1>     
-      <button className="btnLogReg" onClick={() => navigate("/login")}>Se connecter</button>
-      <button className="btnLogReg" onClick={() => navigate("/register")}>S'inscrire</button>
-    </div>  
-    {/* <BtnLogRegister/> */}
+    <BtnLogRegister/>
     {error && <p>{error}</p>}
-    <form onSubmit={handleSubmit}>
- 
-      <label htmlFor="text">Nom *</label>
-      <input type="text" value={state.lastName} id="lastName" name="lastName" onChange={onChange} />
+    <form className="formLog" onSubmit={handleSubmit}>
 
-      <label htmlFor="text">Prénom *</label>
-      <input type="text" value={state.firstName} name="firstName" onChange={onChange} />
+      <div className="inputForm">
+      <input className="inputLogReg" type="text"  placeholder="Nom *" value={user.lastName} id="lastName" name="lastName" onChange={onChange} />
+      </div>
 
-      <label htmlFor="date">Date de naissance *</label>
-      <input type="date" value={state.birthday} id="birthday" name="birthday" max="2005-01-01" onChange={onChange} />
+      <div className="inputForm">
+      <input className="inputLogReg" type="text"  placeholder="Prénom *" value={user.firstName} name="firstName" onChange={onChange} />
+      </div> 
 
-      <label htmlFor="tel">Téléphone</label>
-      <input type="tel" value={state.phone} id="phone" name="phone" onChange={onChange} />
+      <div className="inputForm">
+      <input className="inputLogReg" type="date" placeholder="Date de naissance *" value={user.birthday}  id="birthday" name="birthday" max="2005-01-01" onChange={onChange} />
+      </div> 
 
-      <label htmlFor="email">Email</label>
-      <input type="email" value={state.email} id="email" name="email" onChange={onChange} />
- 
-      <label htmlFor="password">Mot de passe *</label>
-      <input type="password" value={state.password}  id="password" name="password" onChange={onChange} />
+      <div className="inputForm">
+      <input className="inputLogReg" type="tel" placeholder="Téléphone *" value={user.phone} id="phone" name="phone" onChange={onChange} />
+      </div> 
 
-      <label htmlFor="phone">Confirmer le mot de passe *</label>  
-      <input type="password" value={state.repeatPassword} id="repeatPassword" name="repeatPassword" onChange={onChange} />
+      <div className="inputForm">
+      <input className="inputLogReg" type="email" placeholder="Email *" value={user.email} id="email" name="email" onChange={onChange} />
+      </div> 
 
-      <button type="submit">S'inscrire</button>
+      <div className="inputForm">
+      <input className="inputLogReg" type="password" placeholder="Mot de passe *" value={user.password}  id="password" name="password" onChange={onChange} />
+      </div> 
+
+      <div className="inputForm">
+      <input className="inputLogReg" type="password" placeholder="Confirmer le mot de passe *" value={user.repeatPassword} id="repeatPassword" name="repeatPassword" onChange={onChange} />
+      </div> 
+
+      <button type="submit"  >S'inscrire</button>
       </form>
       
     </>

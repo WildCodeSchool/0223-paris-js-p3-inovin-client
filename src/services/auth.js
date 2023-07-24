@@ -20,5 +20,7 @@ const resetPassword = async (password, token) => {
   return api.post("/users/resetPassword", { password, token });
 };
 
+
+
 export {register, login, logout, sendResetPassword, resetPassword };
-export default { register, login, logout, sendResetPassword, resetPassword };
+export default { register, login, logout, sendResetPassword, resetPassword};

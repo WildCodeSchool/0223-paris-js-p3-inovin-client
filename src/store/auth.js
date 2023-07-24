@@ -14,7 +14,7 @@ const auth = createSlice({
       console.log({ ...state, user: null, isLogged: false });
       return { ...state, user: null, isLogged: false };
     },
-
+    
   },
 });
 

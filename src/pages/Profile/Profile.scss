@@ -1,0 +1,95 @@
+@import "../../App.scss";
+
+@import "../Login/Login.scss";
+
+.formLog{
+
+
+    img.avatar{
+        width: 20%;
+        margin-bottom: 20px;
+        margin-top: -10px;
+    }
+
+    h1{
+        margin-top: 4%;
+    }
+
+    h2{
+        color: black;
+        font-family: $font-text;
+        font-size: 30px;
+        font-weight: 100;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        // width: 35%;
+    }   
+
+    p{
+        color: black;
+        font-family: $font-text;
+        font-size: 20px;
+        font-weight: 100;
+        // margin-top: ;
+        margin-bottom: 40px;
+        text-align: center;
+        width: 40%;
+    }   
+
+    .containerTags{
+
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    max-width: 60%;
+        
+        .checkboxCategory{
+            margin: 20px;  
+            background-color :initial;
+            width: 207px;
+            height: 39px;
+            flex-shrink: 0;
+            border-radius: 19.5px;
+            border: 0.2px solid #000;
+            font-family: $font-text;
+            font-size: 16px;
+        }
+        .checkboxCategorySelected{            
+            background-color:#C95B5B;
+            color:white;
+            border: none;
+        }
+
+        
+    }
+
+
+    .inputComment{
+        padding-top: 15px;
+        margin-bottom: 40px;
+        border-top-width: 0px;
+        border-right-width:0px ;
+        border-left-width:0px ;
+        border-bottom-width:1px ;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));    
+        min-width: 500px;
+        min-height: 200px;
+        font-family: $font-text;
+        font-size: 16px;
+           
+        
+    } 
+
+    button{
+        margin-bottom: 60px;
+    }
+
+    
+ 
+
+}

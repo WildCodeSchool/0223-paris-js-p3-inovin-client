@@ -1,0 +1,45 @@
+@import "../../App.scss";
+
+.containerConnexion{
+    display: flex;
+    padding-top: 150px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        color: black;
+        font-family: $font-text;
+        font-size: 40px;
+        font-weight: 100;
+        margin-top: 32px;
+        text-align: center;
+    }   
+
+    .connecInscrire{
+        display: flex;  
+        margin: 20px;  
+       
+        .btnLogReg{
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 25px;
+
+        font-family: $font-text;
+        color: black;
+        border-radius: 0px;
+        background-color: initial;
+        margin: 10px;
+            &:hover{
+            border-bottom: solid black 1px; 
+            } 
+            &>*:hover{
+            border-bottom: none;     
+            }          
+
+        }    
+    }   
+}
+
+
