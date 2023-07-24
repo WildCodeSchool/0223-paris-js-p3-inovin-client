@@ -18,6 +18,8 @@ import FichesAtelier from "./pages/FichesAtelier/FichesAtelier";
 import SelectedWine from "./pages/SelectedWine/SelectedWine"
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
+import Contact from "./pages/Contact/Contact";
+import Profile from "./pages/Profile/Profile";
 
 import "./App.scss";
 import { Users } from "./pages/Users/Users";
@@ -47,6 +49,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
@@ -60,7 +63,7 @@ function App() {
         <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
-        <Route path="/resetPassword" element={<ResetPassword />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
 
       </Routes>
     </>

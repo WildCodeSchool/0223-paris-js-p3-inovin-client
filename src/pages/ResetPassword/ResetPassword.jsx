@@ -47,7 +47,7 @@ function ResetPassword() {
             </div>  
 
              < div>
-            <button  type="submit" >Valider</button> 
+            <button className="btn" type="submit" >Valider</button> 
             < ToastContainer /> 
             </div>  
              

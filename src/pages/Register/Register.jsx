@@ -5,7 +5,10 @@ import  BtnLogRegister from "../../components/BtnLogRegister/BtnLogRegister";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/auth";
-import "./Register.scss";
+import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
+// import "../ForgotPassword/ForgotPassword.scss";
+// import 'react-toastify/dist/ReactToastify.css';
+// import "./Register.scss";
 
 
 
@@ -25,12 +28,12 @@ function Register() {
     const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                await authService.register(user);
-                const result = await authService.login( user.email, user.password); 
-                dispatch(login(result.data));  
-                navigate("/profile")
+            await authService.register(user);              
+            const result = await authService.login( user.email, user.password); 
+            dispatch(login(result.data));
+            navigate("/profile");
+                 
             } catch (error) {
-            console.log(error);
             if (error.response.status == 403 || error.response.status == 401) setError("Erreur de saisie");
             }
         };
@@ -39,7 +42,7 @@ function Register() {
 
   return (
     <>
-    <BtnLogRegister/>
+    <BtnLogRegister type={'register'}/>
     {error && <p>{error}</p>}
     <form className="formLog" onSubmit={handleSubmit}>
 
@@ -71,7 +74,8 @@ function Register() {
       <input className="inputLogReg" type="password" placeholder="Confirmer le mot de passe *" value={user.repeatPassword} id="repeatPassword" name="repeatPassword" onChange={onChange} />
       </div> 
 
-      <button type="submit"  >S'inscrire</button>
+      <button className="btn" type="submit"  >S'inscrire</button>
+      {/* < ToastContainer />  */}
       </form>
       
     </>

@@ -33,7 +33,7 @@ function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await tagsService.sendTags(tags);
+    await tagsService.sendTags(tags) ? navigate("/") :     
       await usersService.updateComment(comment);
       navigate("/");
     } catch (error) {
@@ -113,7 +113,7 @@ function Profile() {
           Mettez votre commentaire ici ...
         </textarea>
 
-        <button type="submit"  >Valider</button>
+        <button className="btn" type="submit"  >Valider</button>
       </form>
     </>
   );
