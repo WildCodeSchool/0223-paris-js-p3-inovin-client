@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Reservation from "./pages/Reservation/Reservation";
 import Navbar from "./components/Navbar/Navbar";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
@@ -21,6 +24,7 @@ import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
 import AdminWines from "./pages/AdminWines/AdminWines";
 import Users from "./pages/Users/Users";
 
+
 function App() {
   const dispatch = useDispatch();
 
@@ -36,6 +40,7 @@ function App() {
       console.error(error);
     }
   };
+
 
   return (
     <>
@@ -57,10 +62,17 @@ function App() {
         <Route path="/admin/vins" element={<AdminWines />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
+
         <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
         <Route path="/whitewines" element={<Wines color="Blanc" />}></Route>
         <Route path="/wines/:id" element={<SelectedWine />}></Route>
         <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
+
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/resetPassword" element={<ResetPassword />}></Route>
+
+
       </Routes>
     </>
   );
