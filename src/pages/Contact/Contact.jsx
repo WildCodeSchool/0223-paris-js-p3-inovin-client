@@ -17,14 +17,14 @@ function Contact() {
  
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const result = await authService.login(email, password);
-    //    navigate("/");
-    // } catch (error) {
-    //   console.log(error);
-    //   if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
-    // }
+    e.preventDefault();
+    try {
+      const result = await authService.login(email, password);
+       navigate("/");
+    } catch (error) {
+      console.log(error);
+      if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
+    }
   };
 
   return (

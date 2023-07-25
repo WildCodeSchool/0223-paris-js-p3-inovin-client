@@ -5,10 +5,7 @@ import  BtnLogRegister from "../../components/BtnLogRegister/BtnLogRegister";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/auth";
-import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
-// import "../ForgotPassword/ForgotPassword.scss";
-// import 'react-toastify/dist/ReactToastify.css';
-// import "./Register.scss";
+import "./Register.scss";
 
 
 
@@ -75,7 +72,6 @@ function Register() {
       </div> 
 
       <button className="btn" type="submit"  >S'inscrire</button>
-      {/* < ToastContainer />  */}
       </form>
       
     </>
