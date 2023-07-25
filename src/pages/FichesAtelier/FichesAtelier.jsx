@@ -44,8 +44,8 @@ const FichesAtelier = () => {
   }, []);
 
   useEffect(() => {
-    console.log(wines);
-  }, [wines]);
+    window.scrollTo(0,0)
+  }, []);
 
   const handleSliderChange = (name, label) => {
     if (name === "aromeNez" || name === "aromeBouche") {
