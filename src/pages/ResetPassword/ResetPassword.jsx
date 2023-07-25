@@ -25,8 +25,7 @@ function ResetPassword() {
     
             setTimeout(() => {
                 navigate("/login");
-              }, "3000")
-    
+              }, "3000")   
             ;    
         } catch (error) {
             console.error(error);
