@@ -19,7 +19,6 @@ import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
 import "./App.scss";
 import { SessionAddUsers } from "./pages/SessionAddUsers/SessionAddUsers";
 import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
-import Users from "./pages/Users/Users";
 import AdminWines from "./pages/AdminWines/AdminWines";
 
 function App() {
