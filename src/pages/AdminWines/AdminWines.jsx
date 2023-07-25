@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllWines } from "../../services/wines";
+import BtnBack from "../../components/BtnBack/BtnBack";
 import "./AdminWines.scss";
 
 const AdminWines = () => {
@@ -21,9 +22,8 @@ const AdminWines = () => {
   }, []);
   return (
     <div className="admin-wines">
-      <button onClick={() => navigate(`/`)} className="backButton">
-        Retour
-      </button>
+      <BtnBack handleBackClick={() => navigate(`/`)} />
+
       <h2>Vins enregistrés</h2>
       {wines.length > 0 ? (
         <table>
@@ -46,13 +46,13 @@ const AdminWines = () => {
                   <td>{wine.domain}</td>
                   <td className="buttonCell">
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleSeeWineClick(wine.id)}
                     >
                       Voir détails
                     </button>
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleDeleteWineClick(wine)}
                     >
                       Supprimer

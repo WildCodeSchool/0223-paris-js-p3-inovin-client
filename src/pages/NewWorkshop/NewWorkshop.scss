@@ -2,15 +2,13 @@
   padding-top: 10rem;
   display: flex;
   flex-direction: column;
-  .backButton {
-    width: fit-content;
-    margin-left: 3rem;
-  }
+  
   h2{
     text-align: center;
     width: 100%;
     font-size: 4rem;
     font-weight: 300;
+    margin-bottom: 4rem;
   }
   table {
     width: 80%;
@@ -34,6 +32,7 @@
    }
    input {
     border: none;
+    width: 70%;
    }
    select {
     width: 90%;
@@ -48,8 +47,7 @@
     border: none;
      
   }
-  button:hover {
-    
+  button:hover {    
     transition: 300ms;
     scale: 1.1;
     cursor: pointer;

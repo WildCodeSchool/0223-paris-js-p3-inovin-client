@@ -1,0 +1,9 @@
+.backButton {
+  width: fit-content;
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+.backButton:hover {
+  scale: 1.1;
+  transition: 200ms;
+}

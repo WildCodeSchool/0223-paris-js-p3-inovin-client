@@ -48,6 +48,7 @@
       display: flex;
       justify-content: space-around;
       border: none;
+      
        
     }
   }
@@ -61,5 +62,15 @@
     width: fit-content;
     margin-left: 3rem;
     margin-top: 3rem;
+  }
+  p {
+    width: fit-content;
+  }
+  .btn {
+    transition: 300ms;
+  }
+  .btn:hover {
+    scale: 1.1;
+    transition: 300ms;
   }
 }

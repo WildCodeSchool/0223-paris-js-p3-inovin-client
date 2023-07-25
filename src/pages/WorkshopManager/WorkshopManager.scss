@@ -1,12 +1,8 @@
 
 .workshopManager {
+  padding-top: 3.7rem;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 5rem;
-  
+  flex-direction: column;  
   min-height: 80vh;
   h2{
     text-align: center;
@@ -19,6 +15,7 @@
     width: 80%;
     border-collapse: collapse;
     border-style: hidden;
+    margin: auto;
     margin-bottom: 2rem;
     th {
       text-align: center;
@@ -43,7 +40,9 @@
 
   }
   .addButton {
+      margin: auto;
       margin-bottom: 3rem;
+      width: fit-content;
   }
   button:hover {
     cursor: pointer;
