@@ -1,0 +1,29 @@
+.admin-wine-details {
+  padding-top: 3.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .image {
+    margin-top: 5rem;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+  .content {
+    width: 50%;
+    .content-body {
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        input  {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  input {
+    border: none;
+    background-color: lightgray;
+  }
+}
