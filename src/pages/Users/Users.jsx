@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/users";
 import { useNavigate } from "react-router-dom";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import Confirmbox from "../../components/ConfirmBox/Confirmbox";
+import useConfirm from "../../services/useConfirm";
 import BtnAdd from "../../components/BtnAdd/BtnAdd";
+import { deleteUser } from "../../services/users";
 import "./Users.scss";
 
 const Users = () => {
+  const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     const getUsers = async () => {
       try {
         const response = await getAllUsers();
         setUsers(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -21,8 +25,31 @@ const Users = () => {
     getUsers();
   }, []);
 
+  const handleDeleteUserClick = async (user) => {
+    try {
+      const isConfirmed = await confirm(
+        `Etes-vous sure de vouloir supprimer l'utilisateur ${user.firstname} ${user.lastname} de la base de données ?`
+      );
+      if (isConfirmed) {
+        await deleteUser(user.id);
+        const updatedUsers = [...users].filter((e) => e.id != user.id);
+        setUsers(updatedUsers);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="users">
+      {confirmState.show ? (
+        <Confirmbox
+          text={confirmState.text}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      ) : null}
+
       <BtnBack handleBackClick={() => navigate("/")} />
       <h2>Utilisateurs enregistrés</h2>
       {users.length > 0 ? (
@@ -45,7 +72,7 @@ const Users = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton btn"
-                      onClick={() => handleSeeUserClick(user.id)}
+                      onClick={() => navigate(`${user.id}`)}
                     >
                       Voir détails
                     </button>
