@@ -40,7 +40,6 @@ const WorkshopDetails = () => {
         const sessionInfos = await getSessionById(id);
         const wineInfos = await getWinesBySessionId(id);
         const userInfos = await getUsersBySessionId(id);
-        console.log(sessionInfos.data);
         setSession(sessionInfos.data);
         setWines(wineInfos.data);
         setUsers(userInfos.data);
@@ -60,7 +59,7 @@ const WorkshopDetails = () => {
   const handleDeleteWineClick = async (wine) => {
     try {
       const isConfirmed = await confirm(
-        "Voulez vous supprimer cette donnée capitale ?"
+        `Etes-vous sure de vouloir supprimer ${wine.name} de cet atelier ?`
       );
 
       if (isConfirmed) {
