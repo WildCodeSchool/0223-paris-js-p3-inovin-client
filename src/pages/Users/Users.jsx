@@ -72,7 +72,7 @@ const Users = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton btn"
-                      onClick={() => handleSeeUserClick(user.id)}
+                      onClick={() => navigate(`${user.id}`)}
                     >
                       Voir détails
                     </button>

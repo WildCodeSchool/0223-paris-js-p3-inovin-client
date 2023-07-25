@@ -54,8 +54,8 @@ const WorkshopDetails = () => {
     };
 
     getSessionInfos(id);
-    console.log(session);
   }, []);
+  
   const handleDeleteWineClick = async (wine) => {
     try {
       const isConfirmed = await confirm(

@@ -76,7 +76,7 @@ const AdminWines = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton btn"
-                      onClick={() => handleSeeWineClick(wine.id)}
+                      onClick={() => navigate(`${wine.id}`)}
                     >
                       Voir détails
                     </button>

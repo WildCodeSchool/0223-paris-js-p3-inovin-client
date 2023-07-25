@@ -26,7 +26,8 @@ import { SessionAddUsers } from "./pages/SessionAddUsers/SessionAddUsers";
 import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
 import AdminWines from "./pages/AdminWines/AdminWines";
 import Users from "./pages/Users/Users";
-
+import UserDetails from "./pages/UserDetails/UserDetails";
+import AdminWineDetails from "./pages/AdminWineDetails/AdminWineDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,6 @@ function App() {
     }
   };
 
-
   return (
     <>
       <Navbar />
@@ -59,11 +59,13 @@ function App() {
         <Route path="/ateliers/:id/users" element={<SessionAddUsers />} />
         <Route path="/ateliers/:id/wines" element={<SessionAddWines />} />
         <Route path="/utilisateurs" element={<Users />} />
+        <Route path="/utilisateurs/:id" element={<UserDetails />} />
         <Route
           path="/ateliers_degustation/:id"
           element={<FichesAtelier />}
         ></Route>
         <Route path="/admin/vins" element={<AdminWines />} />
+        <Route path="/admin/vins/:id" element={<AdminWineDetails />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
         <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
