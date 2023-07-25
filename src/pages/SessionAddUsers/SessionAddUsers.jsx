@@ -7,6 +7,7 @@ import {
   getUsersBySessionId,
 } from "../../services/session";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import { getAllUsers } from "../../services/users";
 
 export const SessionAddUsers = () => {
@@ -87,6 +88,7 @@ export const SessionAddUsers = () => {
       ) : (
         <p>Aucun utilisateur</p>
       )}
+
     </div>
   );
 };

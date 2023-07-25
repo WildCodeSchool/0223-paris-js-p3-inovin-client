@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/users";
 import { useNavigate } from "react-router-dom";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import "./Users.scss";
 
 const Users = () => {
@@ -63,6 +64,10 @@ const Users = () => {
       ) : (
         <p>Aucun utilisateur enregistrés dans la base de données</p>
       )}
+      <BtnAdd
+        handleAddClick={() => navigate("new")}
+        title={"Ajouter un utilisateur"}
+      />
     </div>
   );
 };

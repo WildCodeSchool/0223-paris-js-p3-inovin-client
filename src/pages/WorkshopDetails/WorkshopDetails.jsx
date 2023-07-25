@@ -90,13 +90,6 @@ const WorkshopDetails = () => {
     }
   };
 
-  const handleAddParticipant = () => {
-    navigate("users");
-  };
-  const handleAddWine = () => {
-    navigate("wines");
-  };
-
   const date = new Date(session.date);
 
   return (
@@ -183,7 +176,7 @@ const WorkshopDetails = () => {
         <h4>Aucun participant pour le moment</h4>
       )}
       <BtnAdd
-        handleAddClick={handleAddParticipant}
+        handleAddClick={() => navigate("users")}
         title={"Ajouter un particpant"}
       />
       <h3>Liste des vins à présenter</h3>
@@ -229,8 +222,12 @@ const WorkshopDetails = () => {
       ) : (
         <h4>Aucun vin à prénsenter pour le moment</h4>
       )}
-      <BtnAdd handleAddClick={handleAddWine} title={"Ajouter un vin"} />
-        
+
+      <BtnAdd
+        handleAddClick={() => navigate("wines")}
+        title={"Ajouter un vin"}
+      />
+
       {session.category === "Création" && (
         <div>
           <h3>Créations</h3>

@@ -7,6 +7,7 @@ import {
 import "./WorkshopManager.scss";
 import { useNavigate } from "react-router-dom";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 
 const options = {
   weekday: "long",
@@ -94,13 +95,10 @@ const WorkshopManager = () => {
           })}
         </tbody>
       </table>
-      <button
-        type="button"
-        onClick={() => navigate("new")}
-        className="addButton btn"
-      >
-        Ajouter un atelier
-      </button>
+      <BtnAdd
+        handleAddClick={() => navigate("new")}
+        title={"Ajouter un atelier"}
+      />
     </div>
   );
 };
