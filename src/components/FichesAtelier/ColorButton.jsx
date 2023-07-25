@@ -1,13 +1,17 @@
 import "./ColorButton.scss";
 import React, { useEffect, useState } from "react";
 
-const ColorButton = ({ tags, onChange, name }) => {
+const ColorButton = ({ tags, onChange, name , currentWine}) => {
   const [selectedCircle, setSelectedCircle] = useState(null);
 
   const handleSliderChange = (id) => {
     const selectedLabel = id;
     onChange(name, selectedLabel);
   };
+
+useEffect(() => {
+setSelectedCircle(null)
+}, [currentWine])
 
   const colors = [
     { text: "Framboise", color: "#d85967", colorfocus: "pink" },
