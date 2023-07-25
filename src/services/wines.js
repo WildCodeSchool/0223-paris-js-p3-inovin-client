@@ -12,4 +12,8 @@ const deleteWine = (id) => {
   return api.delete(`/wines/${id}`);
 };
 
-export { getAllWines, deleteWine, getWineById };
+const updateWine = (wine) => {
+  return api.put(`/wines/`, { wine });
+};
+
+export { getAllWines, deleteWine, getWineById, updateWine };

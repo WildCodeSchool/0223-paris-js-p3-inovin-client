@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getWineById } from "../../services/wines";
-
+import BtnBack from "../../components/BtnBack/BtnBack";
+import useConfirm from "../../services/useConfirm";
+import Confirmbox from "../../components/ConfirmBox/Confirmbox";
+import { deleteWine, updateWine } from "../../services/wines";
 import "./AdminWineDetails.scss";
 
 const AdminWineDetails = () => {
   const [wine, setWine] = useState({});
+  const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -14,7 +19,6 @@ const AdminWineDetails = () => {
       try {
         const wineInfos = await getWineById(id);
         setWine(wineInfos.data[0]);
-        console.log(wineInfos.data[0]);
       } catch (error) {
         console.error(error);
       }
@@ -27,12 +31,49 @@ const AdminWineDetails = () => {
     setWine((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
+  const handleDeleteClick = async (wine) => {
+    try {
+      const isConfirmed = await confirm(
+        `Êtes-vous sûr de vouloir supprimer ce vin ?`
+      );
+
+      if (isConfirmed) {
+        await deleteWine(wine.id);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSaveClick = async (wine) => {
+    try {
+      const isConfirmed = await confirm(
+        `Êtes-vous sûr de vouloir enregistrer les modifications ?`
+      );
+
+      if (isConfirmed) {
+        await updateWine(wine);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="admin-wine-details">
-      <div className="image">
-        <img src={wine?.image} alt="Bouteille de vin" />
-      </div>
+      {confirmState.show ? (
+        <Confirmbox
+          text={confirmState.text}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      ) : null}
+      <BtnBack handleBackClick={() => navigate(`/admin/vins`)} />
+
       <div className="content">
+        <div className="image">
+          <img src={wine.image} alt="Bouteille de vin" />
+        </div>
         <div className="content-body">
           <label htmlFor="">
             Nom du vin :
@@ -107,10 +148,14 @@ const AdminWineDetails = () => {
               value={wine.comment}
             />
           </label>
-        </div>
-        <div className="content-footer">
-          <button className="btn">Enregistrer les modifications</button>
-          <button className="btn">Supprimer le vin</button>
+          <div className="content-buttons">
+            <button className="btn" onClick={() => handleSaveClick(wine)}>
+              Enregistrer les modifications
+            </button>
+            <button className="btn" onClick={(wine) => handleDeleteClick(wine)}>
+              Supprimer le vin
+            </button>
+          </div>
         </div>
       </div>
     </div>
