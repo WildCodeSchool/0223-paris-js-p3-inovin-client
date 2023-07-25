@@ -53,8 +53,8 @@
       font-family: $font-title;
       font-style: normal;
       font-weight: 100;
-      margin-top: 5vh;
-      margin-bottom: 1vh;
+      margin-top: 6vh;
+      margin-bottom: 4vh;
     }
 
     h4 {
@@ -62,7 +62,7 @@
       font-family: $font-title;
       font-style: normal;
       font-weight: 100;
-      margin-top: 2vh;
+      margin-top: 4vh;
       margin-bottom: 0.5vh;
     }
 
@@ -70,6 +70,7 @@
       font-family: $font-text;
       width: 80%;
       text-align: justify;
+      line-height: normal;
     }
 
     span {
@@ -78,8 +79,9 @@
       text-align: center;
     }
     img {
-      width: 60%;
-      margin-top: 2vh;
+      max-height: 30vh;
+      width: 80%;
+      margin-top: 4vh;
     }
 
     .section-wrapper {
@@ -106,10 +108,16 @@
         justify-content: center;
         width: 40vw;
 
-        .welcome-message {
+        .welcome-title {
           padding: 2vh 0 2vh 0;
           border-top: solid 1px rgb(162, 162, 162);
           border-bottom: solid 1px rgb(162, 162, 162);
+        }
+        .welcome-message {
+          margin-top: 2vh;
+          padding: 2vh 0 2vh 0;
+          text-align: center;
+          width: 40%;
         }
       }
     }

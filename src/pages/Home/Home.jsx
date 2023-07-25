@@ -118,8 +118,12 @@ function Home() {
             </div>
           ) : (
             <div className="region-info-container-welcome">
-              <h4 className="welcome-message">Choisissez une région sur la carte</h4>
-            </div>
+              <h4 className="welcome-title">Choisissez une région sur la carte</h4>
+              <p className="welcome-message">
+                Chez Inovin, nous voulons vous faire découvrir le vin et ses secrets. <br /> <br />
+                Servez-vous de la carte pour explorer les régions, leur histoire, leurs cépages ...
+              </p>
+            </div>  
           )}
         </div>
       </div>
