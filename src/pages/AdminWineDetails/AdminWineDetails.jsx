@@ -23,7 +23,9 @@ const AdminWineDetails = () => {
     getWineInfos(id);
   }, []);
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setWine((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
 
   return (
     <div className="admin-wine-details">
@@ -36,6 +38,7 @@ const AdminWineDetails = () => {
             Nom du vin :
             <input
               type="text"
+              name="name"
               onChange={(e) => handleChange(e)}
               value={wine.name}
             />
@@ -44,6 +47,7 @@ const AdminWineDetails = () => {
             Nom du domaine :
             <input
               type="text"
+              name="domain"
               onChange={(e) => handleChange(e)}
               value={wine.domain}
             />
@@ -52,28 +56,62 @@ const AdminWineDetails = () => {
             Année de production :
             <input
               type="text"
+              name="manufacture_year"
               onChange={(e) => handleChange(e)}
               value={wine.manufacture_year}
+            />
+          </label>
+          <label htmlFor="">
+            Type :
+            <input
+              type="text"
+              name="color"
+              onChange={(e) => handleChange(e)}
+              value={wine.color}
             />
           </label>
           <label htmlFor="">
             Région :
             <input
               type="text"
+              name="region"
               onChange={(e) => handleChange(e)}
               value={wine.region}
             />
           </label>
           <label htmlFor="">
-            Année de production :
+            Appellation :
             <input
               type="text"
+              name="appellation"
               onChange={(e) => handleChange(e)}
-              value={wine.manufacture_year}
+              value={wine.appellation}
+            />
+          </label>
+          <label htmlFor="">
+            Cépage :
+            <input
+              type="text"
+              name="cepage"
+              onChange={(e) => handleChange(e)}
+              value={wine.cepage}
+            />
+          </label>
+          <label htmlFor="" className="comment">
+            Description :
+            <textarea
+              className="comment-input"
+              type="text"
+              name="comment"
+              onChange={(e) => handleChange(e)}
+              value={wine.comment}
             />
           </label>
         </div>
-        <div className="content-footer"></div>
+        <div className="content-footer">
+          <button className="btn">Enregistrer les modifications</button>
+          <button className="btn">Supprimer le vin</button>
+        </div>
       </div>
     </div>
   );
