@@ -16,10 +16,11 @@ datalist {
 
 
 input {
+  display: flex;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
-  width: 300px;
+  width: 335px;
   &::-webkit-slider-runnable-track {
       background: #DBE5FF;
       height: 2px;

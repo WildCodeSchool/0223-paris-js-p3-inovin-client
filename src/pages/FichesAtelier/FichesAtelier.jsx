@@ -142,6 +142,7 @@ const FichesAtelier = () => {
         name="couleur"
         currentWine={currentWine}
       />
+      <br />
       <div className="container-oeil">
         <div className="container-suboeil">
           <h3 className="intensite">INTENSITÉ DE LA COULEUR</h3>

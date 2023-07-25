@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./NoteSelector.scss";
 
-function NoteSelector ({setNote, note}) {
-const handleNoteChange = (event) => {
+function NoteSelector({ setNote, note }) {
+  const handleNoteChange = (event) => {
     const selectedNote = parseInt(event.target.value);
     setNote(selectedNote);
   };
 
   return (
     <div>
-      <span>{`Note ${note}/10`}</span>
+      <div className="noteselection">
+        <span>{`Note ${note}/10`}</span>
+      </div>
       <input
         type="range"
         id="noteRange"
@@ -20,6 +22,6 @@ const handleNoteChange = (event) => {
       />
     </div>
   );
-};
+}
 
 export default NoteSelector;

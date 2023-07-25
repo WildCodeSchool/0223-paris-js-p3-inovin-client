@@ -46,7 +46,7 @@ function Login() {
   return (
     <>
       <BtnLogRegister type={'login'}/>  
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
      
       <form className="formLog" onSubmit={handleSubmit}>
 
