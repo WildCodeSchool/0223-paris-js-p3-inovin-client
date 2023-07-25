@@ -21,6 +21,7 @@ import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
 import Contact from "./pages/Contact/Contact";
 import Profile from "./pages/Profile/Profile";
 import "./App.scss";
+import Creation from "./pages/Creation/Creation";
 import { SessionAddUsers } from "./pages/SessionAddUsers/SessionAddUsers";
 import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
 import AdminWines from "./pages/AdminWines/AdminWines";
@@ -69,10 +70,11 @@ function App() {
         <Route path="/whitewines" element={<Wines color="Blanc" />}></Route>
         <Route path="/wines/:id" element={<SelectedWine />}></Route>
         <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
+        <Route path="/creation/:id" element={<Creation />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/resetPassword" element={<ResetPassword />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
-
       </Routes>
     </>
   );
