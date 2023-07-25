@@ -15,11 +15,11 @@ import FichesAtelier from "./pages/FichesAtelier/FichesAtelier";
 import SelectedWine from "./pages/SelectedWine/SelectedWine";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
-
 import "./App.scss";
 import { SessionAddUsers } from "./pages/SessionAddUsers/SessionAddUsers";
 import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
 import AdminWines from "./pages/AdminWines/AdminWines";
+import Users from "./pages/Users/Users";
 
 function App() {
   const dispatch = useDispatch();
