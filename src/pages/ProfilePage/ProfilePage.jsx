@@ -137,7 +137,7 @@ function Profile() {
               <p>{e.place_name}</p>
               {date > e.time.getTime() - 300000 &&
                 date < e.time.getTime() + 14400000 && (
-                  <button className="btn">Commencer l'atelier</button>
+                  <button className="btn" onClick={() => nav(`/ateliers_degustation/${e.session_id}`)}>Commencer l'atelier</button>
                 )}
             </div>
           );

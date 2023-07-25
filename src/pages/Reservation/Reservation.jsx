@@ -75,7 +75,7 @@ function Reservation() {
   };
 
   return (
-    <div className="page-container">
+    <div className="reservation-page-container">
       <div className="map-section">
         <div className="map-container">
           <MapReservation filteredSessions={filteredSessions} setClickedLocation={setClickedLocation} />

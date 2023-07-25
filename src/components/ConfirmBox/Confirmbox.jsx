@@ -9,10 +9,13 @@ const Confirmbox = ({ text, onCancel, onConfirm }) => {
           <p>{text}</p>
         </div>
         <div className="confirmbox-buttons">
-          <button onClick={onConfirm} className="confirmbox-buttons__confirm">
+          <button
+            onClick={onConfirm}
+            className="confirmbox-buttons__confirm btn"
+          >
             Confirmer
           </button>
-          <button onClick={onCancel} className="confirmbox-buttons__cancel">
+          <button onClick={onCancel} className="confirmbox-buttons__cancel btn">
             Annuler
           </button>
         </div>
