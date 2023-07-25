@@ -58,7 +58,6 @@ function Profile() {
     );
   }, []);
 
-
   useEffect(() => {
     setPagesWine(Math.ceil(favWines.length / 4) || 1);
     setPagesCreation(Math.ceil(creation.length / 4) || 1);
@@ -123,7 +122,7 @@ function Profile() {
         {!upcomingWorkshops.length && (
           <div className="empty-wine">
             <p>Vous n'êtes inscrit(e) à aucun atelier</p>
-            <button onClick={() => nav("/reservation")}>
+            <button onClick={() => nav("/reservation")} className="btn">
               S'inscrire à un atelier
             </button>
           </div>
@@ -137,7 +136,7 @@ function Profile() {
               <p>{e.place_name}</p>
               {date > e.time.getTime() - 300000 &&
                 date < e.time.getTime() + 14400000 && (
-                  <button>Commencer l'atelier</button>
+                  <button className="btn">Commencer l'atelier</button>
                 )}
             </div>
           );
@@ -152,7 +151,9 @@ function Profile() {
               Pas de panique, explorez nos vins et cliquez sur le petit coeur
               pour les sauvegarder
             </p>
-            <button className="btn btn-red" onClick={() => nav("/wines")}>Explorer nos vins</button>
+            <button className="btn btn-red" onClick={() => nav("/wines")}>
+              Explorer nos vins
+            </button>
           </div>
         )}
         {Boolean(favWines.length) && (
