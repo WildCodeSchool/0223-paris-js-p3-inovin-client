@@ -75,10 +75,6 @@ function BubbleChart({ data }) {
       d.fy = d.y;
     }
 
-    // function dragged(event, d) {
-    //   d.fx = event.x;
-    //   d.fy = event.y;
-    // }
 
     function dragged(event, d) {
       d.fx = Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), event.x));

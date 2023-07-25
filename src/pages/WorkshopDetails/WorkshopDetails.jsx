@@ -39,6 +39,7 @@ const WorkshopDetails = () => {
         const sessionInfos = await getSessionById(id);
         const wineInfos = await getWinesBySessionId(id);
         const userInfos = await getUsersBySessionId(id);
+        console.log(sessionInfos.data);
         setSession(sessionInfos.data);
         setWines(wineInfos.data);
         setUsers(userInfos.data);
@@ -53,6 +54,7 @@ const WorkshopDetails = () => {
     };
 
     getSessionInfos(id);
+    console.log(session);
   }, []);
   const handleDeleteWineClick = async (wine) => {
     try {
@@ -90,7 +92,9 @@ const WorkshopDetails = () => {
   const handleAddParticipant = () => {
     navigate("users");
   };
-  const handleAddWine = () => {};
+  const handleAddWine = () => {
+    navigate("wines");
+  };
 
   const date = new Date(session.date);
 
@@ -149,7 +153,7 @@ const WorkshopDetails = () => {
           <tbody>
             {users.map((user) => {
               return (
-                <tr key={user.id}>
+                <tr key={user.firstname + user.id}>
                   <td>{user.firstname}</td>
                   <td>{user.lastname}</td>
                   <td>{user.comment}</td>
@@ -195,7 +199,7 @@ const WorkshopDetails = () => {
           <tbody>
             {wines.map((wine) => {
               return (
-                <tr key={wine.id}>
+                <tr key={wine.name + wine.id}>
                   <td>{wine.name}</td>
                   <td>{wine.color}</td>
                   <td>{wine.cepage}</td>
@@ -244,7 +248,7 @@ const WorkshopDetails = () => {
               <tbody>
                 {recipes.map((recipe) => {
                   return (
-                    <tr key={recipe.id}>
+                    <tr key={recipe.name + recipe.id}>
                       <td>{recipe.name}</td>
                       <td>{recipe.user_id} </td>
                       <td>{recipe.selected_for_context}</td>
