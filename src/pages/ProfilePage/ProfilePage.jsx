@@ -58,9 +58,6 @@ function Profile() {
     );
   }, []);
 
-  useEffect(() => {
-    console.log(creation);
-  }, [creation]);
 
   useEffect(() => {
     setPagesWine(Math.ceil(favWines.length / 4) || 1);
@@ -155,7 +152,7 @@ function Profile() {
               Pas de panique, explorez nos vins et cliquez sur le petit coeur
               pour les sauvegarder
             </p>
-            <button onClick={() => nav("/wines")}>Explorer nos vins</button>
+            <button className="btn btn-red" onClick={() => nav("/wines")}>Explorer nos vins</button>
           </div>
         )}
         {Boolean(favWines.length) && (
@@ -196,7 +193,7 @@ function Profile() {
         {!creation.length && (
           <div className="empty-wine">
             <p>Vous n'avez pas encore participé à un atelier création</p>
-            <button onClick={() => nav("/reservation")}>
+            <button className="btn btn-red" onClick={() => nav("/reservation")}>
               S'inscrire à un atelier
             </button>
           </div>
@@ -218,7 +215,7 @@ function Profile() {
                 <div
                   className="wine"
                   key={e.id}
-                  onClick={() => nav(`/recipes/${e.id}`)}
+                  onClick={() => nav(`/recipes/${e.session_id}`)}
                 >
                   <img src={e.image} />
                   <p>
@@ -247,7 +244,7 @@ function Profile() {
           </div>
         )}
       </div>
-      <button onClick={disconnect} className="logout">
+      <button onClick={disconnect} className="btn logout">
         Se déconnecter
       </button>
     </div>

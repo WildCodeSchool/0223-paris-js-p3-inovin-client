@@ -39,7 +39,6 @@ function Creation() {
       return;
     }
     try {
-      nav("/profilepage");
       await api.post(`recipes/${id}`);
       const result = await api.get(`recipes/session/${id}`);
       await api.post("creations/", [
@@ -59,6 +58,7 @@ function Creation() {
           percent: inputValue.wine3,
         },
       ]);
+      nav(`/recipes/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -87,24 +87,21 @@ function Creation() {
     setCondensedData(Array.from(groupedData.values()).slice(0, 3));
   }, [notes]);
 
-  useEffect(() => {
-    console.log(notes);
-  }, [condensedData]);
 
   return (
     <div className="creation">
       <h1>Atelier création</h1>
       <div className="wines">
         <div className="wine">
-          <p>Vin 1</p>
+          <p>{condensedData[0]?.wine}</p>
           <p>{inputValue.wine1}%</p>
         </div>
         <div className="wine">
-          <p>Vin 2</p>
+          <p>{condensedData[1]?.wine}</p>
           <p>{inputValue.wine2}%</p>
         </div>
         <div className="wine">
-          <p>Vin 3</p>
+          <p>{condensedData[2]?.wine}</p>
           <p>{inputValue.wine3}%</p>
         </div>
       </div>
@@ -200,7 +197,14 @@ function Creation() {
       <p className="error" style={{ color: errorMessage ? "red" : "white" }}>
         Le total des vins doit faire 100%
       </p>
-      <button onClick={handleClick} className={notes[0]?.color == "Rouge" ? "btn btn-red" : "btn btn-yellow"}>Valider la recette</button>
+      <button
+        onClick={handleClick}
+        className={
+          notes[0]?.color == "Rouge" ? "btn btn-red" : "btn btn-yellow"
+        }
+      >
+        Valider la recette
+      </button>
     </div>
   );
 }
