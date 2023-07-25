@@ -73,6 +73,7 @@ function App() {
         <Route path="/creation/:id" element={<Creation />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/resetPassword" element={<ResetPassword />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     </>
