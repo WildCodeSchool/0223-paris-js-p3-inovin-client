@@ -4,4 +4,8 @@ const getAllWines = () => {
   return api.get("/wines/");
 };
 
-export { getAllWines };
+const deleteWine = (id) => {
+  return api.delete(`/wines/${id}`);
+};
+
+export { getAllWines, deleteWine };
