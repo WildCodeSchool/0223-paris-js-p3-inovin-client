@@ -109,6 +109,11 @@ function SelectedRecipe() {
     });
   }, [condensedData]);
 
+  useEffect(() => {
+    console.log('condensed',condensedData);
+    console.log('recipe', recipe)
+  }, [condensedData]);
+
   return (
     <div className="selected-recipe">
       <div className="creation-container">
@@ -168,7 +173,9 @@ function SelectedRecipe() {
             <img
               src={condensedData[selectedWine]?.wine_img}
               alt=""
-              onClick={() => nav(`/wines/${condensedData[selectedWine]?.wine_id}`)}
+              onClick={() =>
+                nav(`/wines/${condensedData[selectedWine]?.wine_id}`)
+              }
             />
             <p className="note">
               Note : {condensedData[selectedWine]?.note}/10
@@ -188,7 +195,11 @@ function SelectedRecipe() {
             <h4>Nez</h4>
 
             {condensedData[selectedWine]?.tags
-              .filter((item) => item.category === "Nez")
+              .filter(
+                (item) =>
+                  item.category === "Nez" &&
+                  item.sub_category !== "Familles Arômatiques"
+              )
               .map((item) => (
                 <p>
                   {item.sub_category} : {item.tag}
@@ -198,7 +209,11 @@ function SelectedRecipe() {
             <h4>Bouche</h4>
 
             {condensedData[selectedWine]?.tags
-              .filter((item) => item.category === "La Bouche")
+              .filter(
+                (item) =>
+                  item.category === "La Bouche" &&
+                  item.sub_category !== "Familles Arômatiques"
+              )
               .map((item) => (
                 <p>
                   {item.sub_category} : {item.tag}

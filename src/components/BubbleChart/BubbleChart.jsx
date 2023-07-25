@@ -9,7 +9,7 @@ function BubbleChart({ data }) {
   useEffect(() => {
     // Dimensions du graphique
     const width = window.innerWidth / 2;
-    const height = 200;
+    const height = 300;
 
     const svg = d3.select(chartRef.current);
 
@@ -26,31 +26,21 @@ function BubbleChart({ data }) {
     const radiusScale = d3
       .scaleLog()
       .domain([1, d3.max(data, (d) => d.value)])
-      .range([5, 50]);
+      .range([5, 40]);
 
     // Création de la simulation de force
     const simulation = d3
-      .forceSimulation(groupedData)
-      .force("charge", d3.forceManyBody().strength(10))
-      .force("center", d3.forceCenter(width / 2, height / 2))
-      .force(
-        "collision",
-        d3.forceCollide().radius((d) => radiusScale(d.value)).strength(0.8)
-      )
-      .force(
-        "gravity",
-        d3
-          .forceRadial()
-          .radius(width / 4)
-          .strength(0.1)
-      );
+  .forceSimulation(groupedData)
+  .force("charge", d3.forceManyBody().strength(10))
+  .force("center", d3.forceCenter(width / 2, height / 2))
+  .force("collision", d3.forceCollide().radius((d) => radiusScale(d.value) + 1)) // Ajoutez un petit décalage pour la force de collision
+  .force("gravity", d3.forceRadial().radius(width / 4).strength(0.1));
 
     // Initialiser les positions des cercles
     simulation.on("tick", () => {
       const circles = svg.selectAll("circle").data(groupedData);
       const texts = svg.selectAll("text").data(groupedData);
-      texts.attr("x", (d) => d.x).attr("y", (d) => d.y);
-
+    
       circles
         .enter()
         .append("circle")
@@ -58,12 +48,8 @@ function BubbleChart({ data }) {
         .style("fill", (d) => colorScale(d.name))
         .style("stroke", "white")
         .merge(circles)
-        .attr("cx", (d) => {
-          return Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), d.x));
-        })
-        .attr("cy", (d) => {
-          return Math.max(radiusScale(d.value), Math.min(height - radiusScale(d.value), d.y));
-        })
+        .attr("cx", (d) => Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), d.x)))
+        .attr("cy", (d) => Math.max(radiusScale(d.value), Math.min(height - radiusScale(d.value), d.y)))
         .call(
           d3
             .drag()
@@ -71,15 +57,16 @@ function BubbleChart({ data }) {
             .on("drag", dragged)
             .on("end", dragEnded)
         );
-
+    
       texts
         .enter()
         .append("text")
         .style("fill", "white")
         .attr("text-anchor", "middle")
-        .attr("x", (d) => d.x)
-        .attr("y", (d) => d.y)
-        .text((d) => `${d.name}`)
+        .merge(texts)
+        .attr("x", (d) => Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), d.x)))
+        .attr("y", (d) => Math.max(radiusScale(d.value), Math.min(height - radiusScale(d.value), d.y)))
+        .text((d) => `${d.name}`);
     });
 
     function dragStarted(event, d) {
@@ -87,6 +74,11 @@ function BubbleChart({ data }) {
       d.fx = d.x;
       d.fy = d.y;
     }
+
+    // function dragged(event, d) {
+    //   d.fx = event.x;
+    //   d.fy = event.y;
+    // }
 
     function dragged(event, d) {
       d.fx = Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), event.x));
@@ -107,7 +99,8 @@ function BubbleChart({ data }) {
 
   }, [data]);
 
-  return <svg ref={chartRef} width={window.innerWidth / 2} height={200}></svg>;
+
+  return <svg ref={chartRef} width={window.innerWidth / 2} height={300}></svg>;
 }
 
 export default BubbleChart;

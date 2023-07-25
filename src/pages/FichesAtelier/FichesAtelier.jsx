@@ -64,10 +64,18 @@ const FichesAtelier = () => {
   };
 
   const handleSubmit = async () => {
-if(!Object.values(selectedValue)[0] || !Object.values(selectedValue)[7].length || !Object.values(selectedValue)[14].length ){
-  return
-}
+    if (
+      !Object.values(selectedValue)[0] ||
+      !Object.values(selectedValue)[7].length ||
+      !Object.values(selectedValue)[14].length
+    ) {
+      return;
+    }
     try {
+      console.log({
+        wine_id: wines[currentWine]?.wine_id,
+        note: note,
+      });
       await api.post(`notes/${id}`, {
         wine_id: wines[currentWine]?.wine_id,
         note: note,
@@ -114,10 +122,10 @@ if(!Object.values(selectedValue)[0] || !Object.values(selectedValue)[7].length |
     });
     window.scrollTo(0, 0);
     if (currentWine == 4) {
-      if(session.category == "Dégustation"){
-        navigate("/")
+      if (session.category == "Dégustation") {
+        navigate("/");
       } else {
-        navigate(`/creation/${id}`)
+        navigate(`/creation/${id}`);
       }
     }
   };
@@ -128,7 +136,12 @@ if(!Object.values(selectedValue)[0] || !Object.values(selectedValue)[7].length |
       <p className="subtitle">Noter le vin {currentWine + 1}</p>
       <h2 className="oeil">L'OEIL</h2>
       <h3 className="couleur">COULEUR</h3>
-      <ColorButton tags={tags} onChange={handleSliderChange} name="couleur" currentWine={currentWine} />
+      <ColorButton
+        tags={tags}
+        onChange={handleSliderChange}
+        name="couleur"
+        currentWine={currentWine}
+      />
       <div className="container-oeil">
         <div className="container-suboeil">
           <h3 className="intensite">INTENSITÉ DE LA COULEUR</h3>
