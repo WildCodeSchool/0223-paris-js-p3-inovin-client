@@ -1,5 +1,5 @@
-.users {
-  padding-top: 3.7rem;
+.winesForSession {
+  padding-top: 10rem;
   display: flex;
   flex-direction: column;
   h2{
@@ -33,12 +33,10 @@
       font-weight: 200;
       
     }   
-    .headerManager {
-       width: 40%;
-      }
+
     td {
       padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.5rem;      
       text-align: center;
       border: 1.5px solid #313131;
       border-bottom: none;
@@ -48,18 +46,20 @@
       display: flex;
       justify-content: space-around;
       border: none;
-       
+      .manageButton {
+    width: fit-content;
+    margin: none;
+  } 
+    .manageButton:disabled {
+      cursor:not-allowed;
+      background-color: gray;
+      opacity: 50%;
+    }
     }
   }
-  .addButton {
-    width: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+  
   .backButton {
     width: fit-content;
     margin-left: 3rem;
-    margin-top: 3rem;
   }
 }

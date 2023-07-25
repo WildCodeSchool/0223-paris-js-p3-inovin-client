@@ -1,57 +1,59 @@
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../../services/users";
 import { useNavigate } from "react-router-dom";
-import "./Users.scss";
+import { getAllWines } from "../../services/wines";
+import "./AdminWines.scss";
 
-const Users = () => {
-  const [users, setUsers] = useState([]);
+const AdminWines = () => {
+  const [wines, setWines] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
-    const getUsers = async () => {
+    const getWines = async () => {
       try {
-        const response = await getAllUsers();
-        setUsers(response.data);
+        const response = await getAllWines();
+        setWines(response.data);
         console.log(response.data);
       } catch (error) {
         console.error(error);
       }
     };
-    getUsers();
+    getWines();
   }, []);
-
   return (
-    <div className="users">
+    <div className="admin-wines">
       <button onClick={() => navigate(`/`)} className="backButton">
         Retour
       </button>
-      <h2>Utilisateurs enregistrés</h2>
-      {users.length > 0 ? (
+      <h2>Vins enregistrés</h2>
+      {wines.length > 0 ? (
         <table>
           <thead>
             <tr>
               <th>ID</th>
-              <th>Prénom</th>
+              <th>Type</th>
               <th>Nom</th>
+              <th>Domaine</th>
               <th className="headerManager">Gestion</th>
             </tr>
           </thead>
           <tbody>
-            {users?.map((user) => {
+            {wines?.map((wine) => {
               return (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.firstname}</td>
-                  <td>{user.lastname}</td>
+                <tr key={wine.id}>
+                  <td>{wine.id}</td>
+                  <td>{wine.color}</td>
+                  <td>{wine.name}</td>
+                  <td>{wine.domain}</td>
                   <td className="buttonCell">
                     <button
                       className="WMButton"
-                      onClick={() => handleSeeUserClick(user.id)}
+                      onClick={() => handleSeeWineClick(wine.id)}
                     >
                       Voir détails
                     </button>
                     <button
                       className="WMButton"
-                      onClick={() => handleDeleteUserClick(user)}
+                      onClick={() => handleDeleteWineClick(wine)}
                     >
                       Supprimer
                     </button>
@@ -62,10 +64,10 @@ const Users = () => {
           </tbody>
         </table>
       ) : (
-        <p>Aucun utilisateur enregistrés dans la base de données</p>
+        <p>Aucun vin enregistré dans la base de données</p>
       )}
     </div>
   );
 };
 
-export default Users;
+export default AdminWines;
