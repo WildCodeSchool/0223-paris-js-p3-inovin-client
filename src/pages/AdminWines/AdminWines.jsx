@@ -14,7 +14,6 @@ const AdminWines = () => {
       try {
         const response = await getAllWines();
         setWines(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
