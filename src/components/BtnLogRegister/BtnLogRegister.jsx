@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./BtnLogRegister.scss";
 
-
-
-
 function BtnLogRegister({type}) {
   
 const navigate = useNavigate();
