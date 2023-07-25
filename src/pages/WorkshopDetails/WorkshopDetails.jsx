@@ -12,6 +12,7 @@ import {
   deleteWineFromSession,
 } from "../../services/session";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import "./WorkshopDetails.scss";
 import Confirmbox from "../../components/ConfirmBox/Confirmbox";
 
@@ -87,13 +88,6 @@ const WorkshopDetails = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleAddParticipant = () => {
-    navigate("users");
-  };
-  const handleAddWine = () => {
-    navigate("wines");
   };
 
   const date = new Date(session.date);
@@ -181,9 +175,10 @@ const WorkshopDetails = () => {
       ) : (
         <h4>Aucun participant pour le moment</h4>
       )}
-      <button className="addButton btn" onClick={handleAddParticipant}>
-        Ajouter un participant
-      </button>
+      <BtnAdd
+        handleAddClick={() => navigate("users")}
+        title={"Ajouter un particpant"}
+      />
       <h3>Liste des vins à présenter</h3>
       {wines.length > 0 ? (
         <table>
@@ -227,9 +222,11 @@ const WorkshopDetails = () => {
       ) : (
         <h4>Aucun vin à prénsenter pour le moment</h4>
       )}
-      <button className="addButton btn" onClick={handleAddWine}>
-        Ajouter un vin
-      </button>
+
+      <BtnAdd
+        handleAddClick={() => navigate("wines")}
+        title={"Ajouter un vin"}
+      />
 
       {session.category === "Création" && (
         <div>

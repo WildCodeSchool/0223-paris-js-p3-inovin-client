@@ -2,6 +2,7 @@
   padding-top: 3.7rem;
   display: flex;
   flex-direction: column;
+  padding-bottom: 3rem;
   h2{
     text-align: center;
     width: 100%;
@@ -49,7 +50,12 @@
       .manageButton {
     width: fit-content;
     margin: none;
+    transition: 200ms;
   } 
+    .manageButton:hover {
+      scale: 1.1;
+      transition: 200ms;
+    }
     .manageButton:disabled {
       cursor:not-allowed;
       background-color: gray;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllWines } from "../../services/wines";
 import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import "./AdminWines.scss";
 
 const AdminWines = () => {
@@ -66,6 +67,7 @@ const AdminWines = () => {
       ) : (
         <p>Aucun vin enregistré dans la base de données</p>
       )}
+      <BtnAdd handleAddClick={() => navigate("new")} title={"Ajouter un vin"} />
     </div>
   );
 };

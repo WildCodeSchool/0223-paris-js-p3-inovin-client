@@ -39,7 +39,6 @@ export const SessionAddWines = () => {
 
   return (
     <div className="winesForSession">
-      
       <BtnBack handleBackClick={() => navigate(`/ateliers/${id}`)} />
 
       {wines?.length > 0 && selectedWines ? (
@@ -65,7 +64,7 @@ export const SessionAddWines = () => {
                     <td>{wine.color}</td>
                     <td className="buttonCell">
                       <button
-                        className="manageButton"
+                        className="manageButton btn"
                         onClick={(event) => handleAddClick(event, wine)}
                         disabled={
                           selectedWines.some(
