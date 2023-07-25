@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postSession, getLocations } from "../../services/session";
 import "./NewWorkshop.scss";
+import BtnBack from "../../components/BtnBack/BtnBack";
 
 const NewWorkshop = () => {
   const [workshop, setWorkshop] = useState({});
@@ -26,19 +27,14 @@ const NewWorkshop = () => {
   const handleRegisterClick = async () => {
     const result = await postSession(workshop);
     console.log(result.data[0].insertId);
-    
-    navigate("/ateliers");
-  };
 
-  const handleBackClick = () => {
     navigate("/ateliers");
   };
 
   return (
     <div className="newWorkshop">
-      <button type="button" onClick={handleBackClick} className="backButton">
-        Retour
-      </button>
+      <BtnBack handleBackClick={() => navigate("/ateliers")} />
+
       <h2>Ajouter un nouvel Atelier</h2>
       <table>
         <thead>
@@ -105,8 +101,8 @@ const NewWorkshop = () => {
               />
             </td>
             <td className="buttonCell">
-              <button onClick={handleRegisterClick}>
-                Enregistrer l'atelier
+              <button onClick={handleRegisterClick} className="btn">
+                Enregistrer
               </button>
             </td>
           </tr>

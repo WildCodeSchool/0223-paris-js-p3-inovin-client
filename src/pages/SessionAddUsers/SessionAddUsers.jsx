@@ -6,6 +6,7 @@ import {
   postUserHasSession,
   getUsersBySessionId,
 } from "../../services/session";
+import BtnBack from "../../components/BtnBack/BtnBack";
 import { getAllUsers } from "../../services/users";
 
 export const SessionAddUsers = () => {
@@ -40,12 +41,8 @@ export const SessionAddUsers = () => {
 
   return (
     <div className="usersForSession">
-      <button
-        onClick={() => navigate(`/ateliers/${id}`)}
-        className="backButton"
-      >
-        Retour
-      </button>
+      <BtnBack handleBackClick={() => navigate(`/ateliers/${id}`)} />
+
       {users?.length > 0 && registeredUsers ? (
         <div>
           <h2>Utilisateurs inscrits</h2>
@@ -67,7 +64,7 @@ export const SessionAddUsers = () => {
                     <td>{user.lastname}</td>
                     <td className="buttonCell">
                       <button
-                        className="manageButton"
+                        className="manageButton btn"
                         onClick={(event) => handleAddClick(event, user)}
                         disabled={
                           registeredUsers.some(

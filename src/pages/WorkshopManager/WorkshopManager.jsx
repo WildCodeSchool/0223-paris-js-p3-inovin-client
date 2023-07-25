@@ -6,6 +6,7 @@ import {
 } from "../../services/session";
 import "./WorkshopManager.scss";
 import { useNavigate } from "react-router-dom";
+import BtnBack from "../../components/BtnBack/BtnBack";
 
 const options = {
   weekday: "long",
@@ -50,6 +51,7 @@ const WorkshopManager = () => {
   };
   return (
     <div className="workshopManager">
+      <BtnBack handleBackClick={() => navigate("/")} />
       <h2>Gestion des Ateliers</h2>
       <table>
         <thead>
@@ -76,13 +78,13 @@ const WorkshopManager = () => {
                 <td className="buttonCell">
                   <button
                     onClick={() => handleDetailsClick(session.id)}
-                    className="WMButton"
+                    className="WMButton btn"
                   >
                     Détails
                   </button>
                   <button
                     onClick={() => handleDeleteClick(session.id)}
-                    className="WMButton"
+                    className="WMButton btn"
                   >
                     Supprimer
                   </button>
@@ -95,7 +97,7 @@ const WorkshopManager = () => {
       <button
         type="button"
         onClick={() => navigate("new")}
-        className="addButton"
+        className="addButton btn"
       >
         Ajouter un atelier
       </button>
