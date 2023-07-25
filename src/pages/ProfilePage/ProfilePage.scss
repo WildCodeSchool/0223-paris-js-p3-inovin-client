@@ -5,6 +5,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    .empty-wine {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        button {
+            margin-top: 24px;
+        }
+    }
     h2 {
         font-family: $font-text;
         font-size: 30px;
@@ -33,7 +42,6 @@
         width: 90%;
         justify-content: space-between;
         align-items:  center;
-        height: 60vh;
         gap: 16px;
         .wine {
             display: flex;
@@ -41,7 +49,7 @@
             align-items: center;
             width: 25%;
             justify-content: center;
-            height: inherit;
+            height: 60vh;
             img {
                 margin-bottom: 8px;
                 cursor: pointer;
@@ -142,6 +150,11 @@
         @extend .ateliers;
         width: 90%;
     }
+    .logout {
+        background-color: white;
+        border: 1px solid #C95B5B;
+        color: #C95B5B;
+    }
 }
 
 @media screen and (max-width : 1000px) {
@@ -151,11 +164,13 @@
             white-space: nowrap;
         }
         .wines-container {
-            height: 30vh;
 
             .pagination-btn {
                 width: 30px;
                 height: 30px;
+            }
+            .wine {
+                height: 30vh;
             }
         }
         .ateliers {

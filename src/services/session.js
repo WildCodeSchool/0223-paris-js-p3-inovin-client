@@ -33,7 +33,6 @@ const getUsersBySessionId = async (id) => {
 };
 
 const postSession = async (newSession) => {
-  console.log(newSession);
   try {
     return api.post(`/sessions`, newSession);
   } catch (error) {
@@ -42,7 +41,6 @@ const postSession = async (newSession) => {
 };
 
 const deleteSession = async (id) => {
-  console.log("session", id);
   try {
     return api.delete(`/sessions/${id}`);
   } catch (error) {
@@ -57,15 +55,44 @@ const getLocations = async () => {
     console.error(error);
   }
 };
+
+const getRecipesBySessionId = async (id) => {
+  try {
+    return api.get(`/recipes/sessions/${id}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const deleteUserFromSession = async (sessionId, userId) => {
   try {
-    return api.delete(`/sessions/${sessionId}/users/${userId}`);
-  } catch (error) {}
+    return api.delete(`/sessions/${sessionId}/user/${userId}`);
+  } catch (error) {
+    console.error(error);
+  }
 };
 const deleteWineFromSession = async (sessionId, wineId) => {
   try {
     return api.delete(`/sessions/${sessionId}/wine/${wineId}`);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postUserHasSession = async (sessionId, userId) => {
+  try {
+    return api.post(`/sessions/userhassession/`, { sessionId, userId });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postWineHasSession = async (sessionId, wineId) => {
+  try {
+    return api.post(`/sessions/winehassession/`, { sessionId, wineId });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export {
@@ -78,4 +105,7 @@ export {
   getLocations,
   deleteUserFromSession,
   deleteWineFromSession,
+  getRecipesBySessionId,
+  postUserHasSession,
+  postWineHasSession,
 };

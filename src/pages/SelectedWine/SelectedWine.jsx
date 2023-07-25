@@ -26,6 +26,7 @@ function SelectedWine() {
       .then((result) => setFavorites(result.data.map((e) => e.wine_id)));
   }, []);
 
+
   const handleRemove = async () => {
     try {
       await api.delete(`wines/favorites/${id}`);
@@ -54,12 +55,12 @@ function SelectedWine() {
   return (
     <div className="selected-wine">
       <div className="picture">
-        <img src={selectedWine?.image} alt="" />
+        <img src={selectedWine?.wine_img} alt="" />
       </div>
       <div className="carac">
         <div className="title">
           <p className="name">
-            {selectedWine?.name}, {selectedWine?.manufacture_year}
+            {selectedWine?.wine_name}, {selectedWine?.manufacture_year}
           </p>
           {favorites?.includes(parseInt(id)) ? (
             <img
@@ -78,7 +79,7 @@ function SelectedWine() {
           )}
         </div>
         <p>{selectedWine?.domain}</p>
-        <p>Région : {selectedWine?.region}</p>
+        <p>Région : {selectedWine?.region_name}</p>
         <p>Appellation : {selectedWine?.appellation}</p>
         <p>Cépage : {selectedWine?.cepage}</p>
         <p className="desc-desk">{selectedWine?.comment}</p>

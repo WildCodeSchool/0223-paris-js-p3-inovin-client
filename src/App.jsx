@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Reservation from "./pages/Reservation/Reservation";
 import Navbar from "./components/Navbar/Navbar";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./services/users";
 import { useEffect } from "react";
@@ -11,10 +14,19 @@ import WorkshopManager from "./pages/WorkshopManager/WorkshopManager";
 import NewWorkshop from "./pages/NewWorkshop/NewWorkshop";
 import WorkshopDetails from "./pages/WorkshopDetails/WorkshopDetails";
 import Wines from "./pages/Wines/Wines";
-import SelectedWine from "./pages/SelectedWine/SelectedWine"
+import FichesAtelier from "./pages/FichesAtelier/FichesAtelier";
+import SelectedWine from "./pages/SelectedWine/SelectedWine";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SelectedRecipe from "./pages/SelectedRecipe/SelectedRecipe";
+import Contact from "./pages/Contact/Contact";
+import Profile from "./pages/Profile/Profile";
 import "./App.scss";
+import Creation from "./pages/Creation/Creation";
+import { SessionAddUsers } from "./pages/SessionAddUsers/SessionAddUsers";
+import { SessionAddWines } from "./pages/SessionWines/SessionAddWines";
+import AdminWines from "./pages/AdminWines/AdminWines";
+import Users from "./pages/Users/Users";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +44,7 @@ function App() {
     }
   };
 
+
   return (
     <>
       <Navbar />
@@ -39,15 +52,29 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/ateliers" element={<WorkshopManager />}></Route>
         <Route path="/ateliers/new" element={<NewWorkshop />} />
         <Route path="/ateliers/:id" element={<WorkshopDetails />} />
+        <Route path="/ateliers/:id/users" element={<SessionAddUsers />} />
+        <Route path="/ateliers/:id/wines" element={<SessionAddWines />} />
+        <Route path="/utilisateurs" element={<Users />} />
+        <Route
+          path="/ateliers_degustation/:id"
+          element={<FichesAtelier />}
+        ></Route>
+        <Route path="/admin/vins" element={<AdminWines />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
-        <Route path="/redwines" element={<Wines color='Rouge' />}></Route>
-        <Route path="/whitewines" element={<Wines color='Blanc'/>}></Route>
-        <Route path="/wines/:id" element={<SelectedWine/>}></Route>
-        <Route path="/recipes/:id" element={<SelectedRecipe/>}></Route>
+        <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
+        <Route path="/whitewines" element={<Wines color="Blanc" />}></Route>
+        <Route path="/wines/:id" element={<SelectedWine />}></Route>
+        <Route path="/recipes/:id" element={<SelectedRecipe />}></Route>
+        <Route path="/creation/:id" element={<Creation />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/resetPassword" element={<ResetPassword />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     </>
   );

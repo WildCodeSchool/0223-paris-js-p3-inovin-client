@@ -1,6 +1,6 @@
 
 .workshopDetails {
-  padding-top: 10rem;
+  padding-top: 3.7rem;
   display: flex;
   flex-direction: column;
   h2{
@@ -50,14 +50,12 @@
        
     }
   }
-  .addButton {
-    width: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  .btn {
+    transition: 300ms;
   }
-  .backButton {
-    width: fit-content;
-    margin-left: 3rem;
+  .btn:hover {
+    scale: 1.1;
+    transition: 300ms;
   }
 }
+

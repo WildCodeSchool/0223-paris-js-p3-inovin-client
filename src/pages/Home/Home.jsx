@@ -141,6 +141,7 @@ function Home() {
           Le Sauvignon Blanc, frais et vif à souhait.
         </p>
         <div className="img-container" ref={winesContainerRef}>
+
           <Link to="/redwines">
             <div>
               <img src={redwine} alt="" />
