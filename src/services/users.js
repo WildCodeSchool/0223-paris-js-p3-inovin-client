@@ -1,7 +1,7 @@
 import api from "./api";
 
 const getAllUsers = () => {
-  return api.get("/users");
+  return api.get("/users/");
 };
 
 const getCurrentUser = () => {

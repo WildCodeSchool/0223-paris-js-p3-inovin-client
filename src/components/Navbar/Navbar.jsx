@@ -66,8 +66,19 @@ function Navbar() {
 
   return (
     <>
-      <div className={visible ? (navHome && !openMenu ? "navbar navbar-home" : "navbar") : "navbar navbar-hidden"}>
-        <div className={openMenu ? "menu-bg opened" : "menu-bg"} onClick={() => setOpenMenu(!openMenu)}>
+      <div
+        className={
+          visible
+            ? navHome && !openMenu
+              ? "navbar navbar-home"
+              : "navbar"
+            : "navbar navbar-hidden"
+        }
+      >
+        <div
+          className={openMenu ? "menu-bg opened" : "menu-bg"}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
           <div className="menu-bg__lines"></div>
@@ -80,8 +91,12 @@ function Navbar() {
             <Link to="/ateliers">
               <li>Gestion des ateliers</li>
             </Link>
-            <li>Gestion des vins</li>
-            <li>Gestion des utilisateurs</li>
+            <Link to={"/admin/vins"}>
+              <li>Gestion des vins</li>
+            </Link>
+            <Link to={"/utilisateurs"}>
+              <li>Gestion des utilisateurs</li>
+            </Link>
             <li>Gestion des créations</li>
           </ul>
         ) : (
@@ -107,9 +122,15 @@ function Navbar() {
         <div className="menu-list">
           {auth.user?.role == "ROLE_ADMIN" ? (
             <ul className="navlist">
-              <li onClick={() => handleClick("/ateliers")}>Gestion des ateliers</li>
-              <li>Gestion des vins</li>
-              <li>Gestion des utilisateurs</li>
+              <li onClick={() => handleClick("/ateliers")}>
+                Gestion des ateliers
+              </li>
+              <li onClick={() => handleClick("/admin/vins")}>
+                Gestion des vins
+              </li>
+              <li onClick={() => handleClick("/utilisateurs")}>
+                Gestion des utilisateurs
+              </li>
               <li>Gestion des créations</li>
             </ul>
           ) : (

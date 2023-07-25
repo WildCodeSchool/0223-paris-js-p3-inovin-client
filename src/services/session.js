@@ -87,6 +87,14 @@ const postUserHasSession = async (sessionId, userId) => {
   }
 };
 
+const postWineHasSession = async (sessionId, wineId) => {
+  try {
+    return api.post(`/sessions/winehassession/`, { sessionId, wineId });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   getAllSessions,
   getSessionById,
@@ -99,4 +107,5 @@ export {
   deleteWineFromSession,
   getRecipesBySessionId,
   postUserHasSession,
+  postWineHasSession,
 };
