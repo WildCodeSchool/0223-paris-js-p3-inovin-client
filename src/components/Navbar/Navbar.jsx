@@ -104,15 +104,9 @@ function Navbar() {
             <Link to="/wines">
               <li>Nos vins</li>
             </Link>
-            <Link to="/atelier">
-              <li>Nos ateliers</li>
-            </Link>
             <Link to="/Reservation">
               <li>Nos ateliers</li>
             </Link>
-
-            <li>Nos ateliers</li>
-
             <Link to="/contact">
             <li>Contactez-nous</li>
             </Link>
