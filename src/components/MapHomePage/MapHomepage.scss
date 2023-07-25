@@ -1,0 +1,27 @@
+@import "../../App.scss";
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                          Maps                                          
+/* ------------------------------------------------------------------------------------------------ */
+.map-container-overlay {
+  border-radius: 1vw;
+  overflow: hidden;
+}
+
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
+
+div.map.mapboxgl-map {
+  height: 100%;
+  width: 100%;
+}
+
+.mapboxgl-canvas-container {
+  height: 100%;
+  width: 100%;
+}
