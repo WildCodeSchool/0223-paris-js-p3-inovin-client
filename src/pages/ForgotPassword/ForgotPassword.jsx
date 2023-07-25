@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { sendResetPassword } from "../../services/auth";
-import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
 import { useNavigate } from "react-router-dom";
+import  {  ToastContainer ,  toast  }  from  'react-toastify' ;
 import "../ForgotPassword/ForgotPassword.scss";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -58,7 +58,7 @@ function ForgotPassword() {
             </div>
        
             < div>
-            <button  type="submit" >Valider</button> 
+            <button className="btn"  type="submit" >Valider</button> 
             < ToastContainer /> 
             </div>  
 

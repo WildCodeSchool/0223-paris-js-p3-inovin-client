@@ -48,8 +48,8 @@ function Contact() {
         </div>
 
         <textarea
-        placeholder="Message :"
-          className="inputComment"
+          placeholder="Message :"
+          className="inputMessage"
           id="story"
           name="story"
           rows="5"
@@ -59,7 +59,7 @@ function Contact() {
         >
 
         </textarea>
-        <button type="submit">Se connecter</button>  
+        <button className="btn" type="submit">Se connecter</button>  
       </form>
      
     </>

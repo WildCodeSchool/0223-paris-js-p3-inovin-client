@@ -1,6 +1,7 @@
 import api from "./api";
 
 const register = async (data) => {
+  console.log(data)
   return api.post("/users/register", data);
 };
 

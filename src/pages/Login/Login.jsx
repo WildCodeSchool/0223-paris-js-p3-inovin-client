@@ -33,7 +33,7 @@ function Login() {
     try {
       const result = await authService.login(email, password);
       dispatch(login(result.data));
-      navigate("/profile");
+      navigate("/profilepage");
     } catch (error) {
       console.log(error);
       if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
@@ -45,9 +45,9 @@ function Login() {
 
   return (
     <>
-      <BtnLogRegister />  
+      <BtnLogRegister type={'login'}/>  
       {error && <p>{error}</p>}
-    
+     
       <form className="formLog" onSubmit={handleSubmit}>
 
         <div className="inputForm">
@@ -57,9 +57,9 @@ function Login() {
         <div className="inputForm">        
         <input className="inputLogReg" type="password" placeholder="Mot de passe *" value={password} onChange={(e) => setPassword(e.target.value)} />   
         </div>
-
+        
+        <button className="btn" type="submit" >Se connecter</button> 
         <button className="forgetMotpasse" onClick={() => navigate("/forgotPassword")}>J'ai oublié mon mot de passe ?</button>
-        <button type="submit">Se connecter</button> 
       </form>
      
     </>

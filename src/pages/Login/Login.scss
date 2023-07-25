@@ -1,8 +1,14 @@
 @import "../../App.scss";
 
-
-.containerConnexion{
-
+    p{
+        order: 0;
+        line-height: 2;
+        padding: 0 10px;
+        font-size: 1rem;
+        text-align: center;
+        color: #C95B5B;
+    
+    }
     
     .btnLogReg{
         order: 0;
@@ -18,21 +24,15 @@
 
     }
 
-    .btnLog{
+    .forgetMotpasse{
         order: 0;
         line-height: 2.5;
-        padding: 0 20px;
+        padding: 20px 20px;
         font-size: 1rem;
-        text-align: center;
-        color: #fff;
-        border-radius: 15px;
-        background-color:#C95B5B;
-        border-color:#C95B5B;
-        border-style: initial;
-    
+        // text-align: center;
+        color: #C95B5B;
+        background-color:initial;
+        border-color: initial;
+        border-style: initial; 
     }
-
-}
-
-
 
