@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
+import axios from "axios";
 import "./Home.scss";
 import BtnInscription from "../../components/BtnInscription/BtnInscription";
+import MapHomePage from "../../components/MapHomePage/MapHomePage";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import video from "../../assets/homevideo.mp4";
@@ -18,6 +21,9 @@ import ateliercrea from "../../assets/ateliercrea.png";
 function Home() {
   const auth = useSelector((state) => state.auth);
   const [visibleIndex, setVisibleIndex] = useState(0);
+  const [regions, setRegions] = useState([]);
+  const [cepages, setCepages] = useState([]);
+  const [selectedRegionIndex, setSelectedRegionIndex] = useState("");
   const winesContainerRef = useRef(null);
 
   const getVisibleCardIndex = () => {
@@ -38,12 +44,14 @@ function Home() {
     winesContainerRef.current.addEventListener("scroll", getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current?.removeEventListener(
-        "scroll",
-        getVisibleCardIndex
-      );
+      winesContainerRef.current?.removeEventListener("scroll", getVisibleCardIndex);
     };
   }, [visibleIndex]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/regions/`).then((result) => setRegions(result.data));
+    axios.get(`http://localhost:8080/regions/cepages/`).then((result) => setCepages(result.data));
+  }, []);
 
   return (
     <div className="homepage">
@@ -67,6 +75,52 @@ function Home() {
           <img src={img1} alt="" />
           <img src={img2} alt="" />
           <img src={img3} alt="" />
+        </div>
+      </div>
+      <div className="cepage-section">
+        <h2>Découvrir les Cépages et les Régions</h2>
+        <div className="section-wrapper">
+          <div className="map-container">
+            <MapHomePage setSelectedRegionIndex={setSelectedRegionIndex} />
+          </div>
+          {selectedRegionIndex ? (
+            <div className="region-info-container">
+              <h3>{regions.find((region) => region.id === selectedRegionIndex).name}</h3>
+              <p>{regions.find((region) => region.id === selectedRegionIndex).description}</p>
+              <img src={regions[selectedRegionIndex - 1].image} alt={regions.name} />
+              <h4> Les Cépages rouges </h4>
+              <span>
+                {cepages
+                  .filter((cepage) => cepage.color === "red" && cepage.region_id === selectedRegionIndex)
+                  .map((cepage, index) => (
+                    <React.Fragment key={cepage.cepage_id}>
+                      {index !== 0 && ", "}
+                      {cepage.name}
+                    </React.Fragment>
+                  ))}
+              </span>
+
+              <h4> Les Cépages blancs </h4>
+              <span>
+                {cepages
+                  .filter((cepage) => cepage.color === "red" && cepage.region_id === selectedRegionIndex)
+                  .map((cepage, index) => (
+                    <React.Fragment key={cepage.cepage_id}>
+                      {index !== 0 && ", "}
+                      {cepage.name}
+                    </React.Fragment>
+                  ))}
+              </span>
+            </div>
+          ) : (
+            <div className="region-info-container-welcome">
+              <h4 className="welcome-title">Choisissez une région sur la carte</h4>
+              <p className="welcome-message">
+                Chez Inovin, nous voulons vous faire découvrir le vin et ses secrets. <br /> <br />
+                Servez-vous de la carte pour explorer les régions, leur histoire, leurs cépages ...
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <div className="wines">
@@ -111,11 +165,7 @@ function Home() {
         <div className="slide-indicator">
           <div
             className={
-              visibleIndex
-                ? visibleIndex == 1
-                  ? "indicator indicator_1"
-                  : "indicator indicator_2"
-                : "indicator"
+              visibleIndex ? (visibleIndex == 1 ? "indicator indicator_1" : "indicator indicator_2") : "indicator"
             }
           />
         </div>

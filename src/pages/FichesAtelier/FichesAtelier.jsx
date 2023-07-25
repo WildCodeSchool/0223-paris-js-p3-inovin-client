@@ -43,6 +43,10 @@ const FichesAtelier = () => {
     api.get(`sessions/${id}`).then((result) => setSession(result.data));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, []);
+
   const handleSliderChange = (name, label) => {
     if (name === "aromeNez" || name === "aromeBouche") {
       if (!selectedValue[name].includes(label)) {
@@ -80,9 +84,7 @@ const FichesAtelier = () => {
         wine_id: wines[currentWine]?.wine_id,
         note: note,
       });
-      const note_id = await api.get(
-        `notes/user/${wines[currentWine]?.wine_id}/${id}`
-      );
+      const note_id = await api.get(`notes/user/${wines[currentWine]?.wine_id}/${id}`);
 
       for (let i = 0; i < Object.values(selectedValue).length; i++) {
         if (Array.isArray(Object.values(selectedValue)[i])) {
@@ -136,13 +138,7 @@ const FichesAtelier = () => {
       <p className="subtitle">Noter le vin {currentWine + 1}</p>
       <h2 className="oeil">L'OEIL</h2>
       <h3 className="couleur">COULEUR</h3>
-      <ColorButton
-        tags={tags}
-        onChange={handleSliderChange}
-        name="couleur"
-        currentWine={currentWine}
-      />
-      <br />
+      <ColorButton tags={tags} onChange={handleSliderChange} name="couleur" currentWine={currentWine} />
       <div className="container-oeil">
         <div className="container-suboeil">
           <h3 className="intensite">INTENSITÉ DE LA COULEUR</h3>
@@ -150,10 +146,7 @@ const FichesAtelier = () => {
             name="intensiteCouleur"
             currentWine={currentWine}
             labels={tags.filter((e) => {
-              return (
-                e.category == "Oeil" &&
-                e.sub_category == "Intensité de la Couleur "
-              );
+              return e.category == "Oeil" && e.sub_category == "Intensité de la Couleur ";
             })}
             onChange={handleSliderChange}
           />
@@ -164,9 +157,7 @@ const FichesAtelier = () => {
             currentWine={currentWine}
             name="fluidite"
             labels={tags.filter((e) => {
-              return (
-                e.category == "Oeil" && e.sub_category == "Fluidité des Larmes"
-              );
+              return e.category == "Oeil" && e.sub_category == "Fluidité des Larmes";
             })}
             onChange={handleSliderChange}
           />
@@ -203,9 +194,7 @@ const FichesAtelier = () => {
             currentWine={currentWine}
             name="intensiteArome"
             labels={tags.filter((e) => {
-              return (
-                e.category == "Nez" && e.sub_category == "Intensité des Arômes"
-              );
+              return e.category == "Nez" && e.sub_category == "Intensité des Arômes";
             })}
             onChange={handleSliderChange}
           />
@@ -225,10 +214,7 @@ const FichesAtelier = () => {
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
       <div className="container-famillesAromatiques">
         {tags
-          .filter(
-            (e) =>
-              e.category == "Nez" && e.sub_category == "Familles Arômatiques"
-          )
+          .filter((e) => e.category == "Nez" && e.sub_category == "Familles Arômatiques")
           .map((e) => (
             <KeyAromaticButton
               key={e.id}
@@ -303,10 +289,7 @@ const FichesAtelier = () => {
             currentWine={currentWine}
             name="persistance"
             labels={tags.filter((e) => {
-              return (
-                e.category == "La Bouche" &&
-                e.sub_category == "Persistance Arômatique"
-              );
+              return e.category == "La Bouche" && e.sub_category == "Persistance Arômatique";
             })}
             onChange={handleSliderChange}
           />
@@ -315,11 +298,7 @@ const FichesAtelier = () => {
       <h3 className="famillesAromatiques">FAMILLES ARÔMATIQUES</h3>
       <div className="container-famillesAromatiques">
         {tags
-          .filter(
-            (e) =>
-              e.category == "La Bouche" &&
-              e.sub_category == "Familles Arômatiques"
-          )
+          .filter((e) => e.category == "La Bouche" && e.sub_category == "Familles Arômatiques")
           .map((e) => (
             <KeyAromaticButton
               key={e.id}
