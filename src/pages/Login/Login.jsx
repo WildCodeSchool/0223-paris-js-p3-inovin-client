@@ -32,7 +32,8 @@ function Login() {
       navigate("/profilepage");
     } catch (error) {
       console.log(error);
-      if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
+      if (error.response.status == 403 || error.response.status == 401)
+        setError("email ou mot de passe incorrect");
     }
   };
 
@@ -65,7 +66,10 @@ function Login() {
         <button className="btn" type="submit">
           Se connecter
         </button>
-        <button className="forgetMotpasse" onClick={() => navigate("/forgotPassword")}>
+        <button
+          className="forgetMotpasse"
+          onClick={() => navigate("/forgotPassword")}
+        >
           J'ai oublié mon mot de passe ?
         </button>
       </form>
