@@ -51,15 +51,11 @@
        
     }
   }
-  .addButton {
-    width: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  .btn {
+    transition: 300ms;
   }
-  .backButton {
-    width: fit-content;
-    margin-left: 3rem;
-    margin-top: 3rem;
+  .btn:hover {
+    scale: 1.1;
+    transition: 300ms;
   }
 }

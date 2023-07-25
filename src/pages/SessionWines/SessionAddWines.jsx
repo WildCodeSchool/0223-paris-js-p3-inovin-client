@@ -7,6 +7,7 @@ import {
   postWineHasSession,
 } from "../../services/session";
 import { getAllWines } from "../../services/wines";
+import BtnBack from "../../components/BtnBack/BtnBack";
 
 export const SessionAddWines = () => {
   const [wines, setWines] = useState([]);
@@ -38,12 +39,8 @@ export const SessionAddWines = () => {
 
   return (
     <div className="winesForSession">
-      <button
-        onClick={() => navigate(`/ateliers/${id}`)}
-        className="backButton"
-      >
-        Retour
-      </button>
+      <BtnBack handleBackClick={() => navigate(`/ateliers/${id}`)} />
+
       {wines?.length > 0 && selectedWines ? (
         <div>
           <h2>Vins disponible</h2>
@@ -67,7 +64,7 @@ export const SessionAddWines = () => {
                     <td>{wine.color}</td>
                     <td className="buttonCell">
                       <button
-                        className="manageButton"
+                        className="manageButton btn"
                         onClick={(event) => handleAddClick(event, wine)}
                         disabled={
                           selectedWines.some(

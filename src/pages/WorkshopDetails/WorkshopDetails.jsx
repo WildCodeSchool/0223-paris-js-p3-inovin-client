@@ -11,7 +11,8 @@ import {
   deleteUserFromSession,
   deleteWineFromSession,
 } from "../../services/session";
-
+import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import "./WorkshopDetails.scss";
 import Confirmbox from "../../components/ConfirmBox/Confirmbox";
 
@@ -89,13 +90,6 @@ const WorkshopDetails = () => {
     }
   };
 
-  const handleAddParticipant = () => {
-    navigate("users");
-  };
-  const handleAddWine = () => {
-    navigate("wines");
-  };
-
   const date = new Date(session.date);
 
   return (
@@ -107,9 +101,9 @@ const WorkshopDetails = () => {
           onCancel={onCancel}
         />
       ) : null}
-      <button onClick={() => navigate("/ateliers")} className="backButton">
-        Retour
-      </button>
+
+      <BtnBack handleBackClick={() => navigate("/ateliers")} />
+
       <h2>
         Fiche Atelier {session.category} n° {session.id}
       </h2>
@@ -133,7 +127,7 @@ const WorkshopDetails = () => {
             <td>{+session.max_participants - +session.participants}</td>
 
             <td className="buttonCell">
-              <button className="WMButton">Modifier</button>
+              <button className="WMButton btn">Modifier</button>
             </td>
           </tr>
         </tbody>
@@ -161,13 +155,13 @@ const WorkshopDetails = () => {
 
                   <td className="buttonCell">
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleSeeUserClick(user.user_id)}
                     >
                       Voir détails
                     </button>
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleDeleteUserClick(user)}
                     >
                       Supprimer
@@ -181,9 +175,10 @@ const WorkshopDetails = () => {
       ) : (
         <h4>Aucun participant pour le moment</h4>
       )}
-      <button className="addButton" onClick={handleAddParticipant}>
-        Ajouter un participant
-      </button>
+      <BtnAdd
+        handleAddClick={() => navigate("users")}
+        title={"Ajouter un particpant"}
+      />
       <h3>Liste des vins à présenter</h3>
       {wines.length > 0 ? (
         <table>
@@ -207,13 +202,13 @@ const WorkshopDetails = () => {
 
                   <td className="buttonCell">
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleSeeWineClick(user.user_id)}
                     >
                       Voir détails
                     </button>
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleDeleteWineClick(wine)}
                     >
                       Supprimer
@@ -227,9 +222,11 @@ const WorkshopDetails = () => {
       ) : (
         <h4>Aucun vin à prénsenter pour le moment</h4>
       )}
-      <button className="addButton" onClick={handleAddWine}>
-        Ajouter un vin
-      </button>
+
+      <BtnAdd
+        handleAddClick={() => navigate("wines")}
+        title={"Ajouter un vin"}
+      />
 
       {session.category === "Création" && (
         <div>
@@ -254,7 +251,7 @@ const WorkshopDetails = () => {
                       <td>{recipe.selected_for_context}</td>
                       <td>{recipe.won_contest}</td>
                       <td className="buttonCell">
-                        <button className="WMButton">Supprimer</button>
+                        <button className="WMButton btn">Supprimer</button>
                       </td>
                     </tr>
                   );

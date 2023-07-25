@@ -47,19 +47,17 @@
     .buttonCell {
       display: flex;
       justify-content: space-around;
-      border: none;
-       
+      border: none;       
     }
   }
-  .addButton {
+  p {
     width: fit-content;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
   }
-  .backButton {
-    width: fit-content;
-    margin-left: 3rem;
-    margin-top: 3rem;
+  .btn {
+    transition: 300ms;
+  }
+  .btn:hover {
+    scale: 1.1;
+    transition: 300ms;
   }
 }

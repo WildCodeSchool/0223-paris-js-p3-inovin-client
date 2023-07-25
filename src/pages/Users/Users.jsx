@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/users";
 import { useNavigate } from "react-router-dom";
+import BtnBack from "../../components/BtnBack/BtnBack";
+import BtnAdd from "../../components/BtnAdd/BtnAdd";
 import "./Users.scss";
 
 const Users = () => {
@@ -21,9 +23,7 @@ const Users = () => {
 
   return (
     <div className="users">
-      <button onClick={() => navigate(`/`)} className="backButton">
-        Retour
-      </button>
+      <BtnBack handleBackClick={() => navigate("/")} />
       <h2>Utilisateurs enregistrés</h2>
       {users.length > 0 ? (
         <table>
@@ -44,13 +44,13 @@ const Users = () => {
                   <td>{user.lastname}</td>
                   <td className="buttonCell">
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleSeeUserClick(user.id)}
                     >
                       Voir détails
                     </button>
                     <button
-                      className="WMButton"
+                      className="WMButton btn"
                       onClick={() => handleDeleteUserClick(user)}
                     >
                       Supprimer
@@ -64,6 +64,10 @@ const Users = () => {
       ) : (
         <p>Aucun utilisateur enregistrés dans la base de données</p>
       )}
+      <BtnAdd
+        handleAddClick={() => navigate("new")}
+        title={"Ajouter un utilisateur"}
+      />
     </div>
   );
 };
