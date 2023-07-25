@@ -50,11 +50,11 @@ function App() {
         <Route path="/ateliers/:id/users" element={<SessionAddUsers />} />
         <Route path="/ateliers/:id/wines" element={<SessionAddWines />} />
         <Route path="/utilisateurs" element={<Users />} />
-        <Route path="/admin/vins" element={<AdminWines />} />
         <Route
           path="/ateliers_degustation/:id"
           element={<FichesAtelier />}
         ></Route>
+        <Route path="/admin/vins" element={<AdminWines />} />
         <Route path="/reservation" element={<Reservation />}></Route>
         <Route path="/wines" element={<Wines />}></Route>
         <Route path="/redwines" element={<Wines color="Rouge" />}></Route>
