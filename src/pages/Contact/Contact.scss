@@ -1,0 +1,28 @@
+@import "../../App.scss";
+
+@import "../Login/Login.scss";
+
+
+
+.formLog{
+
+    h1{
+        padding-top: 100px;
+    }    
+    
+       
+    .inputMessage{
+        padding-top: 15px;
+        margin-bottom: 40px;
+        border-top-width: 0px;
+        border-right-width:0px ;
+        border-left-width:0px ;
+        border-bottom-width:1px ;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));    
+        min-width: 300px;
+        min-height: 200px;
+        font-family: $font-text;
+        font-size: 16px;          
+        
+    }
+}
