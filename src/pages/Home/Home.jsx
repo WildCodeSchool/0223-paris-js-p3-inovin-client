@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Home.scss";
 import BtnInscription from "../../components/BtnInscription/BtnInscription";
 import MapHomePage from "../../components/MapHomePage/MapHomePage";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import video from "../../assets/homevideo.mp4";
@@ -51,11 +52,6 @@ function Home() {
     axios.get(`http://localhost:8080/regions/`).then((result) => setRegions(result.data));
     axios.get(`http://localhost:8080/regions/cepages/`).then((result) => setCepages(result.data));
   }, []);
-
-  useEffect(() => {
-    console.log("regions", regions);
-    console.log("cepage", cepages);
-  }, [regions, cepages]);
 
   return (
     <div className="homepage">
@@ -123,7 +119,7 @@ function Home() {
                 Chez Inovin, nous voulons vous faire découvrir le vin et ses secrets. <br /> <br />
                 Servez-vous de la carte pour explorer les régions, leur histoire, leurs cépages ...
               </p>
-            </div>  
+            </div>
           )}
         </div>
       </div>
