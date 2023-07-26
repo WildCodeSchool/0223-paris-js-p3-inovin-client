@@ -2,6 +2,7 @@
 
 .homepage {
   scroll-behavior: smooth;
+  padding-bottom: 40px;
   a {
     text-decoration: none;
   }
@@ -33,7 +34,8 @@
       }
     }
     video {
-      width: 100%;
+      min-width: 100%;
+      min-height: 100%;
     }
   }
 
@@ -202,6 +204,7 @@
       align-items: center;
       justify-content: center;
       width: 90%;
+      margin-bottom: 54px;
       .atelier-desc {
         width: 50%;
         display: flex;
@@ -216,7 +219,7 @@
         }
         p {
           width: 80%;
-          margin: 72px 0;
+          margin: 54px 0;
           font-family: $font-text;
           text-align: justify;
           font-weight: 100;
@@ -225,7 +228,7 @@
         }
       }
       img {
-        width: 50%;
+        width: 45%;
       }
     }
   }
