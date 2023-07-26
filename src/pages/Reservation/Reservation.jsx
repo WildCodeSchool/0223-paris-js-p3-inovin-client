@@ -7,8 +7,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./Reservation.scss";
 import SessionList from "../../components/SessionList/SessionList";
 import api from "../../services/api";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Reservation() {
+  const auth = useSelector((state) => state.auth);
   const sessionCategory = ["Création", "Dégustation"];
   const [sessions, setSessions] = useState([]);
   const [filter, setFilter] = useState([]);
@@ -22,8 +24,8 @@ function Reservation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
-    axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
+    axios.get(`http://localhost:8080/sessions/all`).then((result) => setSessions(result.data));
+    axios.get(`http://localhost:8080/sessions/all`).then((result) => setFilteredSessions(result.data));
     api.get(`/sessions/user`).then((result) => setRegisteredSessions(result.data));
   }, []);
 
@@ -52,13 +54,17 @@ function Reservation() {
   }, [filter]);
 
   const handleClickReservation = async (id) => {
-    try {
-      await api.post(`/sessions/${id}/register`);
-    } catch (error) {
-      console.error(error);
-      setError(error.response.data);
+    if (auth.isLogged) {
+      try {
+        await api.post(`/sessions/${id}/register`);
+      } catch (error) {
+        console.error(error);
+        setError(error.response.data);
+      }
+      setValidationIsClicked(true);
+    } else {
+      navigate("/login");
     }
-    setValidationIsClicked(true);
   };
 
   const handleClickRegisterAgain = () => {
