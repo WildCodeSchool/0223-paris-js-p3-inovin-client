@@ -8,14 +8,18 @@ const getCurrentUser = () => {
   return api.get("/users/me");
 };
 
-const updateAvatar = (form) => {
-  return api.post("/users/updateAvatar", form);
+const sendContact = (form) => {
+  return api.post("/users/contact", form);
 };
-
-
+ 
 const updateComment = (comment) =>{
   return api.put("/users/comment", {comment: comment})
 }
 
-export { getAllUsers, getCurrentUser, updateAvatar,updateComment };
-export default { getAllUsers, getCurrentUser, updateAvatar,updateComment };
+const deleteUser = (id) => {
+  return api.delete(`/users/${id}`);
+};
+
+export { getAllUsers, getCurrentUser, sendContact,updateComment, deleteUser };
+export default { getAllUsers, getCurrentUser, sendContact,updateComment, deleteUser};
+ 

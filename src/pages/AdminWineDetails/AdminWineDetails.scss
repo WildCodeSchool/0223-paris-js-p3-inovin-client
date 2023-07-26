@@ -1,0 +1,56 @@
+.admin-wine-details {
+  padding-top: 3.7rem;  
+  .content {
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  .image {  
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+    .content-body {
+      width: 60%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      label {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        input  {
+          margin-top: 0.2rem;
+          font-size: 1.5rem;
+          border-radius: 0.2rem;   
+        }
+        
+      }
+      .comment {
+          width: 100%;
+        }
+        .comment-input {
+          border: none;
+          background-color: lightgray;
+          font-size: 1.5rem;
+          height: 10rem;
+          border-radius: 0.2rem;
+          padding-top: 0.5rem;
+          padding-inline: 0.5rem;
+        }
+        input:focus, .comment-input:focus {
+          outline: #c95b5b solid 2px;
+        }
+    }
+    .content-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  input {
+    border: none;
+    background-color: lightgray;
+  }
+}
