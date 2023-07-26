@@ -109,10 +109,6 @@ function SelectedRecipe() {
     });
   }, [condensedData]);
 
-  useEffect(() => {
-    console.log('condensed',condensedData);
-    console.log('recipe', recipe)
-  }, [condensedData]);
 
   return (
     <div className="selected-recipe">

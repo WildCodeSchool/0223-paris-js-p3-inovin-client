@@ -1,25 +1,26 @@
 @import "../../App.scss";
 
-p.error {
-  order: 0;
-  line-height: 2;
-  padding: 0 10px;
-  font-size: 1rem;
-  text-align: center;
-  color: #c95b5b;
-}
-
-.btnLogReg {
-  order: 0;
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: black;
-  border-radius: 15px;
-  background-color: initial;
-  border-style: initial;
-}
+    .error {
+        order: 0;
+        line-height: 2;
+        padding: 0 10px;
+        font-size: 1rem;
+        text-align: center;
+        color: #C95B5B;
+    
+    }
+    
+    .btnLogReg{
+        order: 0;
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color:black;
+        border-radius: 15px;
+        background-color:initial;
+        border-style: initial;
+    }
 
 .forgetMotpasse {
   order: 0;
