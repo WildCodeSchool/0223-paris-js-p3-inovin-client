@@ -9,9 +9,10 @@ import "./AdminWineDetails.scss";
 
 const AdminWineDetails = () => {
   const [wine, setWine] = useState({
-    wine_img: "",
-    wine_name: "",
-    region_name: "",
+    image: "",
+    name: "",
+    region: "",
+    region_id: 0,
     cepage: "",
     color: "",
     comment: "",
@@ -28,7 +29,13 @@ const AdminWineDetails = () => {
     const getWineInfos = async (id) => {
       try {
         const wineInfos = await getWineById(id);
-        setWine(wineInfos.data[0]);
+
+        setWine({
+          ...wineInfos.data[0],
+          image: wineInfos.data[0].wine_img,
+          name: wineInfos.data[0].wine_name,
+          region: wineInfos.data[0].region_name,
+        });
       } catch (error) {
         console.error(error);
       }
@@ -56,6 +63,7 @@ const AdminWineDetails = () => {
   };
 
   const handleSaveClick = async (wine) => {
+    console.log(wine);
     try {
       const isConfirmed = await confirm(
         `Êtes-vous sûr de vouloir enregistrer les modifications ?`
