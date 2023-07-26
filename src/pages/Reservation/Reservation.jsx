@@ -23,11 +23,9 @@ function Reservation() {
 
   const navigate = useNavigate();
 
-  console.log(auth);
-
   useEffect(() => {
-    axios.get(`http://localhost:8080/sessions/`).then((result) => setSessions(result.data));
-    axios.get(`http://localhost:8080/sessions/`).then((result) => setFilteredSessions(result.data));
+    axios.get(`http://localhost:8080/sessions/all`).then((result) => setSessions(result.data));
+    axios.get(`http://localhost:8080/sessions/all`).then((result) => setFilteredSessions(result.data));
     api.get(`/sessions/user`).then((result) => setRegisteredSessions(result.data));
   }, []);
 
