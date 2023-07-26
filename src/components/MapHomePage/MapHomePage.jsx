@@ -79,9 +79,82 @@ function Map({ setSelectedRegionIndex }) {
             14,
             "#135D60",
             15,
-            "#C993A2",
+            "#BC5900",
           ],
           "fill-opacity": 0.6,
+        },
+      });
+
+      //  --------------REGION SCHEMA LAYER --------------
+
+      map.current.addSource("schemaregions", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      map.current.addLayer({
+        id: "schemaregions",
+        type: "fill",
+        source: "schemaregions",
+        layout: {},
+        paint: {
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "id"],
+            1,
+            "#CA8323",
+            2,
+            "#3D0E25",
+            3,
+            "#E26934",
+            4,
+            "#9B1B1B",
+            5,
+            "#731E33",
+            6,
+            "#CA8323",
+            7,
+            "#71ADAE",
+            8,
+            "#DBA950",
+            9,
+            "#6D356F",
+            10,
+            "#3D574B",
+            11,
+            "#135D60",
+            12,
+            "#723122",
+            13,
+            "#E6B71E",
+            14,
+            "#135D60",
+            15,
+            "#BC5900",
+          ],
+          "fill-opacity": 0.15,
+        },
+      });
+
+      map.current.addLayer({
+        id: "schemaregions-text",
+        type: "symbol",
+        source: "schemaregions",
+        layout: {
+          "text-field": ["get", "Bassin"],
+          "text-size": 12,
+          "text-font": ["Open Sans Regular"],
+          "text-anchor": "center",
+          "text-offset": [0, 0],
+        },
+        paint: {
+          "text-color": "#000000",
+          "text-halo-color": "#FFFFFF",
+          "text-halo-width": 1.5,
         },
       });
 
@@ -135,20 +208,15 @@ function Map({ setSelectedRegionIndex }) {
             14,
             "#135D60",
             15,
-            "#C993A2",
+            "#BC5900",
           ],
-          "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.6],
+          "fill-opacity": 0.5,
         },
       });
 
       // -------------------- event listener subregion layer -----------------------
 
-      let hoveredPolygonId = null;
-
       map.current.on("mouseenter", "subregions", (e) => {
-        console.log(e.features[0].properties.id);
-        hoveredPolygonId = e.features[0].properties.id;
-        map.current.setFeatureState({ source: "subregions", id: hoveredPolygonId }, { hover: true });
         map.current.getCanvas().style.cursor = "pointer";
 
         const center = centerOfMass(e.features[0]);
@@ -165,30 +233,46 @@ function Map({ setSelectedRegionIndex }) {
         // Populate the popup and set its coordinates
         // based on the feature found.
         popupRef.current.setLngLat(centerCoordinates).setDOMContent(popupContent).addTo(map.current);
+
+        const selectedIndex = e.features[0].properties.id;
+        map.current.setPaintProperty("subregions", "fill-opacity", [
+          "case",
+          ["==", ["get", "id"], selectedIndex],
+          0.85,
+          0.5,
+        ]);
       });
 
       map.current.on("mouseleave", "subregions", () => {
-        map.current.setFeatureState({ source: "subregions", id: hoveredPolygonId }, { hover: false });
         map.current.getCanvas().style.cursor = "default";
-        hoveredPolygonId = null;
         popupRef.current.remove();
+
+        map.current.setPaintProperty("subregions", "fill-opacity", 0.5);
       });
 
-      // -------------------- event listener region layer -----------------------
+      // -------------------- event listener schemaregion layer -----------------------
 
-      map.current.on("mouseenter", "regions", () => {
+      map.current.on("mouseenter", "schemaregions", () => {
         map.current.getCanvas().style.cursor = "pointer";
       });
 
-      map.current.on("mouseleave", "regions", () => {
+      map.current.on("mouseleave", "schemaregions", () => {
         map.current.getCanvas().style.cursor = "default";
       });
 
-      map.current.on("click", "regions", (e) => {
+      map.current.on("click", "schemaregions", (e) => {
         setSelectedRegionIndex(e.features[0].properties.id);
-      });
+        const selectedIndex = e.features[0].properties.id;
 
-      map.current.moveLayer("subregions", "regions");
+        // map.current.setFeatureState({ source: "schemaregions", id: selectedIndex }, { selected: true });
+
+        map.current.setPaintProperty("schemaregions", "fill-opacity", [
+          "case",
+          ["==", ["get", "id"], selectedIndex],
+          0.3,
+          0.1,
+        ]);
+      });
 
       // -------------------- Confirm map load -----------------------
 
@@ -207,6 +291,12 @@ function Map({ setSelectedRegionIndex }) {
       .then((response) => response.json())
       .then((data) => {
         map.current.getSource("subregions").setData(data);
+      });
+
+    fetch("../../../src/assets/region-schema.geojson")
+      .then((response) => response.json())
+      .then((data) => {
+        map.current.getSource("schemaregions").setData(data);
       });
   };
 
