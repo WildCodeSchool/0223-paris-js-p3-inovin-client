@@ -1,7 +1,7 @@
 import "./ColorButton.scss";
 import React, { useEffect, useState } from "react";
 
-const ColorButton = ({ tags, onChange, name , currentWine}) => {
+const ColorButton = ({ tags, onChange, name, currentWine }) => {
   const [selectedCircle, setSelectedCircle] = useState(null);
 
   const handleSliderChange = (id) => {
@@ -9,9 +9,9 @@ const ColorButton = ({ tags, onChange, name , currentWine}) => {
     onChange(name, selectedLabel);
   };
 
-useEffect(() => {
-setSelectedCircle(null)
-}, [currentWine])
+  useEffect(() => {
+    setSelectedCircle(null);
+  }, [currentWine]);
 
   const colors = [
     { text: "Framboise", color: "#d85967", colorfocus: "pink" },
@@ -59,7 +59,7 @@ setSelectedCircle(null)
                 backgroundColor: colors[index].color,
                 outline:
                   selectedCircle === index
-                    ? `5px solid ${colors[index].colorfocus}`
+                    ? `10px solid ${colors[index].colorfocus}`
                     : "none",
               }}
             />

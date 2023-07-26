@@ -285,7 +285,8 @@ const FichesAtelier = () => {
         </div>
         <div className="container-subbouche">
           <h3 className="persistance-aromatique">PERSISTANCE ARÔMATIQUE</h3>
-          <Slider
+          <Slider 
+          className="slidediv"
             currentWine={currentWine}
             name="persistance"
             labels={tags.filter((e) => {

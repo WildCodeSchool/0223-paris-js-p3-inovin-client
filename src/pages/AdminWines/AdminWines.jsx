@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { getAllWines } from "../../services/wines";
 import BtnBack from "../../components/BtnBack/BtnBack";
 import BtnAdd from "../../components/BtnAdd/BtnAdd";
+import Confirmbox from "../../components/ConfirmBox/Confirmbox";
+import useConfirm from "../../services/useConfirm";
+import { deleteWine } from "../../services/wines";
 import "./AdminWines.scss";
 
 const AdminWines = () => {
+  const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
   const [wines, setWines] = useState([]);
   const navigate = useNavigate();
 
@@ -14,15 +18,39 @@ const AdminWines = () => {
       try {
         const response = await getAllWines();
         setWines(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
     };
     getWines();
   }, []);
+
+  const handleDeleteWineClick = async (wine) => {
+    try {
+      const isConfirmed = await confirm(
+        `Êtes-vous sûr de vouloir supprimer le vin ${wine.name} ?`
+      );
+
+      if (isConfirmed) {
+        await deleteWine(wine.id);
+        const updatedWines = [...wines].filter((e) => e.id != wine.id);
+        setWines(updatedWines);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="admin-wines">
+      {confirmState.show ? (
+        <Confirmbox
+          text={confirmState.text}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      ) : null}
+
       <BtnBack handleBackClick={() => navigate(`/`)} />
 
       <h2>Vins enregistrés</h2>
@@ -48,7 +76,7 @@ const AdminWines = () => {
                   <td className="buttonCell">
                     <button
                       className="WMButton btn"
-                      onClick={() => handleSeeWineClick(wine.id)}
+                      onClick={() => navigate(`${wine.id}`)}
                     >
                       Voir détails
                     </button>
