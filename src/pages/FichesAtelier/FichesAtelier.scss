@@ -10,6 +10,11 @@ $font-title : Federo;
     box-sizing: border-box;
 }
 
+
+.page-container {
+  display: flex;
+flex-direction: column;
+
 h3 {
   font-family: 'Benne';
   font-size: 30px;
@@ -18,9 +23,6 @@ h3 {
 
 }
 
-.page-container {
-  display: flex;
-flex-direction: column;
 
 
   .title {
