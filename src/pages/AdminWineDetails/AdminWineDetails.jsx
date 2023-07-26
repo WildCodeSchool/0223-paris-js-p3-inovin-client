@@ -8,7 +8,17 @@ import { deleteWine, updateWine } from "../../services/wines";
 import "./AdminWineDetails.scss";
 
 const AdminWineDetails = () => {
-  const [wine, setWine] = useState({});
+  const [wine, setWine] = useState({
+    wine_img: "",
+    wine_name: "",
+    region_name: "",
+    cepage: "",
+    color: "",
+    comment: "",
+    domain: "",
+    manufacture_year: "",
+    appellation: "",
+  });
   const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
   const navigate = useNavigate();
 
@@ -72,7 +82,7 @@ const AdminWineDetails = () => {
 
       <div className="content">
         <div className="image">
-          <img src={wine.image} alt="Bouteille de vin" />
+          <img src={wine.wine_img} alt="Bouteille de vin" />
         </div>
         <div className="content-body">
           <label htmlFor="">
@@ -81,7 +91,7 @@ const AdminWineDetails = () => {
               type="text"
               name="name"
               onChange={(e) => handleChange(e)}
-              value={wine.name}
+              value={wine.wine_name}
             />
           </label>
           <label htmlFor="">
@@ -117,7 +127,7 @@ const AdminWineDetails = () => {
               type="text"
               name="region"
               onChange={(e) => handleChange(e)}
-              value={wine.region}
+              value={wine.region_name}
             />
           </label>
           <label htmlFor="">
