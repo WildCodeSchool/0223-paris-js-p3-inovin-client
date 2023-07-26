@@ -41,6 +41,7 @@
           flex-direction: column;
         }
         .comment-input {
+          margin-top: 0.5rem;
           border: none;
           font-size: 18px;
           height: 8rem;
@@ -48,6 +49,7 @@
           padding-top: 0.5rem;
           padding-inline: 0.5rem;
           font-family: Benne;
+          border-bottom: dashed 1px #c4bfbf;
         }
         input:focus, .comment-input:focus {
           outline: #c95b5b solid 2px;
