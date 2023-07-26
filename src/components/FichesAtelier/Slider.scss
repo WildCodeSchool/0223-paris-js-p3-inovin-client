@@ -2,7 +2,7 @@ datalist {
   display: flex;
   justify-content: space-between;
   writing-mode: horizontal-tb;
-  width: 300px;
+  // width: 400px;
   font-family: 'benne';
   font-size: 30px;
 }
@@ -12,15 +12,17 @@ datalist {
     padding: 0;
     font-family: 'benne';
     font-size: 20px;
+    padding: 10px;
   }
 
 
 input {
   display: flex;
+  align-items: center;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
-  width: 335px;
+  width: 350px;
   &::-webkit-slider-runnable-track {
       background: #DBE5FF;
       height: 2px;

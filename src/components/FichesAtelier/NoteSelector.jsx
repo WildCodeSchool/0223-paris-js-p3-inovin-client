@@ -8,8 +8,8 @@ function NoteSelector({ setNote, note }) {
   };
 
   return (
-    <div>
-      <div className="noteselection">
+    <div className="noteselection">
+      <div className="notesubselection">
         <span>{`Note ${note}/10`}</span>
       </div>
       <input
