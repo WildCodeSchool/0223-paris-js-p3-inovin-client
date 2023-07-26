@@ -69,7 +69,7 @@ function Login() {
         <button
           className="forgetMotpasse"
           onClick={() => navigate("/forgotPassword")}
-        >c9631ed11475d38a9dbbfef794dda0bb58fde
+        >
           J'ai oublié mon mot de passe ?
         </button>
       </form>

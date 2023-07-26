@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  getAllSessions,
-  getSessionById,
-  deleteSession,
-} from "../../services/session";
+import useConfirm from "../../services/useConfirm";
+import { getAllSessions, deleteSession } from "../../services/session";
+import Confirmbox from "../../components/ConfirmBox/Confirmbox";
+
 import "./WorkshopManager.scss";
 import { useNavigate } from "react-router-dom";
 import BtnBack from "../../components/BtnBack/BtnBack";
@@ -19,6 +18,7 @@ const options = {
 };
 
 const WorkshopManager = () => {
+  const { confirm, confirmState, onCancel, onConfirm } = useConfirm();
   const [sessions, setSessions] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -40,18 +40,36 @@ const WorkshopManager = () => {
   const handleDetailsClick = async (id) => {
     navigate(`${id}`);
   };
-  const handleDeleteClick = async (id) => {
-    try {
-      deleteSession(id);
-      const updatedSessions = [...sessions].filter((e) => e.id != id);
 
-      setSessions(updatedSessions);
+  const handleDeleteClick = async (session) => {
+    const date = new Date(session.date);
+
+    try {
+      const isConfirmed = await confirm(
+        `Etes-vous sure de vouloir supprimer l'atelier ${
+          session.category
+        } du ${date.toLocaleString("fr-FR", options)} ?`
+      );
+      if (isConfirmed) {
+        await deleteSession(session.id);
+        const updatedSessions = [...sessions].filter((e) => e.id != session.id);
+        setSessions(updatedSessions);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className="workshopManager">
+      {confirmState.show ? (
+        <Confirmbox
+          text={confirmState.text}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        />
+      ) : null}
+
       <BtnBack handleBackClick={() => navigate("/")} />
       <h2>Gestion des Ateliers</h2>
       <table>
@@ -84,7 +102,7 @@ const WorkshopManager = () => {
                     Détails
                   </button>
                   <button
-                    onClick={() => handleDeleteClick(session.id)}
+                    onClick={() => handleDeleteClick(session)}
                     className="WMButton btn"
                   >
                     Supprimer
