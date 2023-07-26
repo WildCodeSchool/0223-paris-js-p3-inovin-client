@@ -10,18 +10,19 @@ $font-title : Federo;
     box-sizing: border-box;
 }
 
-h3 {
-  font-family: 'Benne';
-  font-size: 30px;
-  margin-bottom: 40px;
-  text-align: center;
-  letter-spacing: 0.1em;
 
-}
 
 .page-container {
   display: flex;
   flex-direction: column;
+  h3 {
+    font-family: 'Benne';
+    font-size: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 0.1em;
+  
+  }
 
 
   .title {
