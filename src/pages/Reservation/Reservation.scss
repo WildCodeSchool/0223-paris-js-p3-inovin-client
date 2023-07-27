@@ -105,8 +105,18 @@
         }
       }
 
+      .session-list-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        max-height: 60vh;
+        overflow: scroll;
+        padding-bottom: 0;
+        padding: 1vh 1vw 0 1vw;
+      }
+
       .button {
-        margin-bottom: 3vh;
+        margin-bottom: 5vh;
         text-transform: uppercase;
         text-align: center;
         padding: 0.75vw 4vw 0.75vw 4vw;
@@ -121,6 +131,22 @@
         &-hidden {
           display: none;
         }
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #c7c7c7;
+        height: 1vh;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
       }
     }
   }

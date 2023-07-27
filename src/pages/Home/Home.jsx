@@ -44,20 +44,13 @@ function Home() {
     winesContainerRef.current.addEventListener("scroll", getVisibleCardIndex);
 
     return () => {
-      winesContainerRef.current?.removeEventListener(
-        "scroll",
-        getVisibleCardIndex
-      );
+      winesContainerRef.current?.removeEventListener("scroll", getVisibleCardIndex);
     };
   }, [visibleIndex]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/regions/`)
-      .then((result) => setRegions(result.data));
-    axios
-      .get(`http://localhost:8080/regions/cepages/`)
-      .then((result) => setCepages(result.data));
+    axios.get(`http://localhost:8080/regions/`).then((result) => setRegions(result.data));
+    axios.get(`http://localhost:8080/regions/cepages/`).then((result) => setCepages(result.data));
   }, []);
 
   return (
@@ -75,9 +68,8 @@ function Home() {
         <h2>Notre concept</h2>
         <img className="logo-concept" src={concept} alt="" />
         <p className="concept-desc">
-          L'atelier Inovin est une expérience unique vous permettant de créer
-          votre propre vin au travers d’une dégustation de cépages vers votre
-          assemblage...
+          L'atelier Inovin est une expérience unique vous permettant de créer votre propre vin au travers d’une
+          dégustation de cépages vers votre assemblage...
         </p>
         <div className="img-container">
           <img src={img1} alt="" />
@@ -93,30 +85,13 @@ function Home() {
           </div>
           {selectedRegionIndex ? (
             <div className="region-info-container">
-              <h3>
-                {
-                  regions.find((region) => region.id === selectedRegionIndex)
-                    .name
-                }
-              </h3>
-              <p>
-                {
-                  regions.find((region) => region.id === selectedRegionIndex)
-                    .description
-                }
-              </p>
-              <img
-                src={regions[selectedRegionIndex - 1].image}
-                alt={regions.name}
-              />
+              <h3>{regions.find((region) => region.id === selectedRegionIndex).name}</h3>
+              <p>{regions.find((region) => region.id === selectedRegionIndex).description}</p>
+              <img src={regions[selectedRegionIndex - 1].image} alt={regions.name} />
               <h4> Les Cépages rouges </h4>
               <span>
                 {cepages
-                  .filter(
-                    (cepage) =>
-                      cepage.color === "red" &&
-                      cepage.region_id === selectedRegionIndex
-                  )
+                  .filter((cepage) => cepage.color === "red" && cepage.region_id === selectedRegionIndex)
                   .map((cepage, index) => (
                     <React.Fragment key={cepage.cepage_id}>
                       {index !== 0 && ", "}
@@ -128,11 +103,7 @@ function Home() {
               <h4> Les Cépages blancs </h4>
               <span>
                 {cepages
-                  .filter(
-                    (cepage) =>
-                      cepage.color === "red" &&
-                      cepage.region_id === selectedRegionIndex
-                  )
+                  .filter((cepage) => cepage.color === "red" && cepage.region_id === selectedRegionIndex)
                   .map((cepage, index) => (
                     <React.Fragment key={cepage.cepage_id}>
                       {index !== 0 && ", "}
@@ -143,14 +114,10 @@ function Home() {
             </div>
           ) : (
             <div className="region-info-container-welcome">
-              <h4 className="welcome-title">
-                Choisissez une région sur la carte
-              </h4>
+              <h4 className="welcome-title">Choisissez une région sur la carte</h4>
               <p className="welcome-message">
-                Chez Inovin, nous voulons vous faire découvrir le vin et ses
-                secrets. <br /> <br />
-                Servez-vous de la carte pour explorer les régions, leur
-                histoire, leurs cépages ...
+                Chez Inovin, nous voulons vous faire découvrir le vin et ses secrets. <br /> <br />
+                Servez-vous de la carte pour explorer les régions, leur histoire, leurs cépages ...
               </p>
             </div>
           )}
@@ -197,11 +164,7 @@ function Home() {
         <div className="slide-indicator">
           <div
             className={
-              visibleIndex
-                ? visibleIndex == 1
-                  ? "indicator indicator_1"
-                  : "indicator indicator_2"
-                : "indicator"
+              visibleIndex ? (visibleIndex == 1 ? "indicator indicator_1" : "indicator indicator_2") : "indicator"
             }
           />
         </div>
@@ -212,11 +175,10 @@ function Home() {
           <div className="atelier-desc">
             <h3>Atelier dégustation</h3>
             <p>
-              Atelier dégustation de 5 vins a l'aveugle suivi d'accompagnement
-              de mets. <br/> Nos ateliers INOVIN sont conçus pour vous offrir une
-              expérience inoubliable, alliant découverte, apprentissage et
-              convivialité. <br/> Vous serez guidé par des experts passionnés et
-              compétents, qui vous feront découvrir les secrets du vin.
+              Atelier dégustation de 5 vins a l'aveugle suivi d'accompagnement de mets. <br /> Nos ateliers INOVIN sont
+              conçus pour vous offrir une expérience inoubliable, alliant découverte, apprentissage et convivialité.{" "}
+              <br /> Vous serez guidé par des experts passionnés et compétents, qui vous feront découvrir les secrets du
+              vin.
             </p>
             <Link to="/reservation">
               <BtnInscription type="dégustation" />
@@ -229,16 +191,13 @@ function Home() {
           <div className="atelier-desc">
             <h3>Atelier création</h3>
             <p>
-              Notre atelier INOVIN est unique en son genre : vous apprendrez à
-              créer votre propre vin en sélectionnant les arômes et les saveurs
-              que vous préférez. <br/> Vous pourrez ensuite enregistrer la composition
-              de votre vin dans notre base de données pour le reproduire à tout
-              moment. <br/> Vous pourrez également présenter votre vin à notre
-              concours.<br/> Nos ateliers INOVIN sont conçus pour vous offrir une
-              expérience inoubliable, alliant découverte, apprentissage et
-              convivialité. Vous serez guidé par des experts passionnés et
-              compétents, qui vous feront découvrir les secrets de la création
-              de vin.
+              Notre atelier INOVIN est unique en son genre : vous apprendrez à créer votre propre vin en sélectionnant
+              les arômes et les saveurs que vous préférez. <br /> Vous pourrez ensuite enregistrer la composition de
+              votre vin dans notre base de données pour le reproduire à tout moment. <br /> Vous pourrez également
+              présenter votre vin à notre concours.
+              <br /> Nos ateliers INOVIN sont conçus pour vous offrir une expérience inoubliable, alliant découverte,
+              apprentissage et convivialité. Vous serez guidé par des experts passionnés et compétents, qui vous feront
+              découvrir les secrets de la création de vin.
             </p>
             <Link to="/reservation">
               <BtnInscription type="création" />
