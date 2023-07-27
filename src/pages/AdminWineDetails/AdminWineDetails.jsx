@@ -29,7 +29,6 @@ const AdminWineDetails = () => {
     const getWineInfos = async (id) => {
       try {
         const wineInfos = await getWineById(id);
-
         setWine({
           ...wineInfos.data[0],
           image: wineInfos.data[0].wine_img,
@@ -63,7 +62,6 @@ const AdminWineDetails = () => {
   };
 
   const handleSaveClick = async (wine) => {
-    console.log(wine);
     try {
       const isConfirmed = await confirm(
         `Êtes-vous sûr de vouloir enregistrer les modifications ?`
