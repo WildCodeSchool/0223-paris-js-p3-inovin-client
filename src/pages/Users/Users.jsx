@@ -28,7 +28,7 @@ const Users = () => {
   const handleDeleteUserClick = async (user) => {
     try {
       const isConfirmed = await confirm(
-        `Etes-vous sure de vouloir supprimer l'utilisateur ${user.firstname} ${user.lastname} de la base de données ?`
+        `Êtes-vous sûr.e de vouloir supprimer l'utilisateur ${user.firstname} ${user.lastname} de la base de données ?`
       );
       if (isConfirmed) {
         await deleteUser(user.id);

@@ -25,6 +25,10 @@ function SelectedRecipe() {
   }, []);
 
   useEffect(() => {
+    console.log(recipe);
+  }, [recipe]);
+
+  useEffect(() => {
     const groupedData = new Map();
     recipe.forEach((item) => {
       const {
@@ -109,7 +113,6 @@ function SelectedRecipe() {
     });
   }, [condensedData]);
 
-
   return (
     <div className="selected-recipe">
       <div className="creation-container">
@@ -169,13 +172,9 @@ function SelectedRecipe() {
             <img
               src={condensedData[selectedWine]?.wine_img}
               alt=""
-              onClick={() =>
-                nav(`/wines/${condensedData[selectedWine]?.wine_id}`)
-              }
+              onClick={() => nav(`/wines/${condensedData[selectedWine]?.wine_id}`)}
             />
-            <p className="note">
-              Note : {condensedData[selectedWine]?.note}/10
-            </p>
+            <p className="note">Note : {condensedData[selectedWine]?.note}/10</p>
           </div>
           <div className="wine-details">
             <h4>Oeil</h4>
@@ -191,11 +190,7 @@ function SelectedRecipe() {
             <h4>Nez</h4>
 
             {condensedData[selectedWine]?.tags
-              .filter(
-                (item) =>
-                  item.category === "Nez" &&
-                  item.sub_category !== "Familles Arômatiques"
-              )
+              .filter((item) => item.category === "Nez" && item.sub_category !== "Familles Arômatiques")
               .map((item) => (
                 <p>
                   {item.sub_category} : {item.tag}
@@ -205,11 +200,7 @@ function SelectedRecipe() {
             <h4>Bouche</h4>
 
             {condensedData[selectedWine]?.tags
-              .filter(
-                (item) =>
-                  item.category === "La Bouche" &&
-                  item.sub_category !== "Familles Arômatiques"
-              )
+              .filter((item) => item.category === "La Bouche" && item.sub_category !== "Familles Arômatiques")
               .map((item) => (
                 <p>
                   {item.sub_category} : {item.tag}

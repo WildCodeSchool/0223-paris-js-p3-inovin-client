@@ -46,9 +46,10 @@ const WorkshopManager = () => {
 
     try {
       const isConfirmed = await confirm(
-        `Etes-vous sure de vouloir supprimer l'atelier ${
-          session.category
-        } du ${date.toLocaleString("fr-FR", options)} ?`
+        `Êtes-vous sûr.e de vouloir supprimer l'atelier ${session.category} du ${date.toLocaleString(
+          "fr-FR",
+          options
+        )} ?`
       );
       if (isConfirmed) {
         await deleteSession(session.id);
@@ -62,13 +63,7 @@ const WorkshopManager = () => {
 
   return (
     <div className="workshopManager">
-      {confirmState.show ? (
-        <Confirmbox
-          text={confirmState.text}
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-        />
-      ) : null}
+      {confirmState.show ? <Confirmbox text={confirmState.text} onConfirm={onConfirm} onCancel={onCancel} /> : null}
 
       <BtnBack handleBackClick={() => navigate("/")} />
       <h2>Gestion des Ateliers</h2>
@@ -95,16 +90,10 @@ const WorkshopManager = () => {
                 <td>{session.max_participants - session.participants}</td>
 
                 <td className="buttonCell">
-                  <button
-                    onClick={() => handleDetailsClick(session.id)}
-                    className="WMButton btn"
-                  >
+                  <button onClick={() => handleDetailsClick(session.id)} className="WMButton btn">
                     Détails
                   </button>
-                  <button
-                    onClick={() => handleDeleteClick(session)}
-                    className="WMButton btn"
-                  >
+                  <button onClick={() => handleDeleteClick(session)} className="WMButton btn">
                     Supprimer
                   </button>
                 </td>
@@ -113,10 +102,7 @@ const WorkshopManager = () => {
           })}
         </tbody>
       </table>
-      <BtnAdd
-        handleAddClick={() => navigate("new")}
-        title={"Ajouter un atelier"}
-      />
+      <BtnAdd handleAddClick={() => navigate("new")} title={"Ajouter un atelier"} />
     </div>
   );
 };

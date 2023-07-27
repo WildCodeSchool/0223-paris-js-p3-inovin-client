@@ -43,9 +43,7 @@ const AdminWineDetails = () => {
 
   const handleDeleteClick = async (wine) => {
     try {
-      const isConfirmed = await confirm(
-        `Êtes-vous sûr de vouloir supprimer ce vin ?`
-      );
+      const isConfirmed = await confirm(`Êtes-vous sûr.e de vouloir supprimer ce vin ?`);
 
       if (isConfirmed) {
         await deleteWine(wine.id);
@@ -57,9 +55,7 @@ const AdminWineDetails = () => {
 
   const handleSaveClick = async (wine) => {
     try {
-      const isConfirmed = await confirm(
-        `Êtes-vous sûr de vouloir enregistrer les modifications ?`
-      );
+      const isConfirmed = await confirm(`Êtes-vous sûr de vouloir enregistrer les modifications ?`);
 
       if (isConfirmed) {
         await updateWine(wine);
@@ -71,13 +67,7 @@ const AdminWineDetails = () => {
 
   return (
     <div className="admin-wine-details">
-      {confirmState.show ? (
-        <Confirmbox
-          text={confirmState.text}
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-        />
-      ) : null}
+      {confirmState.show ? <Confirmbox text={confirmState.text} onConfirm={onConfirm} onCancel={onCancel} /> : null}
       <BtnBack handleBackClick={() => navigate(`/admin/vins`)} />
 
       <div className="content">
@@ -87,21 +77,11 @@ const AdminWineDetails = () => {
         <div className="content-body">
           <label htmlFor="">
             Nom du vin :
-            <input
-              type="text"
-              name="name"
-              onChange={(e) => handleChange(e)}
-              value={wine.wine_name}
-            />
+            <input type="text" name="name" onChange={(e) => handleChange(e)} value={wine.wine_name} />
           </label>
           <label htmlFor="">
             Nom du domaine :
-            <input
-              type="text"
-              name="domain"
-              onChange={(e) => handleChange(e)}
-              value={wine.domain}
-            />
+            <input type="text" name="domain" onChange={(e) => handleChange(e)} value={wine.domain} />
           </label>
           <label htmlFor="">
             Année de production :
@@ -114,39 +94,19 @@ const AdminWineDetails = () => {
           </label>
           <label htmlFor="">
             Type :
-            <input
-              type="text"
-              name="color"
-              onChange={(e) => handleChange(e)}
-              value={wine.color}
-            />
+            <input type="text" name="color" onChange={(e) => handleChange(e)} value={wine.color} />
           </label>
           <label htmlFor="">
             Région :
-            <input
-              type="text"
-              name="region"
-              onChange={(e) => handleChange(e)}
-              value={wine.region_name}
-            />
+            <input type="text" name="region" onChange={(e) => handleChange(e)} value={wine.region_name} />
           </label>
           <label htmlFor="">
             Appellation :
-            <input
-              type="text"
-              name="appellation"
-              onChange={(e) => handleChange(e)}
-              value={wine.appellation}
-            />
+            <input type="text" name="appellation" onChange={(e) => handleChange(e)} value={wine.appellation} />
           </label>
           <label htmlFor="">
             Cépage :
-            <input
-              type="text"
-              name="cepage"
-              onChange={(e) => handleChange(e)}
-              value={wine.cepage}
-            />
+            <input type="text" name="cepage" onChange={(e) => handleChange(e)} value={wine.cepage} />
           </label>
           <label htmlFor="" className="comment">
             Description :

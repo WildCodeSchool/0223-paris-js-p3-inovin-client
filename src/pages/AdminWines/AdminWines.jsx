@@ -27,9 +27,7 @@ const AdminWines = () => {
 
   const handleDeleteWineClick = async (wine) => {
     try {
-      const isConfirmed = await confirm(
-        `Êtes-vous sûr de vouloir supprimer le vin ${wine.name} ?`
-      );
+      const isConfirmed = await confirm(`Êtes-vous sûr.e de vouloir supprimer le vin ${wine.name} ?`);
 
       if (isConfirmed) {
         await deleteWine(wine.id);
@@ -43,13 +41,7 @@ const AdminWines = () => {
 
   return (
     <div className="admin-wines">
-      {confirmState.show ? (
-        <Confirmbox
-          text={confirmState.text}
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-        />
-      ) : null}
+      {confirmState.show ? <Confirmbox text={confirmState.text} onConfirm={onConfirm} onCancel={onCancel} /> : null}
 
       <BtnBack handleBackClick={() => navigate(`/`)} />
 
@@ -74,16 +66,10 @@ const AdminWines = () => {
                   <td>{wine.name}</td>
                   <td>{wine.domain}</td>
                   <td className="buttonCell">
-                    <button
-                      className="WMButton btn"
-                      onClick={() => navigate(`${wine.id}`)}
-                    >
+                    <button className="WMButton btn" onClick={() => navigate(`${wine.id}`)}>
                       Voir détails
                     </button>
-                    <button
-                      className="WMButton btn"
-                      onClick={() => handleDeleteWineClick(wine)}
-                    >
+                    <button className="WMButton btn" onClick={() => handleDeleteWineClick(wine)}>
                       Supprimer
                     </button>
                   </td>

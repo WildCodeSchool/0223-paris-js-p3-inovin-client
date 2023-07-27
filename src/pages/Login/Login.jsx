@@ -4,6 +4,7 @@ import authService from "../../services/auth";
 import BtnLogRegister from "../../components/BtnLogRegister/BtnLogRegister";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import "./Login.scss";
 import { login } from "../../store/auth";
 
@@ -15,6 +16,8 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const auth = useSelector((state) => state.auth);
+
   const handleSubmit = async (e) => {
     if (!email) {
       setEmail("Erreur email");
@@ -24,16 +27,15 @@ function Login() {
       setPassword("Erreur password");
       return;
     }
-
     e.preventDefault();
     try {
       const result = await authService.login(email, password);
       dispatch(login(result.data));
+
       navigate("/profilepage");
     } catch (error) {
       console.log(error);
-      if (error.response.status == 403 || error.response.status == 401)
-        setError("email ou mot de passe incorrect");
+      if (error.response.status == 403 || error.response.status == 401) setError("email ou mot de passe incorrect");
     }
   };
 
@@ -66,10 +68,7 @@ function Login() {
         <button className="btn" type="submit">
           Se connecter
         </button>
-        <button
-          className="forgetMotpasse"
-          onClick={() => navigate("/forgotPassword")}
-        >
+        <button className="forgetMotpasse" onClick={() => navigate("/forgotPassword")}>
           J'ai oublié mon mot de passe ?
         </button>
       </form>

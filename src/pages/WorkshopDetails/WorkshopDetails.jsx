@@ -59,7 +59,7 @@ const WorkshopDetails = () => {
   const handleDeleteWineClick = async (wine) => {
     try {
       const isConfirmed = await confirm(
-        `Etes-vous sure de vouloir supprimer ${wine.name} de cet atelier ?`
+        `Êtes-vous sûr.e de vouloir supprimer ${wine.name} de cet atelier ?`
       );
 
       if (isConfirmed) {

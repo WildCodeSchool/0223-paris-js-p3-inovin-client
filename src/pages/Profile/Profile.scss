@@ -2,47 +2,44 @@
 
 @import "../Login/Login.scss";
 
-.formLog{
+.formLog {
+  img.avatar {
+    width: 20%;
+    margin-bottom: 20px;
+    margin-top: -10px;
+  }
 
+  h1 {
+    color: black;
+    font-family: $font-text;
+    font-size: 40px;
+    font-weight: 100;
+    margin-top: 32px;
+    text-align: center;
+  }
 
-    img.avatar{
-        width: 20%;
-        margin-bottom: 20px;
-        margin-top: -10px;
-    }
+  h2 {
+    color: black;
+    font-family: $font-text;
+    font-size: 30px;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 35%;
+  }
 
-    h1{
-        color: black;
-        font-family: $font-text;
-        font-size: 40px;
-        font-weight: 100;
-        margin-top: 32px;
-        text-align: center;
-    }   
-    
-    h2{
-        color: black;
-        font-family: $font-text;
-        font-size: 30px;
-        font-weight: 100;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        text-align: center;
-        width: 35%;
-    }   
+  p {
+    color: black;
+    font-family: $font-text;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 40%;
+  }
 
-    p{
-        color: black;
-        font-family: $font-text;
-        font-size: 20px;
-        font-weight: 100;
-        margin-bottom: 40px;
-        text-align: center;
-        width: 40%;
-    }   
-
-    .containerTags{
-
+  .containerTags {
     padding: 10px;
     display: flex;
     flex-direction: row;
@@ -51,46 +48,44 @@
     align-content: center;
     justify-content: center;
     max-width: 60%;
-        
-        .checkboxCategory{
-            margin: 20px;  
-            background-color :initial;
-            width: 207px;
-            height: 39px;
-            flex-shrink: 0;
-            border-radius: 19.5px;
-            border: 0.2px solid #000;
-            font-family: $font-text;
-            font-size: 16px;
-        }
-        .checkboxCategorySelected{            
-            background-color:#C95B5B;
-            color:white;
-            border: none;
-        }        
+
+    .checkboxCategory {
+      margin: 20px;
+      background-color: initial;
+      width: 207px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 19.5px;
+      border: 0.2px solid #000;
+      font-family: $font-text;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 6px;
     }
-
-
-    .inputComment{
-        padding-top: 15px;
-        margin-bottom: 40px;
-        border-top-width: 0px;
-        border-right-width:0px ;
-        border-left-width:0px ;
-        border-bottom-width:1px ;
-        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));    
-        min-width: 500px;
-        min-height: 200px;
-        font-family: $font-text;
-        font-size: 16px;          
-        
-    } 
-
-    button{
-        margin-bottom: 60px;
+    .checkboxCategorySelected {
+      background-color: #c95b5b;
+      color: white;
+      border: none;
     }
+  }
 
-    
- 
+  .inputComment {
+    padding-top: 15px;
+    margin-bottom: 40px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 1px;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    min-width: 500px;
+    min-height: 200px;
+    font-family: $font-text;
+    font-size: 16px;
+  }
 
+  button {
+    margin-bottom: 60px;
+  }
 }
