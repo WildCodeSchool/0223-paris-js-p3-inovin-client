@@ -1,57 +1,112 @@
+@import url("../../App.scss");
+
 .newWorkshop {
   padding-top: 3.7rem;
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column;  
   h2{
     text-align: center;
     width: 100%;
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     font-family: Federo;
   }
-  table {
+  .content {
     width: 80%;
-    border-collapse: collapse;
-    border-style: hidden;
     margin: auto;
-    th {
-      text-align: center;
-      border: 1.5px solid #313131;
-      font-weight: 300;
-      
-    }   
-    td {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      
-      text-align: center;
-      border: 1.5px solid #313131;
-      border-bottom: none;
-      border-top: none;
-   }
-   input {
-    border: none;
-    width: 70%;
-   }
-   select {
-    width: 90%;
-    margin: auto;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-   }
-   .buttonCell {
     display: flex;
-    justify-content: space-around;
-    border: none;
-     
-  }
-  button:hover {    
-    transition: 300ms;
-    scale: 1.1;
-    cursor: pointer;
-  }
+    justify-content: space-between;
+
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+
+    .content-location {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      label {
+        margin-bottom: 0.4rem;
+        font-size: 25px;
+      }
+      select {
+        font-family: Benne;
+        font-size: 18px;
+        margin-left: 0.5rem;
+        width: 25rem;
+        background-color: transparent;
+        border: none;
+        border-bottom: dashed 1.5px #c4bfbf;
+        text-align: center;
+        option {
+          font-family: Benne;
+          font-size: 18px;
+        }
+      }
+      img {
+        margin-top: 1.5rem;
+        min-height: 300px;
+      }
+    }
+    .content-body {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      font-family: Benne;
+      label {
+        display: flex;
+        margin-bottom: 1rem;
+        font-size: 25px;
+        
+        .input {
+          margin-left: 0.5rem;
+          font-size: 18px;
+          border: none;
+          width: 10rem;
+          border-bottom: dashed 1.5px #c4bfbf;
+          padding-inline: 0.5rem;
+        }
+        .input:focus {
+          outline: #c95b5b solid 2px;
+        }
+        select {
+          font-family: Benne;
+          font-size: 18px;
+          margin-left: 0.5rem;
+          width: 15rem;
+          background-color: transparent;
+          border: none;
+          border-bottom: dashed 1.5px #c4bfbf;
+          text-align: center;
+        }
+      }
+      .btn {
+        margin-left: 3rem;
+        margin-top: 2rem;
+        transition: 200ms;
+      }
+      .btn:hover {
+        scale: 1.1;
+        transition: 200ms;
+      }
+      .btn:disabled {
+        background-color: #c4bfbf;
+      }
+      .btn:disabled:hover {
+        scale: 1;
+        cursor: not-allowed
+      }
+    }
+  }
 }
